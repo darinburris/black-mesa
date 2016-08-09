@@ -1,0 +1,60 @@
+/**
+* form styles
+*/
+form,
+fieldset,
+legend{
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+legend{
+	display: none;
+}
+
+label{
+	font-size: 12px;
+}
+
+label[for="globaleSearch"]{
+	display: none;
+}
+
+input,
+textarea,
+select{
+	border: 1px solid $color-StrokesRules;
+	font-size: 12px;
+	margin: 0;
+}
+
+[type="text"],
+[type="password"],
+[type="email"],
+[type="number"],
+[type="tel"],
+[type="url"],
+[type="search"],
+select{
+	height: 30px;
+	padding: 0 5px 0 10px;
+}
+
+.masthead-banner{
+
+	form{
+		margin-top: rem(40);
+		position: relative;
+
+		input{
+			width: 100%;
+		}
+
+	}
+
+}
+
+.element {
+	@include fill-parent;
+}

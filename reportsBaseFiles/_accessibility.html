@@ -1,0 +1,68 @@
+<!doctype html>
+<html class="no-js" lang="us-en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Accessibility Reports</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="/css/main.css">
+		<link rel="stylesheet" href="/css/reports.css">
+
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.4/handlebars.min.js"></script>
+		<script>
+
+			var
+			wcagReports     = '/accessibility/report.json';//,
+			//w3cReports      = '/validation/validation-report.json',
+			//w3cStatus       = '/validation/validation-status.json';
+
+		</script>
+		<script src="reports.js"></script>
+
+	</head>
+
+	<body role="document">
+
+		<header class="masthead-banner">
+
+			<h1 class="logo"><a href="/index.html" title="AMP_UI"><strong>AMP</strong>_UI</a></h1>
+
+		</header>
+
+		<main>
+
+			<h1>Accessibility Reports</h1>
+
+			<ul id="tocList"></ul>
+
+		</main>
+
+		<footer role="contentinfo">&copy;2016 Amplifi, inc.</footer>
+
+		<script id="wcag" type="text/x-handlebars-template">
+
+		{{#each responseJSON}}
+
+			{{#each this}}
+
+			<section>
+
+				<code class="key">[{{@key}}] Line: {{position.lineNumber}} / Character: {{position.columnNumber}}</code>
+
+				<h2>{{heading}} - {{issue}}</h2>
+				<code class="element">{{element.node}}</code>
+				<p>"{{description}}"</p>
+
+			</section>
+
+			{{/each}}
+
+		{{/each}}
+
+		</script>
+
+	</body>
+</html>

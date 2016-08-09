@@ -1,0 +1,239 @@
+/*
+SCSS variables are information about icon's compiled state, stored under its original file name
+
+.icon-home {
+  width: $icon-home-width;
+}
+
+The large array-like variables contain all information about a single icon
+$icon-home: x y offset_x offset_y width height total_width total_height image_path;
+
+At the bottom of this section, we provide information about the spritesheet itself
+$spritesheet: width height image $spritesheet-sprites;
+*/
+$icon-cart-name: 'icon-cart';
+$icon-cart-x: 33px;
+$icon-cart-y: 48px;
+$icon-cart-offset-x: -33px;
+$icon-cart-offset-y: -48px;
+$icon-cart-width: 24px;
+$icon-cart-height: 24px;
+$icon-cart-total-width: 121px;
+$icon-cart-total-height: 96px;
+$icon-cart-image: '../img/sprites.png';
+$icon-cart: (33px, 48px, -33px, -48px, 24px, 24px, 121px, 96px, '../img/sprites.png', 'icon-cart', );
+$icon-envelope-name: 'icon-envelope';
+$icon-envelope-x: 99px;
+$icon-envelope-y: 64px;
+$icon-envelope-offset-x: -99px;
+$icon-envelope-offset-y: -64px;
+$icon-envelope-width: 22px;
+$icon-envelope-height: 14px;
+$icon-envelope-total-width: 121px;
+$icon-envelope-total-height: 96px;
+$icon-envelope-image: '../img/sprites.png';
+$icon-envelope: (99px, 64px, -99px, -64px, 22px, 14px, 121px, 96px, '../img/sprites.png', 'icon-envelope', );
+$icon-modal-close-name: 'icon-modal-close';
+$icon-modal-close-x: 99px;
+$icon-modal-close-y: 44px;
+$icon-modal-close-offset-x: -99px;
+$icon-modal-close-offset-y: -44px;
+$icon-modal-close-width: 20px;
+$icon-modal-close-height: 20px;
+$icon-modal-close-total-width: 121px;
+$icon-modal-close-total-height: 96px;
+$icon-modal-close-image: '../img/sprites.png';
+$icon-modal-close: (99px, 44px, -99px, -44px, 20px, 20px, 121px, 96px, '../img/sprites.png', 'icon-modal-close', );
+$icon-search-name: 'icon-search';
+$icon-search-x: 99px;
+$icon-search-y: 78px;
+$icon-search-offset-x: -99px;
+$icon-search-offset-y: -78px;
+$icon-search-width: 17px;
+$icon-search-height: 17px;
+$icon-search-total-width: 121px;
+$icon-search-total-height: 96px;
+$icon-search-image: '../img/sprites.png';
+$icon-search: (99px, 78px, -99px, -78px, 17px, 17px, 121px, 96px, '../img/sprites.png', 'icon-search', );
+$icons-footer-promos-cc-name: 'icons-footer-promos-cc';
+$icons-footer-promos-cc-x: 0px;
+$icons-footer-promos-cc-y: 48px;
+$icons-footer-promos-cc-offset-x: 0px;
+$icons-footer-promos-cc-offset-y: -48px;
+$icons-footer-promos-cc-width: 33px;
+$icons-footer-promos-cc-height: 48px;
+$icons-footer-promos-cc-total-width: 121px;
+$icons-footer-promos-cc-total-height: 96px;
+$icons-footer-promos-cc-image: '../img/sprites.png';
+$icons-footer-promos-cc: (0px, 48px, 0px, -48px, 33px, 48px, 121px, 96px, '../img/sprites.png', 'icons-footer-promos-cc', );
+$icons-footer-promos-home-name: 'icons-footer-promos-home';
+$icons-footer-promos-home-x: 66px;
+$icons-footer-promos-home-y: 0px;
+$icons-footer-promos-home-offset-x: -66px;
+$icons-footer-promos-home-offset-y: 0px;
+$icons-footer-promos-home-width: 33px;
+$icons-footer-promos-home-height: 48px;
+$icons-footer-promos-home-total-width: 121px;
+$icons-footer-promos-home-total-height: 96px;
+$icons-footer-promos-home-image: '../img/sprites.png';
+$icons-footer-promos-home: (66px, 0px, -66px, 0px, 33px, 48px, 121px, 96px, '../img/sprites.png', 'icons-footer-promos-home', );
+$icons-footer-promos-pin-name: 'icons-footer-promos-pin';
+$icons-footer-promos-pin-x: 33px;
+$icons-footer-promos-pin-y: 0px;
+$icons-footer-promos-pin-offset-x: -33px;
+$icons-footer-promos-pin-offset-y: 0px;
+$icons-footer-promos-pin-width: 33px;
+$icons-footer-promos-pin-height: 48px;
+$icons-footer-promos-pin-total-width: 121px;
+$icons-footer-promos-pin-total-height: 96px;
+$icons-footer-promos-pin-image: '../img/sprites.png';
+$icons-footer-promos-pin: (33px, 0px, -33px, 0px, 33px, 48px, 121px, 96px, '../img/sprites.png', 'icons-footer-promos-pin', );
+$icons-footer-promos-tablet-name: 'icons-footer-promos-tablet';
+$icons-footer-promos-tablet-x: 0px;
+$icons-footer-promos-tablet-y: 0px;
+$icons-footer-promos-tablet-offset-x: 0px;
+$icons-footer-promos-tablet-offset-y: 0px;
+$icons-footer-promos-tablet-width: 33px;
+$icons-footer-promos-tablet-height: 48px;
+$icons-footer-promos-tablet-total-width: 121px;
+$icons-footer-promos-tablet-total-height: 96px;
+$icons-footer-promos-tablet-image: '../img/sprites.png';
+$icons-footer-promos-tablet: (0px, 0px, 0px, 0px, 33px, 48px, 121px, 96px, '../img/sprites.png', 'icons-footer-promos-tablet', );
+$icons-share-email-name: 'icons-share-email';
+$icons-share-email-x: 57px;
+$icons-share-email-y: 48px;
+$icons-share-email-offset-x: -57px;
+$icons-share-email-offset-y: -48px;
+$icons-share-email-width: 22px;
+$icons-share-email-height: 22px;
+$icons-share-email-total-width: 121px;
+$icons-share-email-total-height: 96px;
+$icons-share-email-image: '../img/sprites.png';
+$icons-share-email: (57px, 48px, -57px, -48px, 22px, 22px, 121px, 96px, '../img/sprites.png', 'icons-share-email', );
+$icons-share-fb-name: 'icons-share-fb';
+$icons-share-fb-x: 33px;
+$icons-share-fb-y: 72px;
+$icons-share-fb-offset-x: -33px;
+$icons-share-fb-offset-y: -72px;
+$icons-share-fb-width: 22px;
+$icons-share-fb-height: 22px;
+$icons-share-fb-total-width: 121px;
+$icons-share-fb-total-height: 96px;
+$icons-share-fb-image: '../img/sprites.png';
+$icons-share-fb: (33px, 72px, -33px, -72px, 22px, 22px, 121px, 96px, '../img/sprites.png', 'icons-share-fb', );
+$icons-share-goog-name: 'icons-share-goog';
+$icons-share-goog-x: 55px;
+$icons-share-goog-y: 72px;
+$icons-share-goog-offset-x: -55px;
+$icons-share-goog-offset-y: -72px;
+$icons-share-goog-width: 22px;
+$icons-share-goog-height: 22px;
+$icons-share-goog-total-width: 121px;
+$icons-share-goog-total-height: 96px;
+$icons-share-goog-image: '../img/sprites.png';
+$icons-share-goog: (55px, 72px, -55px, -72px, 22px, 22px, 121px, 96px, '../img/sprites.png', 'icons-share-goog', );
+$icons-share-pint-name: 'icons-share-pint';
+$icons-share-pint-x: 77px;
+$icons-share-pint-y: 72px;
+$icons-share-pint-offset-x: -77px;
+$icons-share-pint-offset-y: -72px;
+$icons-share-pint-width: 22px;
+$icons-share-pint-height: 22px;
+$icons-share-pint-total-width: 121px;
+$icons-share-pint-total-height: 96px;
+$icons-share-pint-image: '../img/sprites.png';
+$icons-share-pint: (77px, 72px, -77px, -72px, 22px, 22px, 121px, 96px, '../img/sprites.png', 'icons-share-pint', );
+$icons-share-twitter-name: 'icons-share-twitter';
+$icons-share-twitter-x: 99px;
+$icons-share-twitter-y: 0px;
+$icons-share-twitter-offset-x: -99px;
+$icons-share-twitter-offset-y: 0px;
+$icons-share-twitter-width: 22px;
+$icons-share-twitter-height: 22px;
+$icons-share-twitter-total-width: 121px;
+$icons-share-twitter-total-height: 96px;
+$icons-share-twitter-image: '../img/sprites.png';
+$icons-share-twitter: (99px, 0px, -99px, 0px, 22px, 22px, 121px, 96px, '../img/sprites.png', 'icons-share-twitter', );
+$icons-share-youtube-name: 'icons-share-youtube';
+$icons-share-youtube-x: 99px;
+$icons-share-youtube-y: 22px;
+$icons-share-youtube-offset-x: -99px;
+$icons-share-youtube-offset-y: -22px;
+$icons-share-youtube-width: 22px;
+$icons-share-youtube-height: 22px;
+$icons-share-youtube-total-width: 121px;
+$icons-share-youtube-total-height: 96px;
+$icons-share-youtube-image: '../img/sprites.png';
+$icons-share-youtube: (99px, 22px, -99px, -22px, 22px, 22px, 121px, 96px, '../img/sprites.png', 'icons-share-youtube', );
+$spritesheet-width: 121px;
+$spritesheet-height: 96px;
+$spritesheet-image: '../img/sprites.png';
+$spritesheet-sprites: ($icon-cart, $icon-envelope, $icon-modal-close, $icon-search, $icons-footer-promos-cc, $icons-footer-promos-home, $icons-footer-promos-pin, $icons-footer-promos-tablet, $icons-share-email, $icons-share-fb, $icons-share-goog, $icons-share-pint, $icons-share-twitter, $icons-share-youtube, );
+$spritesheet: (121px, 96px, '../img/sprites.png', $spritesheet-sprites, );
+
+/*
+The provided mixins are intended to be used with the array-like variables
+
+.icon-home {
+  @include sprite-width($icon-home);
+}
+
+.icon-email {
+  @include sprite($icon-email);
+}
+
+Example usage in HTML:
+
+`display: block` sprite:
+<div class="icon-home"></div>
+
+To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+
+// CSS
+.icon {
+  display: inline-block;
+}
+
+// HTML
+<i class="icon icon-home"></i>
+*/
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+/*
+The `sprites` mixin generates identical output to the CSS template
+  but can be overridden inside of SCSS
+
+@include sprites($spritesheet-sprites);
+*/
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}

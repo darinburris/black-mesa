@@ -1,0 +1,185 @@
+/**
+* Clearfix
+*
+*/
+@mixin clearfix() {
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+/**
+* border radius
+*
+*/
+@mixin border-radius($radius) {
+	border: 0;
+	-webkit-border-radius: $radius;
+	border-radius: $radius;
+	background-clip: padding-box;  /* stops bg color from leaking outside the border: */
+}
+
+// Single side border-radius
+@mixin border-top-radius($radius) {
+	-webkit-border-top-right-radius: $radius;
+	border-top-right-radius: $radius;
+	-webkit-border-top-left-radius: $radius;
+	border-top-left-radius: $radius;
+	background-clip: padding-box;
+}
+
+@mixin border-right-radius($radius) {
+	-webkit-border-bottom-right-radius: $radius;
+	border-bottom-right-radius: $radius;
+	-webkit-border-top-right-radius: $radius;
+	border-top-right-radius: $radius;
+	background-clip: padding-box;
+}
+
+@mixin border-bottom-radius($radius) {
+	-webkit-border-bottom-right-radius: $radius;
+	border-bottom-right-radius: $radius;
+	-webkit-border-bottom-left-radius: $radius;
+	border-bottom-left-radius: $radius;
+	background-clip: padding-box;
+}
+
+@mixin border-left-radius($radius) {
+	-webkit-border-bottom-left-radius: $radius;
+	border-bottom-left-radius: $radius;
+	-webkit-border-top-left-radius: $radius;
+	border-top-left-radius: $radius;
+	background-clip: padding-box;
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow:inset $top $left $blur $color;
+    -moz-box-shadow:inset $top $left $blur $color;
+    box-shadow:inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}
+
+/**
+* opacity
+*
+*/
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+/*
+* Shapes
+*/
+@mixin circle($diameter, $color) {
+	background-color: $color;
+	height: $diameter;
+	width: $diameter;
+	-moz-border-radius: $diameter / 2;
+	-webkit-border-radius: $diameter / 2;
+	border-radius: $diameter / 2;
+}
+
+@mixin triangle($dir, $size, $color) {
+	width: 0;
+	height: 0;
+	@if $dir == up {
+		border-left: $size/2 solid transparent;
+		border-right: $size/2 solid transparent;
+		border-bottom: $size solid $color;
+	} @else if $dir == down{
+		border-left: $size/2 solid transparent;
+		border-right: $size/2 solid transparent;
+		border-top: $size solid $color;
+	} @else if $dir == left{
+		border-top: $size/2 solid transparent;
+		border-right: $size solid $color;
+		border-bottom: $size/2 solid transparent;
+	} @else if $dir == right{
+		border-top: $size/2 solid transparent;
+		border-left: $size solid $color;
+		border-bottom: $size/2 solid transparent;
+	}
+}
+
+//Placeholder text styles
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content}
+  :-moz-placeholder           {@content}
+  ::-moz-placeholder          {@content}
+  :-ms-input-placeholder      {@content}  
+}
+
+@include placeholder {
+    font-style:italic;
+    color: $black;
+    font-weight:100;
+}
+
+@mixin iso-triangle($dir, $size, $color){
+	@if $dir == up {
+		content: '\25b2';
+	} @else if $dir == down{
+		content: '\25bc';
+	} @else if $dir == left{
+		content: '\25C0';
+	} @else if $dir == right{
+		content: '\25b6';
+	}
+	font-size: $size;
+	color: $color;
+}
+
+@mixin text-replace($val){
+	text-indent: $val;
+}
+
+// Tabs
+@mixin tab($width,$height,$spacing,$bg-color,$font-color,$font-size,$font-weight,$hover-color,$borderradius){
+	margin:0px;
+	padding: 0px;
+	list-style:none;
+
+	& li{
+		background:$bg-color;
+		color:$font-color;
+		display:table;
+		float:left;
+		font-size:$font-size;
+		font-weight:$font-weight;
+		height:$height;
+		margin-right:$spacing;
+		text-align:center;
+		vertical-align:middle;
+		width:$width;
+
+		-webkit-border-top-left-radius: $borderradius;
+		-webkit-border-top-right-radius: $borderradius;
+		-moz-border-radius-topleft: $borderradius;
+		-moz-border-radius-topright: $borderradius;
+		border-top-left-radius: $borderradius;
+		border-top-right-radius: $borderradius;
+
+		&:last-child{
+			margin-left:0px;
+		}
+
+		&:hover{
+			border: 1px solid $light-blue;
+			background:$hover-color;
+			color: #fff;
+		}
+
+	}
+}

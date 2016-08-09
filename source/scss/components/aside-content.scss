@@ -1,0 +1,17 @@
+//$visual-grid: true !default;
+
+@import "bourbon",
+		"neat",
+		"../grid-settings",
+		"../config";
+
+aside{
+	margin: rem(47) 0 0 0;
+	padding: 0;
+
+	p{
+		color: $grey1;
+		line-height: 1.5;
+	}
+
+}

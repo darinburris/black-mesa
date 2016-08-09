@@ -1,0 +1,22 @@
+//$visual-grid: true !default;
+
+@import "bourbon",
+		"neat",
+		"../grid-settings",
+		"../config";
+
+ul{
+	list-style-type: square;
+	margin: rem(47) 0 0 0;
+	padding: 0;
+
+	li{
+		line-height: 2;
+
+		a{
+			color: $brand-blue;
+		}
+
+	}
+
+}

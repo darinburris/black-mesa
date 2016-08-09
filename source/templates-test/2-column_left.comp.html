@@ -1,0 +1,58 @@
+<!doctype html>
+<html class="no-js" lang="@@langCntry">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>2 Column Left Component Template</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<include file="includes/common/css.html"></include>
+		<script src="/bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+
+		<link rel="import" href="/components/date-widget.comp.html">
+		<link rel="import" href="/components/ternary-nav.comp.html">
+		<link rel="import" href="/bower_components/sc-swiper/sc-swiper.html">
+
+	</head>
+
+	<body role="document" class="two-column-first" dir="@@direction">
+
+<include file="includes/common/masthead.html"></include>
+
+		<main role="main">
+
+			<ternary-nav class="secondary-nav"></ternary-nav>
+
+			<section role="region">
+
+				<h1>Content</h1>
+
+				<date-widget theme="red"></date-widget>
+
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae aspernatur, odio eum voluptatum sit ab necessitatibus atque perspiciatis amet culpa. Cumque, quod, neque. Doloribus obcaecati assumenda, aliquid iste quas nostrum.</p>
+
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam placeat dicta maiores iusto veritatis sequi perferendis alias, minus doloribus laboriosam inventore modi, magni enim, architecto explicabo repellat voluptas perspiciatis nam!</p>
+
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae aspernatur, odio eum voluptatum sit ab necessitatibus atque perspiciatis amet culpa. Cumque, quod, neque. Doloribus obcaecati assumenda, aliquid iste quas nostrum.</p>
+
+				<sc-swiper>
+					<img src="http://lorempixel.com/640/480/cats">
+					<img src="http://lorempixel.com/640/480/sports">
+					<img src="http://lorempixel.com/640/480/animals">
+					<img src="http://lorempixel.com/640/480/people">
+					<img src="http://lorempixel.com/640/480/nature">
+					<img src="http://lorempixel.com/640/480/food">
+					<img src="http://lorempixel.com/640/480/city">
+				</sc-swiper>
+
+			</section>
+
+		</main>
+
+<include file="includes/common/footer.html"></include>
+
+	</body>
+
+</html>

@@ -1,0 +1,64 @@
+//Fonts
+$font-stack: 'Helvetica Neue','Open Sans', sans-serif;
+
+//Colors
+$purple-pink: 	#BE5F75;
+$red1: 			#A52D2D;
+$red2: 			#BD411B;
+$red3:			#a52f2f;
+$red4:			#a42e30;
+$orange: 		#EF8E2F;
+$yellow1: 		#F5B82A;
+$yellow2: 		#A4A4A4;
+$yellow3: 		#FFFFCD;
+$brown: 		#804D38;
+$tan: 			#D5CFBF;
+$tan-light: 	#F2F1EC;
+$tan-lighter: 	#F7F7F4;
+$brand-blue: 	#0070AF;
+$light-blue: 	#7297A9;
+$lighter-blue: 	#DDE7E9;
+$green: 		#B2A847;
+$black: 		#444;
+$grey1: 		#888;
+$grey2: 		#CCC;
+$gray3: 		#AAA;
+$white: 		#FFF;
+
+//Color Applications
+$color-FinancingInFooter: 			$purple-pink;
+$color-SalePromoButton: 			$red1;
+$color-SaleProductMarketingBadge: 	$red1;
+$color-SalePricing: 				$red1;
+$color-Error: 						$red1;
+$color-SalePromoText: 				$red2;
+$color-WishlistIconHoverState:		$red2;
+$color-RequiredFieldsNotice:		$red3;
+$color-InfoBar:						$red4;
+$color-Buttons1:					$orange;
+$color-InHomeConsultationInFooter: 	$orange;
+$color-DepositDeliveryToolTip: 		$orange;
+$color-Buttons2:					$yellow1;
+$color-ErrorSuccessBar:				$yellow3;
+$color-FormFieldErrorColor:			$yellow3;
+$color-BG:							$tan;
+$color-BGModules:					$tan;
+$color-DesktopMainNavText:			$tan;
+$color-LightBackgrounds:			$tan-lighter;
+$color-HoverStates:					$tan-lighter;
+$color-BreadcrumbBar:				$tan-lighter;
+$color-CDPBGUnderImagesShowMore:	$tan-lighter;
+$color-TextLinks:					$brand-blue;
+$color-DepositBalanceShoppingCart:	$brand-blue;
+$color-HeaderNavBar:				$light-blue;
+$color-HeaderNavBarHover:			$tan-light;
+$color-ShopiPadInFooter:			$green;
+$color-SuccessfulAddCheckmark:		$green;
+$color-IconsLighterText:			$grey1;
+$color-StrokesRules:				$grey1;
+$color-Cart5YearFabricProtection:	$lighter-blue;
+$color-BgCheckoutBtn: 				#FFC559;
+
+$primary-nav-height: 36px;
+$primary-nav-width: 1000px;
+$util-nav-items-seperator-color: #8c8c8c;
