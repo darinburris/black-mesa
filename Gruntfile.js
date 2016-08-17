@@ -22,6 +22,15 @@ module.exports = function(grunt) {
 		srcJs: ampConfig.base.sourceDir + '/js',
 		preReleaseCss: ampConfig.base.sourceDir + '/css',
 		preReleaseJs: ampConfig.base.sourceDir + '/js',
+
+		/**
+		 * @description grunt task to run shell commands ******************
+		**/
+		shell: {
+			wp: {
+				command: 'webpack && webpack-dev-server --colors --hot --content-base release/'
+			}
+		},
 		/**
 		 * @description grunt task to generate a sprite from a collection of .png files ******************
 		**/
@@ -537,7 +546,7 @@ module.exports = function(grunt) {
 		function() {
 			grunt.config.set('taskName', this.name);
 			grunt.task.run(
-				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','sprite', 'sass:dist', 'replace:amp', 'rjsReplace', 'copy:buildJS', 'jscs','babel','jsdoc','componentScss','componentJs','clean:postRelease']
+				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','sprite', 'sass:dist', 'replace:amp', 'rjsReplace', 'copy:buildJS', 'jscs','clean:postRelease','shell:wp']
 			);
 		}
 	);
