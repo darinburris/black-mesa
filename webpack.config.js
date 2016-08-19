@@ -1,5 +1,7 @@
 var path = require('path'),
-	webpack = require('webpack'); 
+	webpack = require('webpack'),
+	DashboardPlugin = require('webpack-dashboard/plugin');
+
 module.exports = {
 	entry: {
 		'bundle': './source/js/entry.js',
@@ -7,30 +9,42 @@ module.exports = {
 	},
 	output: {
 		path: path.resolve(__dirname, './release/js'),
-		publicPath: '/js/',
+		publicPath: '/release/js/',
 		filename: '[name].js'
 	},
 	module: {
 		loaders: [
 			{
-				//test: /\.es6$/,
 				test: /\.js$/,
 				exclude: /node_modules/,
 				loader: 'babel',
 				query: {
 					presets: ['react', 'es2015'] 
 				}
-			}
+			},
+			{
+				test: /\.es6$/,
+				exclude: /node_modules/,
+				loader: 'babel',
+				query: {
+					presets: ['react', 'es2015'] 
+				}
+			},
+/*			{
+				test: /\.css$/,
+				loader: 'style!css'
+			}*/
 		]
 	},
 	resolve: {
 		root: [
-//			path.resolve(__dirname, 'bower_components'),
 			path.resolve(__dirname, 'node_modules')
 		],
+		modulesDirectories: ['source/js/modules', 'node_modules'],
 		extensions: ['', '.js', '.es6']
 	},
 	plugins: [
+		//new DashboardPlugin(),
 		new webpack.ProvidePlugin(
 			{
 				$: 'jquery',
@@ -39,10 +53,4 @@ module.exports = {
 			}
 		)
 	]
-/*    module: {
-		loaders: [
-			{ test: /\.css$/, loader: 'style!css' }
-		]
-	}*/
- 
 };
