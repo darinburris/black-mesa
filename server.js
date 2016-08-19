@@ -1,13 +1,13 @@
 const WebpackDevServer = require('webpack-dev-server');
-var Dashboard = require('webpack-dashboard');
-var DashboardPlugin = require('webpack-dashboard/plugin');
+//var Dashboard = require('webpack-dashboard');
+//var DashboardPlugin = require('webpack-dashboard/plugin');
 const webpack = require('webpack');
 const config = require('./webpack.config.js');
 
 const compiler = webpack(config);
-const dashboard = new Dashboard();
+//const dashboard = new Dashboard();
 
-compiler.apply(new DashboardPlugin(dashboard.setData));
+//compiler.apply(new DashboardPlugin(dashboard.setData));
 
 /**
  * Create a webpack dev server and listens on the given port

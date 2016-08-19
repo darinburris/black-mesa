@@ -1,6 +1,7 @@
 var path = require('path'),
 	webpack = require('webpack'),
-	DashboardPlugin = require('webpack-dashboard/plugin');
+	ModernizrWebpackPlugin = require('modernizr-webpack-plugin');
+//	DashboardPlugin = require('webpack-dashboard/plugin');
 
 module.exports = {
 	entry: {
@@ -14,6 +15,10 @@ module.exports = {
 	},
 	module: {
 		loaders: [
+			{
+				test: /\.modernizrrc$/,
+				loader: "modernizr"
+			},
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
@@ -41,7 +46,10 @@ module.exports = {
 			path.resolve(__dirname, 'node_modules')
 		],
 		modulesDirectories: ['source/js/modules', 'node_modules'],
-		extensions: ['', '.js', '.es6']
+		extensions: ['', '.js', '.es6'],
+		alias: {
+			modernizr$: path.resolve(__dirname, ".modernizrrc")
+		}
 	},
 	plugins: [
 		//new DashboardPlugin(),

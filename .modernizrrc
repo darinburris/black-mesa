@@ -1,0 +1,11 @@
+{
+	"minify": false,
+	"options": [
+		"setClasses"
+	],
+	"feature-detects": [
+		"input",
+		"canvas",
+		"css/resize"
+	]
+}
