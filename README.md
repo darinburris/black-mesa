@@ -10,23 +10,20 @@ _Implements the following technologies_
   + Grunt   
   + Bower   
   + Sass   
-  + AMP via RequireJS   
+  + webpack
 
 _Supports the following UI automations_   
-  + NPM and Bower for package management   
+  + NPM and Bower for package management
+  + webpack for module management
   + Grunt for managing the UI built process   
   + HTML & Accessibility Validation   
   + Sass, CSS Pre-processor   
   + CSS/JS minification   
-  + RequireJS for modular JavaScript development for higher quality, more maintainable JS code   
   + JS Linting   
   + JSDoc and Plato for JavaScript documentation and quality reporting   
   + Google Pagespeed, analyzes pages against web performance best practices   
  
 ## Additional 3rd party libs/plugins
-  + bxSlider for carousel functionality
-  + Colorbox for Modal window functionality
-  + jQuery Validation for form validation
   + Modernizr for feature detection
 
 ## Folder Structure
