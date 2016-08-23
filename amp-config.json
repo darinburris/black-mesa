@@ -1,13 +1,17 @@
 {
-
-	"base"			: {
+	"wpentry"	: {
+		"vendor"			: ["content.js"],
+		"app"				: "./source/js/app.js",
+		"styleguide"		: "./source/js/styleguide.js"
+	},
+	"base"		: {
 		"Instructions"		:	"the base properties are for handling top level key/values pairs related to the architecture",
-		"gitRepo"		: 	"amp-ui-amd",
-		"langCntry"		:	"en-US",
-		"direction"		:	"ltr",
-		"sourceDir"		: 	"source",
-		"ampIndex"		: 	"release/index.html",
-		"tempDir"		:	"TEMP",
+		"gitRepo"			: 	"amp-ui-amd",
+		"langCntry"			:	"en-US",
+		"direction"			:	"ltr",
+		"sourceDir"			: 	"source",
+		"ampIndex"			: 	"release/index.html",
+		"tempDir"			:	"TEMP",
 		"releaseDir" 		: 	"release",
 		"reportsDir" 		: 	"reports",
 		"reportsTempDir" 	: 	"reportsBaseFiles",
@@ -15,18 +19,18 @@
 		"reportsIndex" 		: 	"_base.html",
 		"reportsJs" 		: 	"reports.js",
 		"templateBaseFiles" 	: 	"templateBaseFiles",
-		"rjs"			:	"bower_components/requirejs-bower/require.js"
+		"rjs"				:	"bower_components/requirejs-bower/require.js"
 	},
 	"quality" 			: {
-		"Instructions"			:	"the quality properties are for handling key/values pairs related to the code quality",
+		"Instructions"		:	"the quality properties are for handling key/values pairs related to the code quality",
 		"doctype" 			: 	"HTML5",
 		"w3cStatusDir" 		: 	"reports/validation/validation-status.json",
 		"w3cReportDir" 		: 	"reports/validation/validation-report.json",
-		"w3cIgnore" 			: 	[
-									"Bad value X-UA-Compatible for attribute http-equiv on element meta.",
-									"Element include not allowed as child of element body in this context.",
-									"Bad value javascript for attribute type on element script: Subtype missing."
-								],
+		"w3cIgnore" 		: 	[
+								"Bad value X-UA-Compatible for attribute http-equiv on element meta.",
+								"Element include not allowed as child of element body in this context.",
+								"Bad value javascript for attribute type on element script: Subtype missing."
+							],
 		"wcag" 				: 	"WCAG2AA",
 		"wcagDir" 			: 	"reports/accessibility",
 		"wcagBaseFile" 		: 	"reports/accessibility.json",
@@ -34,7 +38,7 @@
 		"jshintrcFile"		:	".jshintrc",
 		"jshintrcGruntFile"	:	".jshintrcGrunt"
 	},
-	"templating" 	: {
+	"templating" 		: {
 		"templateBaseDir" 	: 	"templateBaseFiles",
 		"choices"			:	[
 									{"name": "Full Width Template",					"value": "_full-width.html"},

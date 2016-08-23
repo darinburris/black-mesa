@@ -28,7 +28,10 @@ module.exports = function(grunt) {
 		**/
 		shell: {
 			wp: {
-				command: 'webpack && webpack-dev-server --colors --hot --content-base release/'
+				command: 'webpack'//webpack-dashboard --  && node begin.js
+			},
+			wponly: {
+				command: 'webpack'
 			}
 		},
 		/**
@@ -188,26 +191,6 @@ module.exports = function(grunt) {
 			}
 		},
 		/**
-		 * @description grunt to transpile ES6 to ES5.
-		 */
-		babel: {
-			options: {
-				babelrc: true
-			},
-			dist: {
-				files: [
-					{
-						expand: true,
-						cwd: 'source/',
-						src: ['js/modules/**/*.js'],
-						dest: 'release/',
-						ext: '.js'
-					}
-				]
-			}
-		},
-
-		/**
 		 *  @description grunt jscs code style linter and formatter for your style guide
 		 */
 		jscs: {
@@ -304,7 +287,7 @@ module.exports = function(grunt) {
 					filter: 'isFile'
 				}]
 			},
-			bowerJS: {
+/*			bowerJS: {
 				files: [{
 					expand: true,
 					cwd: 'bower_components/',
@@ -339,37 +322,9 @@ module.exports = function(grunt) {
 						return src + '/' + newDest;
 					}
 				}]
-			},
-			bowerComponents: {
-				files: [{
-					expand: true,
-					src: [
-						'bower_components/**/*'
-					],
-					dest: ampConfig.base.sourceDir
-				}]
-			},
+			}*/
 		},
-		/**
-		 *	grunt task syncs root bower_components contents into source destination
-		 *	Prevents updates to bower dependencies in source directory from getting overwritten when new dependecies are added via bower install
-		 */
-		sync: {
-			main: {
-				files: [
-					{
-						src: ['bower_components/**/*'],
-						dest: 'source/'
-					}
-				],
-				verbose: true, // Default: false
-				pretend: true, // Don't do any disk operations - just write log. Default: false
-				failOnError: true, // Fail the task when copying is not possible. Default: false
-				ignoreInDest: "**/*.js", // Never remove js files from destination. Default: none
-				updateAndDelete: true, // Remove all files from dest that are not found in src. Default: false
-				compareUsing: "md5" // compares via md5 hash of file contents, instead of file modification time. Default: "mtime"
-			}
-		},
+
 		/**
 		 *   grunt task deletes specific, non-release files after build
 		 */
@@ -378,9 +333,7 @@ module.exports = function(grunt) {
 			postRelease: [
 				ampConfig.base.sourceDir + '/css'
 			],
-			reports: ['./reports/'],
-			componentCss: [ampConfig.base.releaseDir + '/css/components'],
-			componentJs: [ampConfig.base.releaseDir + '/js/components'],
+			reports: ['./reports/']
 		},
 		/**
 		 *   grunt task Strip JavaScript nodes (like console.*) out of your source code
@@ -520,7 +473,7 @@ module.exports = function(grunt) {
 				files: [
 					ampConfig.base.sourceDir + '/js/**', '!' + ampConfig.base.sourceDir + '/js/lib/**'
 				],
-				tasks: ['babel','jscs'],
+				tasks: ['shell:wponly'],
 				options: {
 					spawn: true
 				}
@@ -546,7 +499,7 @@ module.exports = function(grunt) {
 		function() {
 			grunt.config.set('taskName', this.name);
 			grunt.task.run(
-				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','sprite', 'sass:dist', 'replace:amp', 'rjsReplace', 'copy:buildJS', 'jscs','clean:postRelease','shell:wp']
+				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','sprite', 'sass:dist', 'replace:amp', 'copy:buildJS','clean:postRelease','shell:wp']//'rjsReplace', , 'jscs'
 			);
 		}
 	);

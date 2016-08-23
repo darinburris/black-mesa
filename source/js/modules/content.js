@@ -1,1 +1,5 @@
-module.exports = 'It works from content.js.';
+export default function(memo){
+
+	console.log(memo);
+
+}
