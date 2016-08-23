@@ -6,6 +6,7 @@
 	"feature-detects": [
 		"input",
 		"canvas",
-		"css/resize"
+		"css/resize",
+		"es6/promises"
 	]
 }

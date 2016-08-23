@@ -38,6 +38,7 @@
     "cheerio": "~0.17.0",
     "connect": "~3.0.2",
     "css-loader": "^0.23.1",
+    "exports-loader": "^0.6.3",
     "express": "~3.4.0",
     "fs-extra": "~0.10.0",
     "git-config": "~0.0.6",
@@ -86,9 +87,11 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
-    "jquery": "~2.1.4",
+    "jquery": "^3.1.0",
     "modernizr": "^3.3.1",
-    "modernizr-loader": "0.0.5"
+    "modernizr-loader": "0.0.5",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7"
   },
   "scripts": {},
   "author": "Amplifi Presentation Layer Practice",

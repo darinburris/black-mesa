@@ -1,13 +1,11 @@
 var path = require('path'),
 	webpack = require('webpack'),
-	ModernizrWebpackPlugin = require('modernizr-webpack-plugin');
+	ModernizrWebpackPlugin = require('modernizr-webpack-plugin'),
+	entry = require('./amp-config').wpentry;
 //	DashboardPlugin = require('webpack-dashboard/plugin');
 
 module.exports = {
-	entry: {
-		'bundle': './source/js/entry.js',
-		'bundle2': './source/js/entry2.js'
-	},
+	entry: entry,
 	output: {
 		path: path.resolve(__dirname, './release/js'),
 		publicPath: '/release/js/',
@@ -17,7 +15,15 @@ module.exports = {
 		loaders: [
 			{
 				test: /\.modernizrrc$/,
-				loader: "modernizr"
+				loader: 'modernizr'
+			},
+			{
+				test: /.jsx?$/,
+				loader: 'babel-loader',
+				exclude: /node_modules/,
+				query: {
+					presets: ['es2015', 'react']
+				}
 			},
 			{
 				test: /\.js$/,
@@ -34,31 +40,20 @@ module.exports = {
 				query: {
 					presets: ['react', 'es2015'] 
 				}
-			},
-/*			{
-				test: /\.css$/,
-				loader: 'style!css'
-			}*/
+			}
 		]
 	},
 	resolve: {
 		root: [
 			path.resolve(__dirname, 'node_modules')
 		],
-		modulesDirectories: ['source/js/modules', 'node_modules'],
+		modulesDirectories: ['node_modules','./source/js/modules/','./source/js/components/'],
 		extensions: ['', '.js', '.es6'],
 		alias: {
-			modernizr$: path.resolve(__dirname, ".modernizrrc")
+			modernizr$: path.resolve(__dirname, '.modernizrrc')
 		}
 	},
 	plugins: [
 		//new DashboardPlugin(),
-		new webpack.ProvidePlugin(
-			{
-				$: 'jquery',
-				jQuery: 'jquery',
-				"window.jQuery": 'jquery'
-			}
-		)
 	]
 };

@@ -28,7 +28,7 @@ module.exports = function(grunt) {
 		**/
 		shell: {
 			wp: {
-				command: 'webpack && webpack-dashboard -- node begin.js'
+				command: 'webpack'//webpack-dashboard --  && node begin.js
 			},
 			wponly: {
 				command: 'webpack'
@@ -499,7 +499,7 @@ module.exports = function(grunt) {
 		function() {
 			grunt.config.set('taskName', this.name);
 			grunt.task.run(
-				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','sprite', 'sass:dist', 'replace:amp', 'copy:buildJS', 'jscs','clean:postRelease','shell:wp']//'rjsReplace', 
+				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','sprite', 'sass:dist', 'replace:amp', 'copy:buildJS','clean:postRelease','shell:wp']//'rjsReplace', , 'jscs'
 			);
 		}
 	);
