@@ -6,3 +6,5 @@ import World from 'world.jsx';
 
 testy('It works from content.js.');
 checkName('nader', 'dabit');
+//
+//

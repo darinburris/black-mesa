@@ -8,8 +8,19 @@ module.exports = {
 	entry: entry,
 	output: {
 		path: path.resolve(__dirname, './release/js'),
-		publicPath: '/release/js/',
+		publicPath: '/js/',
 		filename: '[name].js'
+	},
+	devServer : {
+		inline: true,
+		port: 3333,
+		contentBase: './release',
+		publicPath: '/js/',
+		hot: true,
+		historyApiFallback: true,
+		stats: {
+			colors: true
+		}
 	},
 	module: {
 		loaders: [
@@ -54,6 +65,8 @@ module.exports = {
 		}
 	},
 	plugins: [
+		new webpack.HotModuleReplacementPlugin(),
 		//new DashboardPlugin(),
-	]
+	],
+	devtool: 'eval'
 };
