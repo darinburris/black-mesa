@@ -520,6 +520,19 @@ module.exports = function(grunt) {
 		}
 	);
 	/**
+	 * @description This task omits the ccsmin and uglify tasks for debugging purposes, includes JSDoc
+	 */
+	grunt.registerTask(
+		'dev',
+		'This task omits the ccsmin and uglify tasks for debugging purposes',
+		function() {
+			grunt.config.set('taskName', this.name);
+			grunt.task.run(
+				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','sprite', 'sass:dist', 'replace:amp', 'copy:buildJS','clean:postRelease','shell:wp']//'rjsReplace', , 'jscs'
+			);
+		}
+	);
+	/**
 	 *  @description QA task(s), Reporting on code quality, css/js minification. Must be run cleanly prior to a Prod build
 	 */
 	grunt.registerTask(

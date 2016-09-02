@@ -1,8 +1,9 @@
 {
 	"wpentry"	: {
-		"vendor"			: ["content.js"],
 		"app"				: "./source/js/app.js",
-		"styleguide"		: "./source/js/styleguide.js"
+		"styleguide"		: "./source/js/styleguide.js",
+		"cdp"				: "./source/js/modules/cdp.js",
+		"client"			: "./source/js/client.js"
 	},
 	"base"		: {
 		"Instructions"		:	"the base properties are for handling top level key/values pairs related to the architecture",

@@ -33,7 +33,8 @@ module.exports = {
 				loader: 'babel-loader',
 				exclude: /node_modules/,
 				query: {
-					presets: ['es2015', 'react']
+					presets: ['es2015','react','stage-2'],
+					plugins: ['transform-decorators-legacy']
 				}
 			},
 			{
@@ -41,7 +42,8 @@ module.exports = {
 				exclude: /node_modules/,
 				loader: 'babel',
 				query: {
-					presets: ['react', 'es2015'] 
+					presets: ['es2015','react','stage-2'],
+					plugins: ['transform-decorators-legacy']
 				}
 			},
 			{
@@ -49,8 +51,13 @@ module.exports = {
 				exclude: /node_modules/,
 				loader: 'babel',
 				query: {
-					presets: ['react', 'es2015'] 
+					presets: ['es2015','react','stage-2'],
+					plugins: ['transform-decorators-legacy']
 				}
+			},
+			{
+				test: /\.json$/,
+				loader: 'json'
 			}
 		]
 	},
@@ -58,8 +65,8 @@ module.exports = {
 		root: [
 			path.resolve(__dirname, 'node_modules')
 		],
-		modulesDirectories: ['node_modules','./source/js/modules/','./source/js/components/'],
-		extensions: ['', '.js', '.es6'],
+		modulesDirectories: ['node_modules','./source/js/modules/','./source/js/components/','./data/'],
+		extensions: ['', '.js', '.es6','.jsx'],
 		alias: {
 			modernizr$: path.resolve(__dirname, '.modernizrrc')
 		}

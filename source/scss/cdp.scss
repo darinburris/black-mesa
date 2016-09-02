@@ -1,0 +1,61 @@
+.hero-image{
+	width: 100%;
+}
+
+.product-list{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	margin: 0 -10px;
+	padding: 0;
+
+	li{
+		margin: 0;
+		padding: 10px;
+		width: 25%;
+	}
+
+}
+
+figure{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+
+	img{
+		width: 100%;
+	}
+
+	figcaption{
+
+		p{
+			margin: 0;
+			padding: 0;
+		}
+
+		a,
+		data,
+		p{
+			display: block;
+			font-size: 1rem;
+			line-height: 1.4;
+		}
+
+		a[itemprop="name"]{
+			font-size: 1.1rem;
+			font-weight: 800;
+			text-transform: uppercase;
+		}
+
+		[itemprop="price"]{
+			font-weight: 800;
+		}
+
+		.colors{
+			font-size: .8rem;
+		}
+
+	}
+
+}
