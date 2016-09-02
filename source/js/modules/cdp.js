@@ -1,9 +1,34 @@
-export default function cdp(param){
+//import react dependencies
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 
-	var test = function(param){
-		console.log(param);
-	}
+//import store
+import store from '../store';
 
-	test('Lorem ipsum dolor sit amet, consectetur adipisicing elit. In cumque eum expedita alias maiores. Ad nesciunt accusamus tempora vitae praesentium rem alias, sunt cupiditate corporis nisi voluptatem cum rerum excepturi?');
+//import views
+import Layout from 'prod-list-layout-view';
+import Facets from 'facets-view';
+import Tools from 'list-tools';
+import ProdList from 'prod-list-presentation-view';
 
-}
+//DOM rendering
+ReactDOM.render(
+	<Provider store={store}><Layout /></Provider>,
+	document.getElementById('cdp')
+);
+
+ReactDOM.render(
+	<Provider store={store}><ProdList /></Provider>,
+	document.getElementById('productList')
+);
+
+ReactDOM.render(
+	<Provider store={store}><Tools /></Provider>,
+	document.getElementById('listTools')
+);
+
+// ReactDOM.render(
+// 	<ProductListContainer />,
+// 	document.getElementById('list')
+// );

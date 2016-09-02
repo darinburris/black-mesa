@@ -6,7 +6,6 @@ const config = require('./webpack.config.js');
 
 const compiler = webpack(config);
 //const dashboard = new Dashboard();
-
 //compiler.apply(new DashboardPlugin(dashboard.setData));
 
 /**
@@ -18,9 +17,8 @@ module.exports = (PORT, HOT, PROTO, INLINE) => {
 		compiler,
 		{
 			contentBase: './release',
-			publicPath: '/release/js',
+			publicPath: '/js/',
 			hot: HOT,
-			open: 'http://localhost:8080/',
 			https: PROTO,
 			inline: INLINE,
 			stats: {
@@ -30,7 +28,7 @@ module.exports = (PORT, HOT, PROTO, INLINE) => {
 	);
 
 		server.listen(PORT, 'localhost', function () {
-			console.log(`WebpackDevServer running on port ${PORT} and hot = ${HOT}`)
+			console.log(`WebpackDevServer running on port ${PORT} and --hot = ${HOT} and --inline = ${INLINE}`)
 		}
 	)
 }

@@ -24,11 +24,27 @@ module.exports = function(grunt) {
 		preReleaseJs: ampConfig.base.sourceDir + '/js',
 
 		/**
+		 * @description grunt include task recursively includes static html files into each other ******************
+		**/
+		includes: {
+			build: {
+				cwd: 'source',
+				src: [ '*.html', '**/*.html' ],
+				dest: 'release/',
+				options: {
+					flatten: true,
+					includePath: 'source',
+					includeRegexp: /^(\s*)<include\s+file="(\S+)"\s*\/>$/,
+					banner: ''
+				}
+			}
+		},
+		/**
 		 * @description grunt task to run shell commands ******************
 		**/
 		shell: {
 			wp: {
-				command: 'webpack'//webpack-dashboard --  && node begin.js
+				command: 'webpack && webpack-dev-server'//webpack-dashboard --  && node begin.js
 			},
 			wponly: {
 				command: 'webpack'
@@ -469,15 +485,15 @@ module.exports = function(grunt) {
 					spawn: false
 				}
 			},
-			js: {
-				files: [
-					ampConfig.base.sourceDir + '/js/**', '!' + ampConfig.base.sourceDir + '/js/lib/**'
-				],
-				tasks: ['shell:wponly'],
-				options: {
-					spawn: true
-				}
-			},
+			// js: {
+			// 	files: [
+			// 		ampConfig.base.sourceDir + '/js/**', '!' + ampConfig.base.sourceDir + '/js/lib/**'
+			// 	],
+			// 	tasks: [],
+			// 	options: {
+			// 		spawn: true
+			// 	}
+			// },
 			html: {
 				files: [
 					ampConfig.base.sourceDir + '/**/*.html'
@@ -495,6 +511,19 @@ module.exports = function(grunt) {
 	 */
 	grunt.registerTask(
 		'default',
+		'This task omits the ccsmin and uglify tasks for debugging purposes',
+		function() {
+			grunt.config.set('taskName', this.name);
+			grunt.task.run(
+				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','sprite', 'sass:dist', 'replace:amp', 'copy:buildJS','clean:postRelease']//'rjsReplace', , 'jscs'
+			);
+		}
+	);
+	/**
+	 * @description This task omits the ccsmin and uglify tasks for debugging purposes, includes JSDoc
+	 */
+	grunt.registerTask(
+		'dev',
 		'This task omits the ccsmin and uglify tasks for debugging purposes',
 		function() {
 			grunt.config.set('taskName', this.name);
@@ -851,7 +880,7 @@ module.exports = function(grunt) {
 	/**
 	 * @description Includes framework for dynamically including static html content into files from external html files
 	 */
-	grunt.registerTask('includes', 'Includes framework for dynamically including static html content into files from external html files', function() {
+	grunt.registerTask('OLDincludes', 'Includes framework for dynamically including static html content into files from external html files', function() {
 		var fs = require('fs'),
 			path = require('path'),
 			walk = require('walkdir'),

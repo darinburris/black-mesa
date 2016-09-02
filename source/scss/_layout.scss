@@ -13,7 +13,7 @@
 
 main{
 	margin: rem(20) 0;
-	padding: 0 rem(20);
+	padding: 0;
 }
 
 main,
@@ -252,6 +252,14 @@ footer{
 				}
 
 			}
+
+/* 			> div:first-child{
+
+				@include media($medium-screen-before-break-size) {
+					@include span-columns(6);
+				}
+
+			}			 */
 
 		}
 

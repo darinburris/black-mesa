@@ -8,8 +8,19 @@ module.exports = {
 	entry: entry,
 	output: {
 		path: path.resolve(__dirname, './release/js'),
-		publicPath: '/release/js/',
+		publicPath: '/js/',
 		filename: '[name].js'
+	},
+	devServer : {
+		inline: true,
+		port: 3333,
+		contentBase: './release',
+		publicPath: '/js/',
+		hot: true,
+		historyApiFallback: true,
+		stats: {
+			colors: true
+		}
 	},
 	module: {
 		loaders: [
@@ -22,7 +33,8 @@ module.exports = {
 				loader: 'babel-loader',
 				exclude: /node_modules/,
 				query: {
-					presets: ['es2015', 'react']
+					presets: ['es2015','react','stage-2'],
+					plugins: ['transform-decorators-legacy']
 				}
 			},
 			{
@@ -30,7 +42,8 @@ module.exports = {
 				exclude: /node_modules/,
 				loader: 'babel',
 				query: {
-					presets: ['react', 'es2015'] 
+					presets: ['es2015','react','stage-2'],
+					plugins: ['transform-decorators-legacy']
 				}
 			},
 			{
@@ -38,8 +51,13 @@ module.exports = {
 				exclude: /node_modules/,
 				loader: 'babel',
 				query: {
-					presets: ['react', 'es2015'] 
+					presets: ['es2015','react','stage-2'],
+					plugins: ['transform-decorators-legacy']
 				}
+			},
+			{
+				test: /\.json$/,
+				loader: 'json'
 			}
 		]
 	},
@@ -47,13 +65,15 @@ module.exports = {
 		root: [
 			path.resolve(__dirname, 'node_modules')
 		],
-		modulesDirectories: ['node_modules','./source/js/modules/','./source/js/components/'],
-		extensions: ['', '.js', '.es6'],
+		modulesDirectories: ['node_modules','./source/js/modules/','./source/js/components/','./data/'],
+		extensions: ['', '.js', '.es6','.jsx'],
 		alias: {
 			modernizr$: path.resolve(__dirname, '.modernizrrc')
 		}
 	},
 	plugins: [
+		new webpack.HotModuleReplacementPlugin(),
 		//new DashboardPlugin(),
-	]
+	],
+	devtool: 'eval'
 };
