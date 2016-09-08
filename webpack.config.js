@@ -1,7 +1,8 @@
 var path = require('path'),
 	webpack = require('webpack'),
 	ModernizrWebpackPlugin = require('modernizr-webpack-plugin'),
-	entry = require('./amp-config').wpentry;
+	entry = require('./amp-config').wpentry,
+	WebpackDevServer = require('webpack-dev-server');
 //	DashboardPlugin = require('webpack-dashboard/plugin');
 
 module.exports = {

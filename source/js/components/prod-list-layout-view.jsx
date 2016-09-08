@@ -1,4 +1,4 @@
-//import react dependencies
+// import react dependencies
 import React from 'react';
 import ReactDOM from 'react-dom';
 

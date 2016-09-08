@@ -1,7 +1,3 @@
-import checkName from 'logger';
-
-checkName('nader', 'jackson');
-
 if (Modernizr.canvas) {
 	console.log('We\'ve got canvas');
 } else {

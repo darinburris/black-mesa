@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 
 import { connect } from 'react-redux';
 
-import { fetchProducts } from '../actions/cdpActions';
-
 @connect(
 	(store) => {
 		return {

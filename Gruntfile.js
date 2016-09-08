@@ -105,8 +105,8 @@ module.exports = function(grunt) {
 			}
 		},
 		/**
-		* @description  grunt task compiles sass files, copies them into a pre release 
-		* folder under /source/ in order to allow for linting prior to 
+		* @description  grunt task compiles sass files, copies them into a pre release
+		* folder under /source/ in order to allow for linting prior to
 		* minification/concatination
 		**/
 		sass: {
@@ -216,14 +216,23 @@ module.exports = function(grunt) {
 				fix: false
 			}
 		},
-
+		/**
+		 *  @description grunt task for linting js and jsx code
+		 */
+		eslint: {
+			options: {
+				configFile: '.eslintrc'
+			},
+			target: ['<%= sourceDir %>/js/reducers/userReducer.jsx']
+			//target: ['<%= sourceDir %>/js/**/*.js','<%= sourceDir %>/js/**/*.jsx', '!<%= releaseDir %>/js/lib/**/*.js']
+		},
 		/**
 		 *  @description grunt task generates jsdoc documentation
 		 */
 		jsdoc: {
 			dist: {
 				jsdoc: 'node_modules/.bin/jsdoc',
-				src: ['<%= releaseDir %>/js/**/*.js', 'README.md', '!<%= releaseDir %>/js/lib/**/*.js', 'Gruntfile.js', '!<%= releaseDir %>/js/amp.js'],
+				src: ['<%= sourceDir %>/js/**/*.js','!<%= releaseDir %>/js/**/*.js', 'README.md', '!<%= releaseDir %>/js/lib/**/*.js', 'Gruntfile.js', '!<%= releaseDir %>/js/amp.js'],
 				options: {
 					destination: 'reports/jsdocs',
 					template: 'node_modules/ink-docstrap/template',

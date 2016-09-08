@@ -1,18 +1,18 @@
-//import react dependencies
+// import react dependencies
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
+import {Provider} from 'react-redux';
 
-//import store
+// import store
 import store from '../store';
 
-//import views
+// import views
 import Layout from 'prod-list-layout-view';
 import Facets from 'facets-view';
 import Tools from 'list-tools';
 import ProdList from 'prod-list-presentation-view';
 
-//DOM rendering
+// DOM rendering
 ReactDOM.render(
 	<Provider store={store}><Layout /></Provider>,
 	document.getElementById('cdp')
@@ -28,7 +28,7 @@ ReactDOM.render(
 	document.getElementById('listTools')
 );
 
-// ReactDOM.render(
-// 	<ProductListContainer />,
-// 	document.getElementById('list')
-// );
+ReactDOM.render(
+	<Provider store={store}><Facets /></Provider>,
+	document.getElementById('facets')
+);

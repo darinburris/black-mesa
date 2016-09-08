@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 
-//import actions
+// import actions
 import { fetchProducts } from '../actions/cdpActions';
 
 @connect(
 	(store) => {
 		return {
-			products: store.cdp,
+			products: store.products,
 			list_count: store.tools.list_count
 		};
 	}
@@ -29,7 +29,7 @@ export default class ProdList extends React.Component{
 		if(products.length === 0){
 			var prods = 'error';
 		} else {
-
+		console.log('products = ' + JSON.stringify(this.props.list_count));
 			var _products = Array.from(products);
 			_products = _products.slice(0, this.props.list_count);
 
@@ -43,7 +43,7 @@ export default class ProdList extends React.Component{
 						<figure>
 							<a href={_products[key]['url']}><img itemProp="image" src={_products[key]['src']} alt="placeholder product image" /></a>
 							<figcaption>
-				 
+
 								<a itemProp="name" href={_products[key]['url']} title={_products[key]['name']}>{_products[key]['name']}</a>
 								<data itemProp="price" value={_products[key]['price']}>${_products[key]['price']}</data>
 								<p className="colors">Available in {_products[key]['colors']} colors</p>

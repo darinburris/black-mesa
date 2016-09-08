@@ -1,8 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 
-//import actions
+// import actions
 import { fetchTools, sortView, listView } from '../actions/cdpActions';
 
 @connect(
@@ -35,7 +34,7 @@ export default class Tools extends React.Component{
 
 			switch (key) {
 
-				case 'filters' : 
+				case 'filters' :
 
 					var filterOptions = [];
 					for (var i = 0; i < tools[key].length; i++) {
@@ -48,7 +47,7 @@ export default class Tools extends React.Component{
 
 					break;
 
-				case 'view' : 
+				case 'view' :
 
 					var viewOptions = [];
 					for (var i = 0; i < tools[key].length; i++) {
@@ -88,8 +87,3 @@ export default class Tools extends React.Component{
 	}
 
 };
-
-// ReactDOM.render(
-// 	<Tools />,
-// 	document.getElementById('listTools')
-// );
