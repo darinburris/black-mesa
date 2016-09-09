@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 
 // import actions
@@ -24,36 +23,41 @@ export default class ProdList extends React.Component{
 	render() {
 
 		const products = this.props.products.products;
-		const listCount = this.props.products.count;
+		var prods;
 
 		if(products.length === 0){
-			var prods = 'error';
+			prods = 'error';
 		} else {
-		console.log('products = ' + JSON.stringify(this.props.list_count));
+
 			var _products = Array.from(products);
 			_products = _products.slice(0, this.props.list_count);
 
-			var prods = [];
+			prods = [];
 			for (var key in _products) {
 
-				prods.push(
+				if ({}.hasOwnProperty.call(_products, key)) {
 
-					<li itemScope itemType="http://schema.org/Product" key={_products[key]['id']}>
+					prods.push(
 
-						<figure>
-							<a href={_products[key]['url']}><img itemProp="image" src={_products[key]['src']} alt="placeholder product image" /></a>
-							<figcaption>
+						<li itemScope itemType="http://schema.org/Product" key={_products[key].id}>
 
-								<a itemProp="name" href={_products[key]['url']} title={_products[key]['name']}>{_products[key]['name']}</a>
-								<data itemProp="price" value={_products[key]['price']}>${_products[key]['price']}</data>
-								<p className="colors">Available in {_products[key]['colors']} colors</p>
+							<figure>
+								<a href={_products[key].url}><img itemProp="image" src={_products[key].src} alt="placeholder product image" /></a>
+								<figcaption>
 
-							</figcaption>
-						</figure>
+									<a itemProp="name" href={_products[key].url} title={_products[key].name}>{_products[key].name}</a>
+									<data itemProp="price" value={_products[key].price}>${_products[key].price}</data>
+									<p className="colors">Available in {_products[key].colors} colors</p>
 
-					</li>
+								</figcaption>
+							</figure>
 
-				)
+						</li>
+
+					);
+
+				}
+
 			}
 
 		}
@@ -65,4 +69,4 @@ export default class ProdList extends React.Component{
 		);
 	}
 
-};
+}

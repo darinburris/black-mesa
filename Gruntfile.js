@@ -223,8 +223,8 @@ module.exports = function(grunt) {
 			options: {
 				configFile: '.eslintrc'
 			},
-			target: ['<%= sourceDir %>/js/reducers/userReducer.jsx']
-			//target: ['<%= sourceDir %>/js/**/*.js','<%= sourceDir %>/js/**/*.jsx', '!<%= releaseDir %>/js/lib/**/*.js']
+			//target: ['<%= sourceDir %>/js/components/prod-list-presentation-view.jsx']
+			target: ['<%= sourceDir %>/js/**/*.js','<%= sourceDir %>/js/**/*.jsx', '!<%= releaseDir %>/js/lib/**/*.js']
 		},
 		/**
 		 *  @description grunt task generates jsdoc documentation
