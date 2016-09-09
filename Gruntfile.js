@@ -223,7 +223,6 @@ module.exports = function(grunt) {
 			options: {
 				configFile: '.eslintrc'
 			},
-			//target: ['<%= sourceDir %>/js/actions/cdpActions.jsx']
 			target: ['<%= sourceDir %>/js/**/*.js','<%= sourceDir %>/js/**/*.jsx', '!<%= releaseDir %>/js/lib/**/*.js', '!<%= sourceDir %>/js/lib/**/*.js']
 		},
 		/**
