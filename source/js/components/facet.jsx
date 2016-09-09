@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 // import { connect } from 'react-redux';
 
 // @connect(
@@ -20,5 +20,4 @@ export class Facet extends React.Component{
 		);
 	}
 
-};
-
+}

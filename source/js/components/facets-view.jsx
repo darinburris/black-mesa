@@ -1,8 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 
-import Facet from 'facet';
+// import Facet from 'facet';
 
 @connect(
 	(store) => {
@@ -16,7 +15,7 @@ export default class Facets extends React.Component{
 
 	componentWillMount(){}
 
-	handleClick(index) {}
+	handleClick() {}
 
 	render(){
 
@@ -25,7 +24,7 @@ export default class Facets extends React.Component{
 			<ul className="facets" id="facetsList">Testy</ul>
 
 		);
+
 	}
 
-};
-
+}

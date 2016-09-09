@@ -23,19 +23,19 @@ export default class Item extends React.Component{
 				<figure>
 					<a href={this.props.url}><img itemProp="image" src={this.props.src} alt="placeholder product image" /></a>
 					<figcaption>
-		 
+
 						<a itemProp="name" href={this.props.url} title={this.props.name}>{this.props.name}</a>
 						<data itemProp="price" value={this.props.price}>${this.props.price}</data>
 						<p className="colors">Available in {this.props.colors} colors</p>
 
 					</figcaption>
-				</figure>	
+				</figure>
 
 			</li>
 
 		);
 	}
-};
+}
 
 ReactDOM.render(
 	<Item />,

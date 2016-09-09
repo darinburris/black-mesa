@@ -223,8 +223,7 @@ module.exports = function(grunt) {
 			options: {
 				configFile: '.eslintrc'
 			},
-			//target: ['<%= sourceDir %>/js/components/prod-list-presentation-view.jsx']
-			target: ['<%= sourceDir %>/js/**/*.js','<%= sourceDir %>/js/**/*.jsx', '!<%= releaseDir %>/js/lib/**/*.js']
+			target: ['<%= sourceDir %>/js/**/*.js','<%= sourceDir %>/js/**/*.jsx', '!<%= releaseDir %>/js/lib/**/*.js', '!<%= sourceDir %>/js/lib/**/*.js']
 		},
 		/**
 		 *  @description grunt task generates jsdoc documentation
@@ -494,15 +493,15 @@ module.exports = function(grunt) {
 					spawn: false
 				}
 			},
-			// js: {
-			// 	files: [
-			// 		ampConfig.base.sourceDir + '/js/**', '!' + ampConfig.base.sourceDir + '/js/lib/**'
-			// 	],
-			// 	tasks: [],
-			// 	options: {
-			// 		spawn: true
-			// 	}
-			// },
+			js: {
+				files: [
+					ampConfig.base.sourceDir + '/js/**/*', '!' + ampConfig.base.sourceDir + '/js/lib/**'
+				],
+				tasks: ['eslint'],
+				options: {
+					spawn: true
+				}
+			},
 			html: {
 				files: [
 					ampConfig.base.sourceDir + '/**/*.html'

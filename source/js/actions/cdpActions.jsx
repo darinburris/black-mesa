@@ -9,22 +9,21 @@ export function fetchProducts(){
 
 			(response) => {
 
-				dispatch({type: 'FETCH_PRODUCTS_FULFILLED',payload: response.data.products})
+				dispatch({ type: 'FETCH_PRODUCTS_FULFILLED', payload: response.data.products });
 
 			}
 
-		)
-		.catch(
+		).catch(
 
 			(err) => {
 
-				dispatch({type: 'FETCH_PRODUCTS_REJECTED',payload: err})
+				dispatch({ type: 'FETCH_PRODUCTS_REJECTED', payload: err });
 
 			}
 
-		)
+		);
 
-	}
+	};
 
 }
 
@@ -37,22 +36,21 @@ export function fetchTools(){
 
 				(response) => {
 
-					dispatch({type: 'FETCH_TOOLS_FULFILLED',payload: response.data.tools})
+					dispatch({ type: 'FETCH_TOOLS_FULFILLED', payload: response.data.tools });
 
 				}
 
-			)
-			.catch(
+			).catch(
 
 				(err) => {
 
-					dispatch({type: 'FETCH_TOOLS_REJECTED',payload: err})
+					dispatch({ type: 'FETCH_TOOLS_REJECTED', payload: err });
 
 				}
 
-			)
+			);
 
-	}
+	};
 
 }
 
@@ -60,9 +58,9 @@ export function sortView(payload){
 
 	return function(dispatch){
 
-		dispatch({type: 'CHANGE_SORT_FULFILLED',payload: payload})
+		dispatch({ type: 'CHANGE_SORT_FULFILLED', payload: payload });
 
-	}
+	};
 
 }
 
@@ -70,9 +68,8 @@ export function listView(payload){
 
 	return function(dispatch){
 
-		dispatch({type: 'CHANGE_VIEW_FULFILLED',payload: payload})
+		dispatch({ type: 'CHANGE_VIEW_FULFILLED', payload: payload });
 
-	}
+	};
 
 }
-

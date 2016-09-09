@@ -32,33 +32,47 @@ export default class Tools extends React.Component{
 
 		for (var key in tools) {
 
-			switch (key) {
+			if ({}.hasOwnProperty.call(tools, key)) {
 
-				case 'filters' :
+				var filterOptions,
+					i,
+					viewOptions;
 
-					var filterOptions = [];
-					for (var i = 0; i < tools[key].length; i++) {
+				switch (key) {
+
+				case 'filters' : {
+
+					filterOptions = [];
+					for (i = 0; i < tools[key].length; i++) {
 
 						filterOptions.push(
 							<option value={tools[key][i]} key={tools[key][i]}>{tools[key][i]}</option>
-						)
+						);
 
 					}
 
 					break;
 
-				case 'view' :
+				}
 
-					var viewOptions = [];
-					for (var i = 0; i < tools[key].length; i++) {
+				case 'view' : {
+
+					viewOptions = [];
+					for (i = 0; i < tools[key].length; i++) {
 
 						viewOptions.push(
 							<option value={tools[key][i]} key={tools[key][i]}>{tools[key][i]}</option>
-						)
+						);
 
 					}
 
 					break;
+
+				}
+
+				default:
+
+				}
 
 			}
 
@@ -86,4 +100,4 @@ export default class Tools extends React.Component{
 
 	}
 
-};
+}
