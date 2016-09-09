@@ -1,34 +1,29 @@
 import Axios from 'axios';
 
-export function fetchUser(api){
+export function fetchUser(){
 
 	return function(dispatch){
-
-		let config = {
-			method: 'get'	
-		};
 
 		Axios.get('http://localhost:3005/users')
 			.then(
 
 				(response) => {
 
-					dispatch({type: 'FETCH_USER_FULFILLED',payload: response.data})
+					dispatch({ type: 'FETCH_USER_FULFILLED', payload: response.data });
 
 				}
 
-			)
-			.catch(
+			).catch(
 
 				(err) => {
 
-					dispatch({type: 'FETCH_USER_REJECTED',payload: err})
+					dispatch({ type: 'FETCH_USER_REJECTED', payload: err });
 
 				}
 
-			)
+			);
 
-	}
+	};
 
 }
 
@@ -39,17 +34,17 @@ export function setUserName(name){
 		type: 'SET_USER_NAME',
 		payload: name
 
-	}
+	};
 
 }
 
-export function setUserAge(){
+export function setUserAge(age){
 
 	return {
 
 		type: 'SET_USER_AGE',
 		payload: age
 
-	}
+	};
 
 }
