@@ -1,0 +1,95 @@
+@import "bourbon",
+		"neat",
+		"grid-settings",
+		"config",
+		"utils";
+
+
+.hero-image{
+
+	width: 100%;
+
+	@include media($small-phone-down) {
+
+		display: none;
+
+	}
+
+}
+
+.product-list{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	margin: 0 -10px;
+	padding: 0;
+
+	li{
+		margin: 0;
+		padding: 10px;
+		width: 25%;
+
+		@include media($large-phone-down) {
+
+			width: 50%;
+
+		}
+
+		@include media($small-phone-down) {
+
+			width: 100%;
+
+		}
+
+	}
+
+}
+
+figure{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+
+	a{
+		text-decoration: none;
+
+		&:hover{
+			text-decoration: none !important;
+		}
+	}
+
+	img{
+		width: 100%;
+	}
+
+	figcaption{
+
+		p{
+			margin: 0;
+			padding: 0;
+
+			&.product-name{
+				font-weight: 800;
+			}
+
+		}
+
+		data,
+		p{
+			display: block;
+			font-size: 1rem;
+			line-height: 1.4;
+		}
+
+		[itemprop="price"]{
+			font-weight: 800;
+		}
+
+		.colors{
+			font-size: .8rem;
+		}
+
+	}
+
+}

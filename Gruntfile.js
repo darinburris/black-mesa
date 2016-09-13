@@ -7,7 +7,6 @@
 module.exports = function(grunt) {
 	'use strict';
 	var chalk = require('chalk'),
-		ngrok = require('ngrok'),
 		ampConfig = require('./amp-config.json');
 	// Load grunt tasks
 	require('load-grunt-tasks')(grunt);
@@ -24,11 +23,19 @@ module.exports = function(grunt) {
 		preReleaseJs: ampConfig.base.sourceDir + '/js',
 
 		/**
-		 * @description grunt task to run shell commands ******************
+		 * @description grunt include task recursively includes static html files into each other ******************
 		**/
-		shell: {
-			wp: {
-				command: 'webpack && webpack-dev-server --colors --hot --content-base release/'
+		includes: {
+			build: {
+				cwd: 'source',
+				src: [ '*.html', '**/*.html' ],
+				dest: 'release/',
+				options: {
+					flatten: true,
+					includePath: 'source',
+					includeRegexp: /^(\s*)<include\s+file="(\S+)"\s*\/>$/,
+					banner: ''
+				}
 			}
 		},
 		/**
@@ -86,8 +93,8 @@ module.exports = function(grunt) {
 			}
 		},
 		/**
-		* @description  grunt task compiles sass files, copies them into a pre release 
-		* folder under /source/ in order to allow for linting prior to 
+		* @description  grunt task compiles sass files, copies them into a pre release
+		* folder under /source/ in order to allow for linting prior to
 		* minification/concatination
 		**/
 		sass: {
@@ -188,26 +195,6 @@ module.exports = function(grunt) {
 			}
 		},
 		/**
-		 * @description grunt to transpile ES6 to ES5.
-		 */
-		babel: {
-			options: {
-				babelrc: true
-			},
-			dist: {
-				files: [
-					{
-						expand: true,
-						cwd: 'source/',
-						src: ['js/modules/**/*.js'],
-						dest: 'release/',
-						ext: '.js'
-					}
-				]
-			}
-		},
-
-		/**
 		 *  @description grunt jscs code style linter and formatter for your style guide
 		 */
 		jscs: {
@@ -217,14 +204,22 @@ module.exports = function(grunt) {
 				fix: false
 			}
 		},
-
+		/**
+		 *  @description grunt task for linting js and jsx code
+		 */
+		eslint: {
+			options: {
+				configFile: '.eslintrc'
+			},
+			target: ['<%= sourceDir %>/js/**/*.js','<%= sourceDir %>/js/**/*.jsx', '!<%= releaseDir %>/js/lib/**/*.js', '!<%= sourceDir %>/js/lib/**/*.js']
+		},
 		/**
 		 *  @description grunt task generates jsdoc documentation
 		 */
 		jsdoc: {
 			dist: {
 				jsdoc: 'node_modules/.bin/jsdoc',
-				src: ['<%= releaseDir %>/js/**/*.js', 'README.md', '!<%= releaseDir %>/js/lib/**/*.js', 'Gruntfile.js', '!<%= releaseDir %>/js/amp.js'],
+				src: ['<%= sourceDir %>/js/**/*.js','!<%= releaseDir %>/js/**/*.js', 'README.md', '!<%= releaseDir %>/js/lib/**/*.js', 'Gruntfile.js', '!<%= releaseDir %>/js/amp.js'],
 				options: {
 					destination: 'reports/jsdocs',
 					template: 'node_modules/ink-docstrap/template',
@@ -303,87 +298,21 @@ module.exports = function(grunt) {
 					flatten: true,
 					filter: 'isFile'
 				}]
-			},
-			bowerJS: {
-				files: [{
-					expand: true,
-					cwd: 'bower_components/',
-					src: [
-						'jquery/dist/jquery.min.js',
-						'requirejs-plugins/src/propertyParser.js',
-						'requirejs-plugins/src/font.js',
-						'requirejs-plugins/src/goog.js',
-						'requirejs-plugins/src/async.js',
-						'handlebars/handlebars.min.js',
-						'jquery-validation/dist/jquery.validate.min.js',
-						'modernizr/modernizr.js',
-						'jquery-hoverIntent/jquery.hoverIntent.js',
-						'animatescroll/animatescroll.min.js'
-					],
-					dest: ampConfig.base.sourceDir + '/js/lib'
-				}]
-			},
-			bowerCSS: {
-				files: [{
-					expand: true,
-					cwd: 'bower_components/',
-					src: [],
-					dest: ampConfig.base.sourceDir + '/scss/lib'
-				}, {
-					expand: true,
-					cwd: 'bower_components/',
-					src: [],
-					dest: ampConfig.base.sourceDir + '/scss/lib/',
-					rename: function(src, dest) {
-						var newDest = dest.replace('.css', '.scss');
-						return src + '/' + newDest;
-					}
-				}]
-			},
-			bowerComponents: {
-				files: [{
-					expand: true,
-					src: [
-						'bower_components/**/*'
-					],
-					dest: ampConfig.base.sourceDir
-				}]
-			},
-		},
-		/**
-		 *	grunt task syncs root bower_components contents into source destination
-		 *	Prevents updates to bower dependencies in source directory from getting overwritten when new dependecies are added via bower install
-		 */
-		sync: {
-			main: {
-				files: [
-					{
-						src: ['bower_components/**/*'],
-						dest: 'source/'
-					}
-				],
-				verbose: true, // Default: false
-				pretend: true, // Don't do any disk operations - just write log. Default: false
-				failOnError: true, // Fail the task when copying is not possible. Default: false
-				ignoreInDest: "**/*.js", // Never remove js files from destination. Default: none
-				updateAndDelete: true, // Remove all files from dest that are not found in src. Default: false
-				compareUsing: "md5" // compares via md5 hash of file contents, instead of file modification time. Default: "mtime"
 			}
 		},
+
 		/**
-		 *   grunt task deletes specific, non-release files after build
+		 * @description grunt task deletes specific, non-release files after build
 		 */
 		clean: {
 			preRelease: ['<%= releaseDir %>'],
 			postRelease: [
 				ampConfig.base.sourceDir + '/css'
 			],
-			reports: ['./reports/'],
-			componentCss: [ampConfig.base.releaseDir + '/css/components'],
-			componentJs: [ampConfig.base.releaseDir + '/js/components'],
+			reports: ['./reports/']
 		},
 		/**
-		 *   grunt task Strip JavaScript nodes (like console.*) out of your source code
+		 * @description grunt task Strip JavaScript nodes (like console.*) out of your source code
 		 */
 		strip: {
 			main: {
@@ -397,29 +326,9 @@ module.exports = function(grunt) {
 			}
 		},
 		/**
-		 *   grunt task performs a number of string replacement actions on various files
+		 * @description grunt task performs a number of string replacement actions on various files
 		 */
 		replace: {
-			amp: {
-				options: {
-					patterns: [{
-						match: /\/source\/js/g,
-						replacement: '/js',
-						expression: true
-					}, {
-						match: /\/source\/lib/g,
-						replacement: '/lib',
-						expression: true
-					}]
-				},
-				files: [{
-					expand: true,
-					cwd: ampConfig.base.sourceDir,
-					flatten: false,
-					src: ['amp.js'],
-					dest: ampConfig.base.releaseDir + '/js'
-				}]
-			},
 			localize: {
 				options: {
 					patterns: [{
@@ -438,25 +347,6 @@ module.exports = function(grunt) {
 					flatten: false,
 					src: ['**/*.html', '!js', '!css'],
 					dest: ampConfig.base.releaseDir
-				}]
-			},
-			rjs: {
-				options: {
-					patterns: [{
-						match: '<!--rjs-->',
-						replacement: function() {
-							return grunt.config.get('rjsData');
-						}
-					}, {
-						match: /\/\*cdn\*\//g,
-						replacement: ampConfig.cdn.js
-					}]
-				},
-				files: [{
-					expand: true,
-					cwd: ampConfig.base.releaseDir + '/js',
-					src: 'amp.js',
-					dest: ampConfig.base.releaseDir + '/js'
 				}]
 			},
 			toc: {
@@ -504,7 +394,7 @@ module.exports = function(grunt) {
 			}
 		},
 		/**
-		 *   grunt task watches to changes to files in /source and copies them into /release
+		 * @description grunt task watches to changes to files in /source and copies them into /release
 		 */
 		watch: {
 			scss: {
@@ -518,9 +408,9 @@ module.exports = function(grunt) {
 			},
 			js: {
 				files: [
-					ampConfig.base.sourceDir + '/js/**', '!' + ampConfig.base.sourceDir + '/js/lib/**'
+					ampConfig.base.sourceDir + '/js/**/*', '!' + ampConfig.base.sourceDir + '/js/lib/**'
 				],
-				tasks: ['babel','jscs'],
+				tasks: ['eslint'],
 				options: {
 					spawn: true
 				}
@@ -546,7 +436,20 @@ module.exports = function(grunt) {
 		function() {
 			grunt.config.set('taskName', this.name);
 			grunt.task.run(
-				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','sprite', 'sass:dist', 'replace:amp', 'rjsReplace', 'copy:buildJS', 'jscs','clean:postRelease','shell:wp']
+				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','sprite', 'sass:dist', 'copy:buildJS','clean:postRelease']//'rjsReplace', , 'jscs'
+			);
+		}
+	);
+	/**
+	 * @description This task omits the ccsmin and uglify tasks for debugging purposes, includes JSDoc
+	 */
+	grunt.registerTask(
+		'dev',
+		'This task omits the ccsmin and uglify tasks for debugging purposes',
+		function() {
+			grunt.config.set('taskName', this.name);
+			grunt.task.run(
+				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','sprite', 'sass:dist', 'copy:buildJS','clean:postRelease']//'rjsReplace', , 'jscs'
 			);
 		}
 	);
@@ -560,7 +463,7 @@ module.exports = function(grunt) {
 		function() {
 			grunt.config.set('taskName', this.name);
 			grunt.task.run(
-				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC', 'reports', 'sprite', 'sass:dist', 'cssmin', 'replace:amp', 'rjsReplace', 'copy:buildJS', 'strip', 'babel', 'jscs','uglify','jsdoc','clean:postRelease']);
+				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC', 'reports', 'sprite', 'sass:dist', 'cssmin', 'copy:buildJS', 'strip', 'babel', 'jscs','uglify','jsdoc','clean:postRelease']);
 		}
 	);
 
@@ -573,176 +476,11 @@ module.exports = function(grunt) {
 		function() {
 			grunt.config.set('taskName', this.name);
 			grunt.task.run(
-				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC', 'sprite', 'sass:dist', 'cssmin', 'replace:amp', 'rjsReplace', 'copy:buildJS', 'strip', 'uglify','jsdoc','clean:postRelease']);
+				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC', 'sprite', 'sass:dist', 'cssmin', 'copy:buildJS', 'strip', 'uglify','jsdoc','clean:postRelease']);
 		}
 	);
 
 	//The following are custom registered tasks
-
-	/**
-	 * @description Task for copying compiled scss from components into respective component files.
-	 */
-	grunt.registerTask(
-		'componentScss',
-		'Task for copying compiled scss from components into respective component files.',
-
-		function() {
-
-			var ampConfig = require('./amp-config.json'),
-				walk = require('walkdir'),
-				path = require('path'),
-				fse = require('fs-extra'),
-				fs = require('fs'),
-				replace = require('replace'),
-				cssSource = 'release/css/components',
-				componentSource = 'release/components',
-				cwd = process.cwd(),
-				re = '@@style';
-
-			walk.sync(cssSource,
-				function(cssSourcePath) {
-
-					var scssFileName = path.basename(cssSourcePath),
-						scssExtension = path.extname(scssFileName),
-						scssFile = path.basename(scssFileName,scssExtension);
-
-					walk.sync(componentSource,
-						function(componentSourcePath) {
-
-						var componentFileName = path.basename(componentSourcePath),
-							componentExtension = path.extname(componentFileName),
-							componentFile = path.basename(componentFileName,componentExtension),
-							componentFile = componentFile.replace('.comp', '');
-
-							if(scssFile === componentFile){
-
-								var
-								scssFileContent = fs.readFileSync(cssSourcePath, 'utf8');
-
-								replace(
-									{
-										regex: re,
-										replacement: scssFileContent,
-										paths: [componentSourcePath],
-										recursive: true,
-										silent: true,
-									}
-								);
-
-							}
-
-						}
-					);
-				}
-			);
-
-			//Clears all other component files any remaining @@style strings if there was no js component matched
-			walk.sync(componentSource,
-				function(componentSourcePath) {
-
-					var cssFileContent = fs.readFileSync(componentSourcePath, 'utf8');
-
-					replace(
-						{
-							regex: re,
-							replacement: '',
-							paths: [componentSourcePath],
-							recursive: true,
-							silent: true,
-						}
-					);
-
-				}
-			);
-
-			grunt.task.run('clean:componentCss');
-
-		}
-
-	);
-	/**
-	 * @description Task for copying linted js from js/components into respective component files.
-	 */
-	grunt.registerTask(
-		'componentJs',
-		'Task for copying linted js from js/components into respective component files.',
-
-		function() {
-
-			var ampConfig = require('./amp-config.json'),
-				walk = require('walkdir'),
-				path = require('path'),
-				fse = require('fs-extra'),
-				fs = require('fs'),
-				replace = require("replace"),
-				jsSource = 'source/js/components',
-				componentSource = 'release/components',
-				cwd = process.cwd(),
-				re = '@@script';
-
-			walk.sync(jsSource,
-				function(jsSourcePath) {
-
-					var jsFileName = path.basename(jsSourcePath),
-						jsExtension = path.extname(jsFileName),
-						jsFile = path.basename(jsFileName,jsExtension);
-
-					walk.sync(componentSource,
-
-						function(componentSourcePath) {
-
-						var componentFileName = path.basename(componentSourcePath),
-							componentExtension = path.extname(componentFileName),
-							componentFile = path.basename(componentFileName,componentExtension),
-							componentFile = componentFile.replace('.comp', '');
-
-							console.log(jsFile + '===' + componentFile);
-
-							if(jsFile === componentFile){
-
-								var jsFileContent = fs.readFileSync(jsSourcePath, 'utf8');
-
-								replace(
-									{
-										regex: re,
-										replacement: jsFileContent,
-										paths: [componentSourcePath],
-										recursive: true,
-										silent: true,
-									}
-								);
-
-							}
-
-						}
-					);
-				}
-			);
-
-			//Clears all other component files any remaining @@script strings if there was no js component matched
-			walk.sync(componentSource,
-				function(componentSourcePath) {
-
-					var jsFileContent = fs.readFileSync(componentSourcePath, 'utf8');
-
-					replace(
-						{
-							regex: re,
-							replacement: '',
-							paths: [componentSourcePath],
-							recursive: true,
-							silent: true,
-						}
-					);
-
-				}
-			);
-
-			grunt.task.run('clean:componentJs');
-
-		}
-
-	);
 	/**
 	 * @description Parent task for generating tempalate files based on a pre-defined list of available template types.
 	 */
@@ -873,51 +611,6 @@ module.exports = function(grunt) {
 		} else {
 			grunt.task.run('clean:reports');
 		}
-	});
-	/**
-	 * @description A replace Task that copies the contents of "/bower_components/requirejs-bower/require.js" to a specified location in amp.js. This allows for the independent updating of the requirejs version without having to manually modify any source files.
-	 */
-	grunt.registerTask('rjsReplace', 'A replace Task that copies the contents of "/bower_components/requirejs-bower/require.js" to a specified location in amp.js.\nThis allows for the independent updating of the requirejs version without having to manually modify any source files.', function() {
-		var path = require('path'),
-			configPath = path.resolve(ampConfig.base.rjs),
-			rjsData = grunt.file.read(configPath);
-		grunt.config.set('rjsData', rjsData);
-		grunt.task.run('replace:rjs');
-	});
-
-	/**
-	 * @description Gather information from the current user's git config.
-	 */
-	grunt.registerTask('gitInfo', 'Gather information from the current user\'s git config.', function() {
-		var gitConfig = require('git-config'),
-			config = gitConfig.sync();
-		console.log(config.user.name);
-		console.log(config.user.email);
-		return config;
-	});
-	/**
-	 * @description Includes framework for dynamically including static html content into files from external html files
-	 */
-	grunt.registerTask('includes', 'Includes framework for dynamically including static html content into files from external html files', function() {
-		var fs = require('fs'),
-			path = require('path'),
-			walk = require('walkdir'),
-			cheerio = require('cheerio');
-		walk.sync(ampConfig.base.sourceDir, function(currPath) {
-			if ((currPath.substr(-5) === '.html') && (currPath.indexOf('includes') === -1) && (currPath.indexOf('js/lib') === -1)) {
-				var DOM = fs.readFileSync(currPath, 'utf8'),
-					$ = cheerio.load(DOM),
-					$include = $('include');
-				$include.each(function() {
-					var $this = $(this),
-						fileName = $this.attr('file'),
-						includeDOM = fs.readFileSync(path.join(ampConfig.base.sourceDir, fileName), 'utf8');
-					$this.replaceWith(includeDOM);
-				});
-				var releasePath = currPath.replace(ampConfig.base.sourceDir, ampConfig.base.releaseDir);
-				fs.writeFileSync(releasePath, $.html());
-			}
-		});
 	});
 	/**
 	 * @description Running and Generating W3C/WCAG Reports

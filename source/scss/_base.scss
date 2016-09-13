@@ -16,7 +16,7 @@
 
 }
 
-body { 
+body {
 	color: $black;
 	font-family: $font-stack;
 	font-size: 12px;
@@ -38,7 +38,7 @@ main a{
 
 p{
 	line-height: 1.4;
-	font-size: 12px;
+	font-size: 1rem;
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -153,7 +153,13 @@ figure{
 
 .breadcrumb-nav-items li,
 .breadcrumb-nav-items li a{
+	color: #000;
 	font-size: 12px;
+	font-weight: 800;
+}
+
+.breadcrumb-nav-items li{
+	font-weight: 400;
 }
 
 .util-nav-items li:last-child:after,
@@ -168,6 +174,13 @@ figure{
 	text-align: center;
 	text-transform: capitalize;
 	white-space: nowrap;
+
+	a{
+
+		font-size: .8rem;
+
+	}
+
 }
 
 /**
@@ -195,7 +208,7 @@ figure{
 	border: 2px solid $color-BgCheckoutBtn;
 	display: inline-block;
 }
- 
+
 .btn-primary:hover{
 	background-color: white;
 	border: 2px solid $color-BgCheckoutBtn;
@@ -245,10 +258,10 @@ figure{
 	height:  $icon-search-height;
 	padding: 0; //a reset for Foundation styles
 	position: absolute;
-	right: rem(6);
+	right: rem(15);
 	text-indent: -9999px;
-	top: rem(7);
-	width:  $icon-search-width;
+	top: rem(10);
+	width:  rem(17);
 }
 
 .btn-search:hover{
@@ -285,7 +298,7 @@ div.box {
 	font-size: rem(64);
 	font-weight: 100;
 	margin: 0;
-	
+
 	a{
 		text-shadow: 0 rem(2) rem(2) $grey2;
 		color: $black;

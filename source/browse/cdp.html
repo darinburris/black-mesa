@@ -8,35 +8,27 @@
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<include file="includes/common/css.html"></include>
-<include file="includes/common/js.html"></include>
+<include file="includes/common/css.html" />
+		<link rel="stylesheet" type="text/css" href="/css/cdp.css">
 
 	</head>
 
-	<body role="document" dir="@@direction">
+	<body role="document" dir="@@direction" class="two-column-first">
 
-<include file="includes/common/masthead.html"></include>
-<include file="includes/common/breadcrumb.html"></include>
+<include file="includes/common/masthead.html" />
+<include file="includes/common/breadcrumb.html" />
 
 		<main role="main">
 
-			<nav class="secondary-nav" role="navigation">
+			<nav class="secondary-nav" role="navigation" id="facets"></nav>
 
-				<p>Navigation</p>
-
-			</nav>
-
-			<section role="region">
-
-				<h1>CDP</h1>
-
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident ducimus libero doloribus, impedit nemo delectus possimus perspiciatis, illum sint alias repudiandae natus nostrum! Modi, reprehenderit voluptates consequuntur et tenetur, odit!</p>
-
-			</section>
+			<section role="region" id="cdp" ></section>
 
 		</main>
 
-<include file="includes/common/footer.html"></include>
+<include file="includes/common/footer.html" />
+
+<include file="includes/browse/cdp/js.html" />
 
 	</body>
 

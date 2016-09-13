@@ -13,7 +13,12 @@
 
 main{
 	margin: rem(20) 0;
-	padding: 0 rem(20);
+	padding: 0;
+
+	@include media($large-phone-down) {
+		margin-bottom: rem(40);
+	}
+
 }
 
 main,
@@ -35,6 +40,10 @@ footer{
 	flex-direction: row;
 	flex-flow: row wrap;
 	padding: 0;
+
+	@include media($large-phone-down) {
+		display: block;
+	}
 
 	li{
 		flex-grow: 1;
@@ -60,6 +69,30 @@ footer{
 
 		}
 
+		@include media($large-phone-down) {
+
+			display: block;
+
+			text-align: left;
+
+			&:first-child{
+				margin-left: rem(20);
+			}
+
+			&:not(:first-child){
+				display:none;
+			}
+		}
+
+	}
+
+}
+
+.util-nav{
+	@include media($large-phone-down) {
+
+		display: none;
+
 	}
 
 }
@@ -67,9 +100,14 @@ footer{
 .util-nav-items{
 	padding: 0;
 
-
 	@include media($medium-screen-before-break-size) {
 		@include span-columns(7);
+	}
+
+	@include media($large-phone-down) {
+
+		display: none;
+
 	}
 
 }
@@ -78,6 +116,12 @@ footer{
 
 	@include media($medium-screen-before-break-size) {
 		@include span-columns(2);
+	}
+
+	@include media($large-phone-down) {
+
+		display: none;
+
 	}
 
 }
@@ -89,6 +133,12 @@ footer{
 
 		@include media($medium-screen-before-break-size) {
 			@include span-columns(3);
+		}
+
+		@include media($large-phone-down) {
+
+			display: none;
+
 		}
 
 	}
@@ -104,21 +154,27 @@ footer{
 			@include span-columns(8);
 		}
 
+		@include media($large-phone-down) {
+			font-size: rem(38);
+			margin: rem(10) 0 rem(10) rem(10);
+		}
+
 	}
 
 	form{
 
 		@include media($medium-screen-before-break-size) {
 			@include span-columns(4);
+			margin-top: rem(10);
 		}
+
+
 
 	}
 
 }
 
 .secondary-nav{
-
-	list-style: none;
 
 	@include media($medium-screen-before-break-size) {
 		@include span-columns(3);
@@ -128,6 +184,12 @@ footer{
 
 		@include media($medium-screen-before-break-size) {
 			@include span-columns(9);
+		}
+
+		@include media($large-phone-down) {
+
+			margin: 0 rem(10);
+
 		}
 
 	}
@@ -227,6 +289,12 @@ footer{
 
 		}
 
+		@include media($large-phone-down) {
+
+			display: none;
+
+		}
+
 	}
 
 }
@@ -252,6 +320,14 @@ footer{
 				}
 
 			}
+
+/* 			> div:first-child{
+
+				@include media($medium-screen-before-break-size) {
+					@include span-columns(6);
+				}
+
+			}			 */
 
 		}
 
@@ -293,6 +369,7 @@ footer[role="contentinfo"]{
 	padding: rem(10) 0;
 
 	@include media($large-phone-down) {
+		background-color: $white;
 		position: fixed;
 		bottom: 0;
 		padding-left: rem(10);

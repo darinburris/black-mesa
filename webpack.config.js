@@ -1,48 +1,56 @@
 var path = require('path'),
-	webpack = require('webpack'); 
+	webpack = require('webpack'),
+	entry = require('./amp-config').wpentry,
+	WebpackDevServer = require('webpack-dev-server');
+
 module.exports = {
-	entry: {
-		'bundle': './source/js/entry.js',
-		'bundle2': './source/js/entry2.js'
-	},
+	entry: entry,
 	output: {
 		path: path.resolve(__dirname, './release/js'),
 		publicPath: '/js/',
 		filename: '[name].js'
 	},
+	devServer : {
+		inline: true,
+		port: 3333,
+		contentBase: './release',
+		publicPath: '/js/',
+		hot: true,
+		historyApiFallback: true,
+		stats: {
+			colors: true
+		}
+	},
 	module: {
 		loaders: [
 			{
-				//test: /\.es6$/,
+				test: /.jsx?$/,
+				loader: 'babel-loader',
+				exclude: /node_modules/,
+				query: {
+					presets: ['es2015','react','stage-2'],
+					plugins: ['transform-decorators-legacy']
+				}
+			},
+			{
 				test: /\.js$/,
 				exclude: /node_modules/,
 				loader: 'babel',
 				query: {
-					presets: ['react', 'es2015'] 
+					presets: ['es2015','react','stage-2'],
+					plugins: ['transform-decorators-legacy']
 				}
-			}
-		]
+			}		]
 	},
 	resolve: {
 		root: [
-//			path.resolve(__dirname, 'bower_components'),
 			path.resolve(__dirname, 'node_modules')
 		],
-		extensions: ['', '.js', '.es6']
+		modulesDirectories: ['node_modules','./source/js/modules/','./source/js/components/'],
+		extensions: ['', '.js', '.jsx']
 	},
 	plugins: [
-		new webpack.ProvidePlugin(
-			{
-				$: 'jquery',
-				jQuery: 'jquery',
-				"window.jQuery": 'jquery'
-			}
-		)
-	]
-/*    module: {
-		loaders: [
-			{ test: /\.css$/, loader: 'style!css' }
-		]
-	}*/
- 
+		new webpack.HotModuleReplacementPlugin()
+	],
+	devtool: 'eval'
 };
