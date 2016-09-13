@@ -9,6 +9,7 @@ import store from '../store';
 // import views
 import Layout from 'prod-list-layout-view';
 import Facets from 'facets-view';
+// import Facet from 'facet';
 import Tools from 'list-tools';
 import ProdList from 'prod-list-presentation-view';
 

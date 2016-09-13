@@ -9,7 +9,7 @@ export default class Layout extends React.Component{
 
 			<div>
 
-				<h1>Hello, world!</h1>
+				<h1>Hello, world! </h1>
 
 				<img src="http://placehold.it/775x250?text=Hero Image" className="hero-image" alt="alt text" />
 

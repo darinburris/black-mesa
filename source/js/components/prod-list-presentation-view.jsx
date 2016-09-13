@@ -37,19 +37,23 @@ export default class ProdList extends React.Component{
 
 				if ({}.hasOwnProperty.call(_products, key)) {
 
+					var altText = 'This is a placeholder for image ' + _products[key].name;
+
 					prods.push(
 
 						<li itemScope itemType="http://schema.org/Product" key={_products[key].id}>
 
 							<figure>
-								<a href={_products[key].url}><img itemProp="image" src={_products[key].src} alt="placeholder product image" /></a>
-								<figcaption>
+								<a href={_products[key].url}>
+									<img itemProp="image" src={_products[key].src} alt={altText} />
+									<figcaption>
 
-									<a itemProp="name" href={_products[key].url} title={_products[key].name}>{_products[key].name}</a>
-									<data itemProp="price" value={_products[key].price}>${_products[key].price}</data>
-									<p className="colors">Available in {_products[key].colors} colors</p>
+										<p itemProp="name" className="product-name">{_products[key].name}</p>
+										<data itemProp="price" value={_products[key].price}>${_products[key].price}</data>
+										<p className="colors">Available in {_products[key].colors} colors</p>
 
-								</figcaption>
+									</figcaption>
+								</a>
 							</figure>
 
 						</li>

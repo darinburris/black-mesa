@@ -54,6 +54,33 @@ export function fetchTools(){
 
 }
 
+export function fetchCats(){
+
+	return function(dispatch){
+
+		Axios.get('http://localhost:3009/store')
+			.then(
+
+				(response) => {
+
+					dispatch({ type: 'FETCH_CATEGORIES_FULFILLED', payload: response.data.categories });
+
+				}
+
+			).catch(
+
+				(err) => {
+
+					dispatch({ type: 'FETCH_CATEGORIES_REJECTED', payload: err });
+
+				}
+
+			);
+
+	};
+
+}
+
 export function sortView(payload){
 
 	return function(dispatch){

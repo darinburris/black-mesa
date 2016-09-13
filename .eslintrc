@@ -31,7 +31,7 @@
         // Possible Errors
         "comma-dangle": [2, "never"],
         "no-cond-assign": 2,
-        "no-console": 2,
+        "no-console": 0,
         "no-constant-condition": 2,
         "no-control-regex": 2,
         "no-debugger": 2,
@@ -150,7 +150,7 @@
         "one-var": 0,
         "operator-assignment": [2, "always"],
         "padded-blocks": 0,
-        "quotes": [2, "single"],
+        "quotes": [2, "single", { "allowTemplateLiterals": true }],
         "quote-props": [2, "as-needed"],
         "semi": [2, "always"],
         "sort-vars": [2, {"ignoreCase": true}],

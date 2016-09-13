@@ -78,6 +78,7 @@
     "jsdoc": "3.4.0",
     "jshint": "^2.9.2",
     "jshint-loader": "^0.8.3",
+    "json-server": "^0.8.20",
     "load-grunt-tasks": "~0.6.0",
     "ngrok": "~0.1.97",
     "node-bourbon": "~4.2.3",
@@ -97,6 +98,7 @@
   "dependencies": {
     "axios": "^0.14.0",
     "babel-preset-stage-2": "^6.13.0",
+    "express": "^3.4.8",
     "jquery": "^3.1.0",
     "json-loader": "^0.5.4",
     "modernizr": "^3.3.1",
@@ -106,8 +108,11 @@
     "react-dom": "^0.14.7",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
+    "redux-localstorage": "^0.4.1",
     "redux-logger": "^2.6.1",
     "redux-promise-middleware": "^4.0.0",
+    "redux-storage": "^4.1.1",
+    "redux-storage-engine-localstorage": "^1.1.2",
     "redux-thunk": "^2.1.0",
     "whatwg-fetch": "^1.0.0"
   },

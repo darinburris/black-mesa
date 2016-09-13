@@ -1,27 +1,48 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-// import Facet from 'facet';
+// import actions
+import { fetchCats } from '../actions/cdpActions';
 
 @connect(
 	(store) => {
 		return {
-			facets: store.cdp
+			categories: store.categories
 		};
 	}
 )
 
 export default class Facets extends React.Component{
 
-	componentWillMount(){}
+	componentWillMount(){
 
-	handleClick() {}
+		this.props.dispatch(fetchCats());
+
+	}
 
 	render(){
 
+		const cats = this.props.categories.categories;
+
+		let _cats = [];
+
+		for (var key in cats) {
+
+			if ({}.hasOwnProperty.call(cats, key)) {
+
+				_cats.push(
+
+					<li key={key}><a href="#">{cats[key]}</a></li>
+
+				);
+
+			}
+
+		}
+
 		return (
 
-			<ul className="facets" id="facetsList">Testy</ul>
+			<ul className="facets">{_cats}</ul>
 
 		);
 
