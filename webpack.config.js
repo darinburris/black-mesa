@@ -1,9 +1,7 @@
 var path = require('path'),
 	webpack = require('webpack'),
-	ModernizrWebpackPlugin = require('modernizr-webpack-plugin'),
 	entry = require('./amp-config').wpentry,
 	WebpackDevServer = require('webpack-dev-server');
-//	DashboardPlugin = require('webpack-dashboard/plugin');
 
 module.exports = {
 	entry: entry,
@@ -26,10 +24,6 @@ module.exports = {
 	module: {
 		loaders: [
 			{
-				test: /\.modernizrrc$/,
-				loader: 'modernizr'
-			},
-			{
 				test: /.jsx?$/,
 				loader: 'babel-loader',
 				exclude: /node_modules/,
@@ -46,35 +40,17 @@ module.exports = {
 					presets: ['es2015','react','stage-2'],
 					plugins: ['transform-decorators-legacy']
 				}
-			},
-			{
-				test: /\.es6$/,
-				exclude: /node_modules/,
-				loader: 'babel',
-				query: {
-					presets: ['es2015','react','stage-2'],
-					plugins: ['transform-decorators-legacy']
-				}
-			},
-			{
-				test: /\.json$/,
-				loader: 'json'
-			}
-		]
+			}		]
 	},
 	resolve: {
 		root: [
 			path.resolve(__dirname, 'node_modules')
 		],
-		modulesDirectories: ['node_modules','./source/js/modules/','./source/js/components/','./data/'],
-		extensions: ['', '.js', '.es6','.jsx'],
-		alias: {
-			modernizr$: path.resolve(__dirname, '.modernizrrc')
-		}
+		modulesDirectories: ['node_modules','./source/js/modules/','./source/js/components/'],
+		extensions: ['', '.js', '.jsx']
 	},
 	plugins: [
-		new webpack.HotModuleReplacementPlugin(),
-		//new DashboardPlugin(),
+		new webpack.HotModuleReplacementPlugin()
 	],
 	devtool: 'eval'
 };

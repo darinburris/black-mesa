@@ -7,6 +7,12 @@ legend{
 	margin: 0;
 	padding: 0;
 	border: none;
+
+	fieldset{
+	border: none;
+
+	}
+
 }
 
 legend{
@@ -44,8 +50,15 @@ select{
 .masthead-banner{
 
 	form{
+
 		margin-top: rem(40);
 		position: relative;
+
+		@include media($large-phone-down) {
+
+			margin-top: rem(10);
+
+		}
 
 		input{
 			width: 100%;
@@ -57,4 +70,24 @@ select{
 
 .element {
 	@include fill-parent;
+}
+
+.globale-search-form{
+
+	> fieldset{
+
+		&:first-child{
+
+			position: relative;
+
+			.btn-search{
+
+				width: rem(17);
+
+			}
+
+		}
+
+	}
+
 }

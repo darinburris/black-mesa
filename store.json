@@ -1117,8 +1117,7 @@
 				"description": "In congue. Etiam justo. Etiam pretium iaculis justo.\n\nIn hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\n\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi."
 				}
 		],
-		"user": 
-		{
+		"user": {
 			"id": "smccoy0@vistaprint.com",
 			"first_name": "Steven",
 			"last_name": "Mccoy",
@@ -1164,6 +1163,12 @@
 				"100",
 				"200"
 			]
-		}
+		},
+		"categories": [
+				"Mens",
+				"Womens",
+				"Kids",
+				"Accessories"
+		]
 	}
 }

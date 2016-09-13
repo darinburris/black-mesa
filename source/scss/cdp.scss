@@ -1,5 +1,20 @@
+@import "bourbon",
+		"neat",
+		"grid-settings",
+		"config",
+		"utils";
+
+
 .hero-image{
+
 	width: 100%;
+
+	@include media($small-phone-down) {
+
+		display: none;
+
+	}
+
 }
 
 .product-list{
@@ -14,6 +29,19 @@
 		margin: 0;
 		padding: 10px;
 		width: 25%;
+
+		@include media($large-phone-down) {
+
+			width: 50%;
+
+		}
+
+		@include media($small-phone-down) {
+
+			width: 100%;
+
+		}
+
 	}
 
 }
@@ -22,6 +50,14 @@ figure{
 	margin: 0;
 	padding: 0;
 	width: 100%;
+
+	a{
+		text-decoration: none;
+
+		&:hover{
+			text-decoration: none !important;
+		}
+	}
 
 	img{
 		width: 100%;
@@ -32,20 +68,18 @@ figure{
 		p{
 			margin: 0;
 			padding: 0;
+
+			&.product-name{
+				font-weight: 800;
+			}
+
 		}
 
-		a,
 		data,
 		p{
 			display: block;
 			font-size: 1rem;
 			line-height: 1.4;
-		}
-
-		a[itemprop="name"]{
-			font-size: 1.1rem;
-			font-weight: 800;
-			text-transform: uppercase;
 		}
 
 		[itemprop="price"]{
