@@ -2,7 +2,7 @@ export default function reducer(
 
 	state = {
 		products: {},
-		categories: {},
+		categories: [],
 		fetching: false,
 		fetched: false,
 		error: null

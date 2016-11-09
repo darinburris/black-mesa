@@ -14,7 +14,7 @@ import { fetchCats } from '../actions/cdpActions';
 
 export default class Facets extends React.Component{
 
-	componentWillMount(){
+	componentDidMount(){
 
 		this.props.dispatch(fetchCats());
 

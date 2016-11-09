@@ -8,23 +8,18 @@ _Implements the following technologies_
   + NodeJS   
   + NPM   
   + Grunt   
-  + Bower   
   + Sass   
-  + webpack
+  + Webpack   
 
 _Supports the following UI automations_   
-  + NPM and Bower for package management
-  + webpack for module management
+  + NPM for package management
+  + Webpack for modular JavaScript development for higher quality, more maintainable JS code   
   + Grunt for managing the UI built process   
   + HTML & Accessibility Validation   
   + Sass, CSS Pre-processor   
   + CSS/JS minification   
   + JS Linting   
   + JSDoc and Plato for JavaScript documentation and quality reporting   
-  + Google Pagespeed, analyzes pages against web performance best practices   
- 
-## Additional 3rd party libs/plugins
-  + Modernizr for feature detection
 
 ## Folder Structure
 
@@ -41,21 +36,9 @@ them against predefined Grunt tasks resulting in release folder content.
 
 >Use HTML codesniffer to grade accessibility
 
->**bower**
-
->Install Bower packages.                                     
-
->**concurrent**
-
->Run grunt tasks concurrently
-
 >**clean**
 
 >Clean files and folders
-
->**concat**
-
->Concatenate files
 
 >**copy**
 
@@ -65,45 +48,17 @@ them against predefined Grunt tasks resulting in release folder content.
 
 >Minify CSS
 
->**imagemin**
-
->Minify PNG, JPEG and GIF images
-
->**jshint**
-
->Validate files with JSHint
-
->**uglify**
-
->Minify files with UglifyJS
-
 >**watch**
 
 >Run predefined tasks whenever watched files change
 
->**gitinfo**
-
->Gather information about the git repository
-
->**validation**
+>**htmllint**
 
 >HTML W3C validation
 
 >**jsdoc**
 
 >Generates source documentation using jsdoc
-
->**nodemon**
-
->Runs a nodemon monitor of your node.js server
-
->**pagespeed**
-
->Run Pagespeed Insights
-
->**plato**
-
->Generate static analysis charts with plato
 
 >**prompt**
 
@@ -121,22 +76,10 @@ them against predefined Grunt tasks resulting in release folder content.
 
 >Spritesheet making utility
 
->**string-replace**
-
->String Replace Task
-
 >**prod**
 
 >Alias for "clean:preRelease", "copy:buildHTML", "includes",   
 "genTOC", "concurrent:W3C", "sprite", "sass:dist", "cssmin", "replace:amp", "rjsReplace", "copy:buildJS", "jshint", "uglify", "clean:postRelease", "psi-ngrok" tasks
-
->**imgcompress**
-
->Alias for "newer:imagemin" task
-
->**imgsprite**
-
->Alias for "sprite" task
 
 >**tempGen**
 
@@ -154,24 +97,6 @@ them against predefined Grunt tasks resulting in release folder content.
 
 >Running and Generating W3C/WCAG Reports
 
->**rjsReplace**
-
->A replace Task that copies the contents of "/bower_components/requirejs-bower/require.js" to a specified location in amp.js. 
-
->This allows for the independent updating of the requirejs version without having to manually modify any source files.
-
->**psi-ngrok**
-
->Run pagespeed with ngrok
-
->Runs against /index.html unless another page is specified. To target a specific page, use "--path=" and the location of the page you wish to test.
-
->Ex: grunt --path=/account/index.html
-
->**gitInfo**
-
->Gather information from the current user's git config
-
 >**failHard**
 
 >Fails build if validation and accessability errors were found.
@@ -185,10 +110,6 @@ them against predefined Grunt tasks resulting in release folder content.
 #### package.json
 
 The Package.json file contains packaging instructions for NodeJS in regards to the Amp UI Repository.
-
-#### bower.json
-
-The bower.json file contains packaging instructions for Bower in regards to the Amp UI Repository.
 
 #### amp-config.json
 
@@ -208,7 +129,7 @@ Config files for jshint tasks. The Grunt version has some additional leniency ba
 
 #### .gitignore
 
-.gitignore is used to globally define what files are to be ignored by version control. 
+.gitignore is used to globally define what files are to be ignored by version control.
 Example, /release, /node_modules, .sass-cache, validation_report
 
 #### README.md
@@ -260,7 +181,7 @@ Run grunt after getting latest code and whenever you want to recompile the relea
 
     grunt
 
-or 
+or
 
     grunt prod
 
@@ -284,7 +205,7 @@ You will then be presented with the available template options. Just choose a te
 
 #### Grunt Watch
 
-Watches for changes to HTML, SCSS, and JS files and pushes changes to Release directory. 
+Watches for changes to HTML, SCSS, and JS files and pushes changes to Release directory.
 
 The grunt task looks like this...
 
@@ -297,20 +218,6 @@ The architecure implements a Node Express Server for viewing changes locally
 To start the server simply type the following from the root directory
 
     node begin.js
-
-#### Google PageSpeed Support
-
-The architecure supports Google pageSpeed and is setup to run at the end of each of the default and Prod Grunt tasks.
-
-the task can currently only run against a single page, which is defined in the task config (psi-ngrok) and is set at the root file (./index.html).
-
-However, the task can be run in isolation and a specific file can be passed as a command line parameter.
-
-To run PageSpeed against a specified page, simply run the following from the command line...
-
-    grunt psi-ngrok --path=/pathToDesiredFile
-
-**NOTE:** the Node Express server must be running in order to run test. The test will run, but will not return a valid report.
 
 ## Helpfull Development Links
 
