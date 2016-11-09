@@ -38,6 +38,39 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+
+		/**
+		 * @description grunt task to generate js documentation ******************
+		**/
+		esdoc : {
+			dist : {
+				options: {
+					source: './source/js',
+					destination: './release/esdoc',
+					includes: ['\\.(js|jsx)$'],
+					excludes: ['\\js/lib$'],
+//					access: ['public', 'protected'],
+//					autoPrivate: true,
+					// unexportIdentifier: false,
+					// undocumentIdentifier: true,
+					// builtinExternal: true,
+					// importPathPrefix: '',
+					index: './README.md',
+					package: './package.json',
+					coverage: true,
+					// test: {
+					// 	type: 'mocha',
+					// 	source: './test/src',
+					// 	includes: ['Test\\.(js|es6)$'],
+					// 	excludes: ['\\.config\\.(js|es6)$']
+					// }
+					title: 'My Software Name',
+					// styles: ['./path/to/style.css'],
+					// scripts: ['./path/to/script.js']
+				}
+			}
+		},
+
 		/**
 		 * @description grunt task to generate a sprite from a collection of .png files ******************
 		**/
