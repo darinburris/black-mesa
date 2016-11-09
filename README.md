@@ -12,12 +12,12 @@ _Implements the following technologies_
   + Webpack   
 
 _Supports the following UI automations_   
-  + NPM for package management   
+  + NPM for package management
+  + Webpack for modular JavaScript development for higher quality, more maintainable JS code   
   + Grunt for managing the UI built process   
   + HTML & Accessibility Validation   
   + Sass, CSS Pre-processor   
   + CSS/JS minification   
-  + Webpack for modular JavaScript development for higher quality, more maintainable JS code   
   + JS Linting   
   + JSDoc and Plato for JavaScript documentation and quality reporting   
 
