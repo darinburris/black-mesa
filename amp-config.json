@@ -1,9 +1,7 @@
 {
 	"wpentry"	: {
 		"app"				: "./source/js/app.js",
-		"styleguide"		: "./source/js/styleguide.js",
-		"cdp"				: "./source/js/modules/cdp.js",
-		"client"			: "./source/js/client.js"
+		"cdp"				: "./source/js/modules/cdp.js"
 	},
 	"base"		: {
 		"Instructions"		:	"the base properties are for handling top level key/values pairs related to the architecture",
