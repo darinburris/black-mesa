@@ -159,7 +159,7 @@ The following link provides some good instructions on how to choose the right di
 
     http://guides.beanstalkapp.com/version-control/git-on-windows.html
 
-#### NodeJs (v4.1.1)
+#### NodeJs (v6.0.1)
 
     https://nodejs.org/dist/v4.1.1/node-v4.1.1.pkg
 
@@ -211,13 +211,27 @@ The grunt task looks like this...
 
     grunt watch
 
-#### Node Server
+#### Webpack
 
-The architecure implements a Node Express Server for viewing changes locally
+    Webpack is used to bundle JS modules as well as handle code transpilation.
 
-To start the server simply type the following from the root directory
+    Run webpack from root
 
-    node begin.js
+#### Webpack Dev Server
+
+    The architecure implements a WDS for viewing changes locally and managing JS module bundling in real time.
+
+    To start WDS simply type webpack-dev-server from the root directory.
+
+#### JSON-server
+
+    A fake API server for stubbing out data. The current React implementation relies on this API for store functionality.
+
+    [JSON-Server](https://github.com/typicode/json-server "JSON-Server")
+
+    To start the API server simply type the following from the root directory...
+
+    json-server --watch store.json --port 3009
 
 ## Helpfull Development Links
 
