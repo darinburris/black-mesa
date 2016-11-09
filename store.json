@@ -1168,7 +1168,17 @@
 				"Mens",
 				"Womens",
 				"Kids",
-				"Accessories"
+				"Accessories",
+				"Sale"
+		],
+		"storecategories": [
+				"Mens",
+				"Womens",
+				"Kids",
+				"Accessories",
+				"Sale",
+				"Online Only",
+				"Ship to Store"
 		]
 	}
 }

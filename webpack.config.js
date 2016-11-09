@@ -46,7 +46,7 @@ module.exports = {
 		root: [
 			path.resolve(__dirname, 'node_modules')
 		],
-		modulesDirectories: ['node_modules','./source/js/modules/','./source/js/components/'],
+		modulesDirectories: ['node_modules','source/js/modules/','source/js/components/'],
 		extensions: ['', '.js', '.jsx']
 	},
 	plugins: [
