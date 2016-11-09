@@ -48,7 +48,8 @@ module.exports = function(grunt) {
 					source: './source/js',
 					destination: './release/esdoc',
 					includes: ['\\.(js|jsx)$'],
-					excludes: ['\\js/lib$'],
+					excludes: ["\\lib$"],
+					//excludes: ['\\js/lib$'],
 //					access: ['public', 'protected'],
 //					autoPrivate: true,
 					// unexportIdentifier: false,
@@ -64,7 +65,7 @@ module.exports = function(grunt) {
 					// 	includes: ['Test\\.(js|es6)$'],
 					// 	excludes: ['\\.config\\.(js|es6)$']
 					// }
-					title: 'My Software Name',
+					title: ampConfig.base.appName,
 					// styles: ['./path/to/style.css'],
 					// scripts: ['./path/to/script.js']
 				}

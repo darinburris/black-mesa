@@ -4,6 +4,7 @@
 		"cdp"				: "./source/js/modules/cdp.js"
 	},
 	"base"		: {
+		"appName"			:	"Amp UI",
 		"Instructions"		:	"the base properties are for handling top level key/values pairs related to the architecture",
 		"gitRepo"			: 	"amp-ui-amd",
 		"langCntry"			:	"en-US",
