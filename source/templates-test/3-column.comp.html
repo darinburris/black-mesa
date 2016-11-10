@@ -4,47 +4,48 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>3 Column Component</title>
+		<title>3 Column Template</title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<include file="includes/common/css.html" />
-		<include file="includes/common/css.html" />
-		<script src="/js/lib/webcomponentsjs/webcomponents.min.js"></script>
-
-		<link rel="import" href="/components/date-widget.comp.html">
-		<link rel="import" href="/components/ternary-nav.comp.html">
-		<link rel="import" href="/components/aside-content.comp.html">
-		<link rel="import" href="/components/address-book.comp.html">
+<include file="includes/common/css.html" />
 
 	</head>
 
-	<body role="document" class="three-column" dir="@@direction" id="testy">
+	<body role="document" class="three-column" dir="@@direction">
 
 <include file="includes/common/masthead.html" />
 <include file="includes/common/breadcrumb.html" />
 
 		<main role="main">
 
-			<ternary-nav class="secondary-nav"></ternary-nav>
+			<nav class="secondary-nav" role="navigation">
+
+				<p>Navigation</p>
+
+			</nav>
 
 			<section role="region">
 
 				<h1>Content</h1>
 
-				<date-widget theme="red"></date-widget>
-
-				<p>Beef noodles city ablative semiotics youtube drone face forwards systema knife engine car wonton soup Chiba. Euro-pop rifle film claymore mine convenience store boy towards car grenade bomb range-rover San Francisco bicycle otaku long-chain hydrocarbons media. Shrine faded artisanal dead human receding tanto smart-San Francisco urban soul-delay meta-vehicle realism. </p>
-
-				<p>Assault range-rover neural vehicle dolphin construct camera wristwatch BASE jump footage digital concrete. Vehicle city nodal point apophenia plastic RAF post-faded augmented reality receding human lights tank-traps man urban 8-bit. Footage saturation point singularity-ware Kowloon DIY apophenia render-farm shrine monofilament jeans industrial grade sprawl knife post-denim shoes. Marketing pen futurity 3D-printed fetishism bomb assault nodality weathered car order-flow range-rover refrigerator boat rebar chrome. Otaku tiger-team narrative euro-pop wonton soup alcohol silent rebar tower Chiba order-flow. Dead market dolphin bomb stimulate office beef noodles sensory 8-bit neural apophenia bicycle tower gang tattoo chrome. Tower kanji dissident shrine ablative smart-geodesic receding silent footage towards post. Vinyl-ware long-chain hydrocarbons soul-delay-space denim pre. Paranoid sub-orbital dead drugs BASE jump smart-towards sprawl math-tower carbon vinyl skyscraper. </p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident ducimus libero doloribus, impedit nemo delectus possimus perspiciatis, illum sint alias repudiandae natus nostrum! Modi, reprehenderit voluptates consequuntur et tenetur, odit!</p>
 
 			</section>
 
-			<aside-content role="complementary"></aside-content>
+			<aside role="complementary">
+
+				<h2>Aside Content</h2>
+
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident ducimus libero doloribus, impedit nemo delectus possimus perspiciatis, illum sint alias repudiandae natus nostrum! Modi, reprehenderit voluptates consequuntur et tenetur, odit!</p>
+
+			</aside>
 
 		</main>
 
 <include file="includes/common/footer.html" />
+
+<include file="includes/common/js.html" />
 
 	</body>
 
