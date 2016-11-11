@@ -86,7 +86,6 @@
     "json-server": "^0.8.20",
     "load-grunt-tasks": "~0.6.0",
     "mocha": "^3.1.2",
-    "ngrok": "~0.1.97",
     "node-bourbon": "~4.2.3",
     "node-libs-browser": "^1.0.0",
     "node-neat": "~1.7.2",
