@@ -18,10 +18,6 @@ import List from 'product-list-view';
 // Presentational Component
 export default class ProdList extends React.Component{
 
-	constructor(props) {
-      super(props);
-    }
-
 	componentWillMount() {
 		this.props.dispatch(fetchProducts());
 	}
