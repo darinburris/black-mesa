@@ -5,7 +5,7 @@ export default class MegaNav extends React.Component{
 
 		return (
 
-			<li><a href="#">{this.props.categories}</a></li>
+			<li><a href="/">{this.props.categories}</a></li>
 
 		);
 	}
