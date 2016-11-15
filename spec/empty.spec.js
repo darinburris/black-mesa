@@ -1,5 +1,4 @@
 import expect from 'expect';
-//import ProdList from '../source/js/components/prod-list-presentation-view.jsx';
 
 describe('empty',
 

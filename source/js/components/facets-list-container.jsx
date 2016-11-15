@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 // import actions
 import { fetchCats } from '../actions/cdpActions';
+import FacetsList from 'facets-list-view';
 
 @connect(
 	(store) => {
@@ -32,7 +33,7 @@ export default class Facets extends React.Component{
 
 				_cats.push(
 
-					<li key={key}><a href="#">{cats[key]}</a></li>
+					<FacetsList key={key} categories={cats[key]} />
 
 				);
 

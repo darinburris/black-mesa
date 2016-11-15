@@ -248,20 +248,6 @@ module.exports = function(grunt) {
 			target: ['<%= sourceDir %>/js/**/*.js','<%= sourceDir %>/js/**/*.jsx', '!<%= releaseDir %>/js/lib/**/*.js', '!<%= sourceDir %>/js/lib/**/*.js']
 		},
 		/**
-		 *  @description grunt task generates jsdoc documentation
-		 */
-		jsdoc: {
-			dist: {
-				jsdoc: 'node_modules/.bin/jsdoc',
-				src: ['<%= sourceDir %>/js/**/*.js','!<%= releaseDir %>/js/**/*.js', 'README.md', '!<%= releaseDir %>/js/lib/**/*.js', 'Gruntfile.js', '!<%= releaseDir %>/js/amp.js'],
-				options: {
-					destination: 'reports/jsdocs',
-					template: 'node_modules/ink-docstrap/template',
-					configure: 'jsdoc.json'
-				}
-			}
-		},
-		/**
 		 *  @description grunt task minifies/obfuscates/concatinates js files
 		 */
 		uglify: {
@@ -444,7 +430,7 @@ module.exports = function(grunt) {
 				files: [
 					ampConfig.base.sourceDir + '/js/**/*', '!' + ampConfig.base.sourceDir + '/js/lib/**'
 				],
-				tasks: ['eslint'],
+				tasks: ['eslint','mochaTest'],
 				options: {
 					spawn: true
 				}
@@ -458,6 +444,15 @@ module.exports = function(grunt) {
 					spawn: false
 				}
 			}
+		},
+		mochaTest: {
+			test: {
+				options: {
+					reporter: 'spec',
+					require: 'babel-register'
+				},
+				src: ['spec/**/*.js']
+			}
 		}
 	});
 
@@ -470,7 +465,7 @@ module.exports = function(grunt) {
 		function() {
 			grunt.config.set('taskName', this.name);
 			grunt.task.run(
-				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','sprite', 'sass:dist','copy:buildJS','clean:postRelease']//'rjsReplace', , 'jscs'
+				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','sprite', 'sass:dist','copy:buildJS','clean:postRelease','mochaTest']//'rjsReplace', , 'jscs'
 			);
 		}
 	);

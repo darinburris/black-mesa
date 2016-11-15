@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 
 // import views
-import MegaNav from 'mega-nav-container';
+import MegaNav from 'mega-nav-list-container';
 
 // DOM rendering
 ReactDOM.render(
