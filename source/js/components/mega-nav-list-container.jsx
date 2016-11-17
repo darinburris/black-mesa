@@ -6,6 +6,9 @@ import { connect } from 'react-redux';
 import { fetchStoreCats } from '../actions/globalActions';
 import MageNavListItem from 'mega-nav-list-view';
 
+var	isOpen,
+	parentClasses;
+
 @connect(
 	(store) => {
 		return {
@@ -20,6 +23,27 @@ export default class Facets extends React.Component{
 	componentDidMount(){
 
 		this.props.dispatch(fetchStoreCats());
+
+	}
+
+	handleClick(event) {
+		var el = event.target,
+			parent = el.parentElement;
+
+		function removeClass(classToRemove){
+			parent.classList.remove(classToRemove);
+		}
+
+		parentClasses = parent.className;
+		isOpen = parentClasses.indexOf('open');
+
+		if(isOpen === -1){
+			parent.className += ' open';
+		} else {
+			removeClass('open');
+		}
+
+		// setTimeout(removeClass('open'), 5000);
 
 	}
 
@@ -41,7 +65,10 @@ export default class Facets extends React.Component{
 
 		return (
 
-			<ul className="primary-nav-items">{_cats}</ul>
+			<ul className="primary-nav-items">
+				<li className="menu-link" onClick={this.handleClick.bind(this)}>Open Menu</li>
+				{_cats}
+			</ul>
 
 		);
 
