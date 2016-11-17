@@ -66,7 +66,7 @@ export default class Facets extends React.Component{
 		return (
 
 			<ul className="primary-nav-items">
-				<li className="menu-link" onClick={this.handleClick.bind(this)}>Open Menu</li>
+				<li className="menu-link" onClick={this.handleClick.bind(this)} tabIndex="0" role="button">Open Menu</li>
 				{_cats}
 			</ul>
 

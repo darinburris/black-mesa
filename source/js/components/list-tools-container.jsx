@@ -85,12 +85,12 @@ export default class Tools extends React.Component{
 				<legend></legend>
 
 				<label htmlFor="sortOrder">Sort by:</label>
-				<select id="sortOrder" defaultValue="0" onBlur={this.handleSort.bind(this)}>
+				<select id="sortOrder" defaultValue="0" onChange={this.handleSort.bind(this)}>
 					{filterOptions}
 				</select>
 
 				<label htmlFor="view">View:</label>
-				<select id="view" defaultValue="0" onBlur={this.handleView.bind(this)}>
+				<select id="view" defaultValue="0" onChange={this.handleView.bind(this)}>
 					{viewOptions}
 				</select>
 
