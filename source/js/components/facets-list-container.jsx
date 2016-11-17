@@ -43,7 +43,7 @@ export default class Facets extends React.Component{
 
 		return (
 
-			<ul className="facets">{_cats}</ul>
+			<ul className="facets" role="group">{_cats}</ul>
 
 		);
 
