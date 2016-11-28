@@ -217,11 +217,15 @@ Webpack is used to bundle JS modules as well as handle code transpilation.
 
 Run webpack from root
 
+    webpack
+
 #### Webpack Dev Server
 
 The architecure implements a WDS for viewing changes locally and managing JS module bundling in real time.
 
 To start WDS simply type webpack-dev-server from the root directory.
+
+    webpack-dev-server
 
 #### JSON-server
 
