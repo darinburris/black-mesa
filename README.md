@@ -18,8 +18,8 @@ _Supports the following UI automations_
   + HTML & Accessibility Validation   
   + Sass, CSS Pre-processor   
   + CSS/JS minification   
-  + JS Linting   
-  + JSDoc and Plato for JavaScript documentation and quality reporting   
+  + ES Linting   
+  + ESDoc for JavaScript documentation
 
 ## Folder Structure
 
@@ -115,17 +115,17 @@ The Package.json file contains packaging instructions for NodeJS in regards to t
 
 The amp-config.json file contains project specific configurations. Changes in this file can be modified to fit the specifics of any given project without the need to modify the Grintfile.js file.
 
-#### jsdoc.json
+#### .eslintrc
 
-Used to customise JSDoc's behaviour
+Config file for eslint task.
 
-#### begin.js
+#### ESDoc
 
-begin.js file is used for starting the Node/Express server. At the command prompt type node begin.js.
+JavaScript documentation generated via ESDoc. Currently, generation is done via a standalone grunt task...
 
-#### .jshintrc & .jshintrcGrunt
+    grunt esdoc
 
-Config files for jshint tasks. The Grunt version has some additional leniency backed in.
+Generated documentation can be viewed by visiting http://localhost:[port]/esdoc/index.html once documentation generation has been completed.
 
 #### .gitignore
 
@@ -136,7 +136,7 @@ Example, /release, /node_modules, .sass-cache, validation_report
 
 The README.md file contains highj level details about the Amp UI Repository.
 
-### ./Source/
+### ./source/
 
 Source contains all the working copies of the UI Code base. These files are to be processed using Grunt tasks and deployed
 to a /release folder in each environment based on environment specific instructions.
@@ -170,6 +170,14 @@ The following link provides some good instructions on how to choose the right di
 #### Grunt
 
     http://gruntjs.com/getting-started
+
+#### Webpack
+
+    https://webpack.github.io/
+
+#### Sass
+
+    http://sass-lang.com/
 
 ### Process for builds
 
@@ -217,11 +225,15 @@ Webpack is used to bundle JS modules as well as handle code transpilation.
 
 Run webpack from root
 
+    webpack
+
 #### Webpack Dev Server
 
 The architecure implements a WDS for viewing changes locally and managing JS module bundling in real time.
 
 To start WDS simply type webpack-dev-server from the root directory.
+
+    webpack-dev-server
 
 #### JSON-server
 
@@ -237,4 +249,4 @@ To start the API server simply type the following from the root directory...
 
   * [Nice Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet "Nice Markdown Cheatsheet")
   * [Information on code complexity and how it is measured](http://jscomplexity.org/ "Information on code complexity and how it is measured")
-  * [JSDoc Ducmentation](http://usejsdoc.org/ "JSDoc Ducmentation")
+  * [ESDoc Documentation](https://esdoc.org/ "JSDoc Ducmentation")

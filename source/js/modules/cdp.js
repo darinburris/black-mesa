@@ -7,10 +7,10 @@ import { Provider } from 'react-redux';
 import store from '../store';
 
 // import views
-import Layout from 'prod-list-layout-view';
-import Facets from 'facets-view';
-import Tools from 'list-tools';
-import ProdList from 'prod-list-presentation-view';
+import Layout from 'prod-list-layout';
+import Facets from 'facets-list-container';
+import Tools from 'list-tools-container';
+import ProdList from 'prod-list-container';
 
 // DOM rendering
 ReactDOM.render(

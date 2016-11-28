@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 // import actions
 import { fetchProducts } from '../actions/cdpActions';
 
+import List from 'product-list-view';
+
 @connect(
 	(store) => {
 		return {
@@ -41,22 +43,14 @@ export default class ProdList extends React.Component{
 
 					prods.push(
 
-						<li itemScope itemType="http://schema.org/Product" key={_products[key].id}>
-
-							<figure>
-								<a href={_products[key].url}>
-									<img itemProp="image" src={_products[key].src} alt={altText} />
-									<figcaption>
-
-										<p itemProp="name" className="product-name">{_products[key].name}</p>
-										<data itemProp="price" value={_products[key].price}>${_products[key].price}</data>
-										<p className="colors">Available in {_products[key].colors} colors</p>
-
-									</figcaption>
-								</a>
-							</figure>
-
-						</li>
+						<List
+							key={_products[key].id}
+							href={_products[key].url}
+							src={_products[key].src}
+							alt={altText}
+							name={_products[key].name}
+							price={_products[key].price}
+							colors={_products[key].colors} />
 
 					);
 

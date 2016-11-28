@@ -38,6 +38,40 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+
+		/**
+		 * @description grunt task to generate js documentation ******************
+		**/
+		esdoc : {
+			dist : {
+				options: {
+					source: './source/js',
+					destination: './release/esdoc',
+					includes: ['\\.(js|jsx)$'],
+					excludes: ["\\lib$"],
+					//excludes: ['\\js/lib$'],
+//					access: ['public', 'protected'],
+//					autoPrivate: true,
+					// unexportIdentifier: false,
+					// undocumentIdentifier: true,
+					// builtinExternal: true,
+					// importPathPrefix: '',
+					index: './README.md',
+					package: './package.json',
+					coverage: true,
+					// test: {
+					// 	type: 'mocha',
+					// 	source: './test/src',
+					// 	includes: ['Test\\.(js|es6)$'],
+					// 	excludes: ['\\.config\\.(js|es6)$']
+					// }
+					title: ampConfig.base.appName,
+					// styles: ['./path/to/style.css'],
+					// scripts: ['./path/to/script.js']
+				}
+			}
+		},
+
 		/**
 		 * @description grunt task to generate a sprite from a collection of .png files ******************
 		**/
@@ -47,49 +81,6 @@ module.exports = function(grunt) {
 				dest: 'release/img/sprites.png',
 				destCss: 'source/scss/_sprites.scss',
 				imgPath: '../img/sprites.png'
-			}
-		},
-		/**
-		 *   @description grunt task validates markup using vnu.jar markup checker (https://validator.github.io/validator/).
-		**/
-		htmllint: {
-			all: {
-				options: {
-					force: true,
-					errorlevels: ['warning','error'],
-					reporter: 'json',
-					reporterOutput: 'reports/validation/html-validation.json'
-				},
-				src: 'release/**/*.html'
-			}
-		},
-
-		/**
-		 *   @description grunt task validates markup against WCAG2.0 AA accessibility guidelines
-		**/
-		accessibility: {
-			options: {
-				accessibilityrc: true,
-				verbose: false,
-				accessibilityLevel: ampConfig.quality.wcag,
-				reportType: 'json',
-				domElement: true,
-				force: true,
-				reportLocation: 'reports/accessibility',
-				reportLevels: {
-					notice: false,
-					warning: false,
-					error: true
-				}
-			},
-			test: {
-				files: [{
-					expand: true,
-					cwd: ampConfig.base.releaseDir,
-					src: ['**/*.html']//,
-//					dest: ampConfig.quality.wcagDir,
-//					ext: ampConfig.quality.wcagExt
-				}]
 			}
 		},
 		/**
@@ -125,64 +116,6 @@ module.exports = function(grunt) {
 			}
 		},
 		/**
-		 * @description grunt task Analyze your CSS using parker.
-		 */
-		parker: {
-			options: {
-				metrics: [
-					'TotalStylesheets',
-					'TotalStylesheetSize',
-					'TotalRules',
-					'TotalSelectors',
-					'TotalIdentifiers',
-					'TotalDeclarations',
-					'SelectorsPerRule',
-					'IdentifiersPerSelector',
-					'SpecificityPerSelector',
-					'TopSelectorSpecificity',
-					'TopSelectorSpecificitySelector',
-					'TotalIdSelectors',
-					'TotalUniqueColours',
-					'UniqueColours',
-					'TotalImportantKeywords',
-					'TotalMediaQueries',
-					'MediaQueries'
-				],
-				file: 'reports/css/report.md',
-				colophon: true,
-				usePackage: false
-			},
-			src: [
-				'release/css/**/*.css'
-			]
-		},
-		/**
-		 * @description grunt task takes a set of markdown files and converts them to HTML
-		 */
-		markdown: {
-			all: {
-				files: [
-					{
-						expand: true,
-						src: 'reports/css/report.md',
-						colophon: true,
-						ext: '.html'
-					}
-				],
-				options: {
-					template: 'reportsBaseFiles/_parker.html',
-					markdownOptions: {
-						gfm: true,
-						highlight: 'manual',
-						codeLines: {
-							before: '<span>',
-							after: '</span>'
-						}
-					}
-				}
-			}
-		},
-		/**
 		 * @description grunt task minimizes css files
 		 */
 		cssmin: {
@@ -195,16 +128,6 @@ module.exports = function(grunt) {
 			}
 		},
 		/**
-		 *  @description grunt jscs code style linter and formatter for your style guide
-		 */
-		jscs: {
-			src: 'source/js/modules/**/*.js',
-			options: {
-				config: '.jscsrc',
-				fix: false
-			}
-		},
-		/**
 		 *  @description grunt task for linting js and jsx code
 		 */
 		eslint: {
@@ -212,20 +135,6 @@ module.exports = function(grunt) {
 				configFile: '.eslintrc'
 			},
 			target: ['<%= sourceDir %>/js/**/*.js','<%= sourceDir %>/js/**/*.jsx', '!<%= releaseDir %>/js/lib/**/*.js', '!<%= sourceDir %>/js/lib/**/*.js']
-		},
-		/**
-		 *  @description grunt task generates jsdoc documentation
-		 */
-		jsdoc: {
-			dist: {
-				jsdoc: 'node_modules/.bin/jsdoc',
-				src: ['<%= sourceDir %>/js/**/*.js','!<%= releaseDir %>/js/**/*.js', 'README.md', '!<%= releaseDir %>/js/lib/**/*.js', 'Gruntfile.js', '!<%= releaseDir %>/js/amp.js'],
-				options: {
-					destination: 'reports/jsdocs',
-					template: 'node_modules/ink-docstrap/template',
-					configure: 'jsdoc.json'
-				}
-			}
 		},
 		/**
 		 *  @description grunt task minifies/obfuscates/concatinates js files
@@ -410,7 +319,7 @@ module.exports = function(grunt) {
 				files: [
 					ampConfig.base.sourceDir + '/js/**/*', '!' + ampConfig.base.sourceDir + '/js/lib/**'
 				],
-				tasks: ['eslint'],
+				tasks: ['eslint','mochaTest'],
 				options: {
 					spawn: true
 				}
@@ -424,6 +333,15 @@ module.exports = function(grunt) {
 					spawn: false
 				}
 			}
+		},
+		mochaTest: {
+			test: {
+				options: {
+					reporter: 'spec',
+					require: ['babel-register']
+				},
+				src: ['spec/**/*.js']
+			}
 		}
 	});
 
@@ -436,47 +354,8 @@ module.exports = function(grunt) {
 		function() {
 			grunt.config.set('taskName', this.name);
 			grunt.task.run(
-				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','sprite', 'sass:dist', 'copy:buildJS','clean:postRelease']//'rjsReplace', , 'jscs'
+				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','sprite', 'sass:dist','copy:buildJS','clean:postRelease','mochaTest']//'rjsReplace', , 'jscs'
 			);
-		}
-	);
-	/**
-	 * @description This task omits the ccsmin and uglify tasks for debugging purposes, includes JSDoc
-	 */
-	grunt.registerTask(
-		'dev',
-		'This task omits the ccsmin and uglify tasks for debugging purposes',
-		function() {
-			grunt.config.set('taskName', this.name);
-			grunt.task.run(
-				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','sprite', 'sass:dist', 'copy:buildJS','clean:postRelease']//'rjsReplace', , 'jscs'
-			);
-		}
-	);
-	/**
-	 *  @description QA task(s), Reporting on code quality, css/js minification. Must be run cleanly prior to a Prod build
-	 */
-	grunt.registerTask(
-		'qa',
-		'QA task(s), includes css/js minification',
-
-		function() {
-			grunt.config.set('taskName', this.name);
-			grunt.task.run(
-				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC', 'reports', 'sprite', 'sass:dist', 'cssmin', 'copy:buildJS', 'strip', 'babel', 'jscs','uglify','jsdoc','clean:postRelease']);
-		}
-	);
-
-	/**
-	 *  @description Production task(s), includes css/js minification, excludes JSDoc and Plato tasks
-	 */
-	grunt.registerTask(
-		'prod',
-		'Production task(s), includes css/js minification',
-		function() {
-			grunt.config.set('taskName', this.name);
-			grunt.task.run(
-				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC', 'sprite', 'sass:dist', 'cssmin', 'copy:buildJS', 'strip', 'uglify','jsdoc','clean:postRelease']);
 		}
 	);
 
@@ -596,110 +475,7 @@ module.exports = function(grunt) {
 			grunt.task.run('replace:toc');
 		}
 	});
-	/**
-	 * @description Fails build if validation and accessability errors were found.\nThis allows for the tasks to complete, and reports to be generated, while haulting the build from completion if errors are present.
-	 */
-	grunt.registerTask('failHard', 'Fails build if validation and accessability errors were found.\nThis allows for the tasks to complete, and reports to be generated, while haulting the build from completion if errors are present.', function() {
-		var error = 'There were validation and/or accessibility errors found in your code.\nYou can view them at http://localhost:3000/views\n\n\n\n',
-			validationReport = grunt.file.read(ampConfig.quality.w3cStatusDir),
-			accessibilityReport = grunt.file.read(ampConfig.quality.wcagBaseFile),
-			isValidationError = validationReport.indexOf(':false') === -1 ? false : true,
-			isAccessibilityError = accessibilityReport.indexOf('ERROR') === -1 ? false : true;
-		console.log(isValidationError + ', ' + isAccessibilityError);
-		if (isValidationError || isAccessibilityError) {
-			grunt.fail.fatal(error);
-		} else {
-			grunt.task.run('clean:reports');
-		}
-	});
-	/**
-	 * @description Running and Generating W3C/WCAG Reports
-	 */
-	grunt.registerTask('reports', 'Running and Generating W3C/WCAG Reports', function() {
-		var fsx = require('fs-extra'),
-			path = require('path'),
-			fs = require('fs'),
-			reportsDir = ampConfig.base.reportsDir,
-			reportsViewsDir = ampConfig.base.reportsViewsDir,
-			reportsTempDir = ampConfig.base.reportsTempDir,
-			reportsViewPath = path.join(reportsDir, reportsViewsDir);
-		fsx.mkdirsSync(path.join(reportsDir, reportsViewsDir));
-		fsx.copySync(reportsTempDir, reportsViewPath);
-		grunt.task.run(['accessibility','htmllint','parker','markdown']);//, 'BuildWCAGJSON'
-	});
-	/**
-	 * @description Includes framework for dynamically including static html content into files from external html files
-	 */
-	grunt.registerTask('buildWCAGJSON', 'Build json file from the collective accessibility reports.', function() {
-		var fs = require('fs'),
-			glob = require('glob'),
-			path = require('path'),
-			jsonIN = '[',
-			jsonBODY,
-			jsonOUT = ']',
-			jsonFINAL,
-			rawData,
-			data,
-			reportSection,
-			list,
-			files,
-			html;
-		var walk = function(dir) {
-			list = fs.readdirSync(dir);
-			var newI;
-			for (var i = 0; i < list.length; i++) {
-				newI = i + 1;
-				if ((fs.lstatSync(dir + '/' + list[i]).isDirectory())) {
-					reportSection = list[i];
-					if (i === 0) {
-						jsonBODY = '{';
-						jsonBODY = jsonBODY += '"section":"' + reportSection + '",';
-						jsonBODY = jsonBODY += '"fileData":[';
-						jsonBODY = jsonBODY += '{';
-					} else {
-						jsonBODY = jsonBODY += '{';
-						jsonBODY = jsonBODY += '"section":"' + reportSection + '",';
-						jsonBODY = jsonBODY += '"fileData":[';
-						jsonBODY = jsonBODY += '{';
-					}
-					glob(dir + '/' + list[i] + '/**/*.json', {
-						strict: true,
-						sync: true,
-						stat: true,
-						cwd: __dirname
-					}, function(er, files) {
-						var newJ;
-						for (var j = 0; j < files.length; j++) {
-							newJ = j + 1;
-							if ((fs.lstatSync(files[j]).isFile())) {
-								var reportFile = files[j].replace('-report-dom.json', '.html'),
-									reportFile = path.basename(reportFile);
-								rawData = fs.readFileSync(files[j]);
-								data = JSON.parse(rawData);
-								data = JSON.stringify(data);
-								jsonBODY = jsonBODY += '"file":"' + reportFile + '",';
-								jsonBODY = jsonBODY += '"report":';
-								jsonBODY = jsonBODY += data;
-								if (newJ < files.length) {
-									jsonBODY = jsonBODY += '},{';
-								} else if (newJ === files.length) {
-									jsonBODY = jsonBODY += '}]';
-								}
-							}
-						}
-					});
-					if (newI < list.length) {
-						jsonBODY = jsonBODY += '},';
-					} else if (newI === list.length) {
-						jsonBODY = jsonBODY += '}';
-					}
-				}
-			}
-			jsonFINAL = jsonIN + jsonBODY;
-			jsonFINAL = jsonFINAL + jsonOUT;
-			fs.writeFileSync('reports/accessibility.json', jsonFINAL);
-			grunt.task.run(['failHard']);
-		};
-		walk('reports/accessibility');
-	});
+
+
+
 };

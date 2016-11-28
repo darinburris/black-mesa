@@ -7,7 +7,8 @@
     "globals": {
     },
     "plugins": [
-        "react"
+        "react",
+        "jsx-a11y"
     ],
     "parserOptions": {
         "ecmaVersion": 6,
@@ -28,6 +29,27 @@
         "react/no-did-mount-set-state": 1,
         "react/no-did-update-set-state": 1,
         "react/no-direct-mutation-state": 1,
+        // React a11y rules
+        "jsx-a11y/href-no-hash":[2, {"components": [ "Link" ],"specialLink": [ "hrefLeft", "hrefRight" ]}],
+        "jsx-a11y/aria-props": 2,
+        "jsx-a11y/aria-proptypes": 2,
+        "jsx-a11y/html-has-lang": 2,
+        "jsx-a11y/aria-role": 2,
+        "jsx-a11y/img-has-alt": [ 2, {"components": [ "Image" ],}],
+        "jsx-a11y/img-redundant-alt": 2,
+        "jsx-a11y/label-has-for": [ 2, {"components": [ "Label" ],}],
+        "jsx-a11y/lang": 2,
+        "jsx-a11y/mouse-events-have-key-events": 2,
+        "jsx-a11y/no-access-key": 2,
+        "jsx-a11y/no-marquee": 2,
+        "jsx-a11y/no-onchange": 0,
+        "jsx-a11y/no-static-element-interactions": 0,
+        "jsx-a11y/onclick-has-focus": 2,
+        "jsx-a11y/onclick-has-role": 2,
+        "jsx-a11y/role-has-required-aria-props": 2,
+        "jsx-a11y/role-supports-aria-props": 2,
+        "jsx-a11y/scope": 2,
+        "jsx-a11y/tabindex-no-positive": 2,
         // Possible Errors
         "comma-dangle": [2, "never"],
         "no-cond-assign": 2,
@@ -165,7 +187,7 @@
         "wrap-regex": 0,
         // Legacy
         "max-depth": 0,
-        "max-len": [2, 200],
+        "max-len": [2, 400],
         "max-params": 0,
         "max-statements": 0,
         "no-plusplus": 0

@@ -32,6 +32,8 @@ footer{
 
 .primary-nav{
 	padding: 0;
+	min-height: rem(38);
+
 }
 
 .primary-nav-items{
@@ -43,6 +45,36 @@ footer{
 
 	@include media($large-phone-down) {
 		display: block;
+		max-height: rem(36);
+		overflow: hidden;
+		transition: max-height 0.15s ease-out;
+
+		&.open{
+			max-height: 500px;
+			transition: max-height 0.25s ease-in;
+		}
+
+		li{
+
+			display: block;
+			margin-left: rem(20);
+			text-align: left;
+
+			&:first-child{
+				background-color: inherit;
+				margin-left: rem(20);
+			}
+
+			&:hover{
+				background-color: inherit;
+			}
+
+			a{
+				color: white;
+			}
+
+		}
+
 	}
 
 	li{
@@ -61,7 +93,7 @@ footer{
 		}
 
 		&:hover{
-			background-color: $grey2;
+			background-color: #ccc;
 
 			a{
 				color: $brand-blue;
@@ -69,19 +101,10 @@ footer{
 
 		}
 
-		@include media($large-phone-down) {
+		&.menu-link{
+			background-color: inherit;
+			color: white;
 
-			display: block;
-
-			text-align: left;
-
-			&:first-child{
-				margin-left: rem(20);
-			}
-
-			&:not(:first-child){
-				display:none;
-			}
 		}
 
 	}
@@ -376,4 +399,12 @@ footer[role="contentinfo"]{
 		width: 100%;
 	}
 
+}
+
+
+.menu-link{
+	display: none;
+	@include media($large-phone-down) {
+		display: list-item;
+	}
 }
