@@ -1,14 +1,12 @@
-/**
-* Base styles
-* Think of these as any style whose treatment is consistant accross the site, or are used globally on every page, such as priomary or utility navigation styles
-* For example: copy text would alkways have a base color of #000, or any <a> would have a base color of #0070AF
-*/
+// Base styles
+// Think of these as any style whose treatment is consistant accross the site, or are used globally on every page, such as priomary or utility navigation styles
+// For example: copy text would alkways have a base color of #000, or any <a> would have a base color of #0070AF
 
-#tocList{
+.toc-list {
 
-	li{
+	li {
 
-		&:last-child{
+		&:last-child {
 			margin-bottom: rem(20);
 		}
 
@@ -23,128 +21,132 @@ body {
 	font-weight: 300;
 }
 
-a{
+a {
 	color: $color-TextLinks;
 	text-decoration: none;
 }
 
-a:hover{
-	text-decoration: underline;
-}
-
-main a{
-	font-size: 12px;
-}
-
-p{
-	line-height: 1.4;
-	font-size: 1rem;
-}
-
-h1,h2,h3,h4,h5,h6{
-	margin-top: 0;
-}
-
-h1{
-	font-size: 27px;
-}
-
-h2{
-	font-size: 24px;
-}
-
-img + h2{
-	margin-top: 20px;
-}
-
-h2{
-	font-size: 20px;
-}
-
-h3{
-	font-size: 18px;
-}
-
-h4{
-	font-size: 16px;
-}
-
-h5{
-	font-size: 14px;
-}
-
-h6{
-	font-size: 12px;
+a{
+	:hover {
+		text-decoration: underline;
+	}
 }
 
 main{
+	a {
+		font-size: 12px;
+	}
+}
 
-	h1{
+p {
+	font-size: 1rem;
+	line-height: 1.4;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin-top: 0;
+}
+
+h1 {
+	font-size: 27px;
+}
+
+h2 {
+	font-size: 24px;
+}
+
+img + h2 {
+	margin-top: 20px;
+}
+
+h2 {
+	font-size: 20px;
+}
+
+h3 {
+	font-size: 18px;
+}
+
+h4 {
+	font-size: 16px;
+}
+
+h5 {
+	font-size: 14px;
+}
+
+h6 {
+	font-size: 12px;
+}
+
+main {
+
+	h1 {
 		margin-top: 0;
 	}
 
 }
 
-ul{
+ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 
-	li{
+	li {
 		vertical-align: top;
 	}
 
 }
 
-figure{
+figure {
 	margin: 0;
 }
 
-.clear{
+.clear {
 	@include clearfix();
 }
 
 .util-nav-items,
-.util-nav .sign-in{
+.util-nav .sign-in {
 	display: inline-block;
 	margin: 0;
 }
 
 .util-nav div,
-.cart-links{
+.cart-links {
 	text-align: right;
 	white-space: nowrap;
 }
 
-.primary-nav-items{
+.primary-nav-items {
 	display: table;
 }
 
-.primary-nav-items{
+.primary-nav-items {
 	width: 100%;
 }
 
 .util-nav-items li,
 .sign-in,
-.mini-cart{
+.mini-cart {
 	line-height: rem(30);
 	margin-right: rem(10);
 	white-space: nowrap;
 }
 
-.util-nav-items li:after{
+.util-nav-items li:after {
 	content: "|";
 	color: $util-nav-items-seperator-color;
 	margin-left:10px;
 }
 
 .util-nav-items li,
-.breadcrumb-nav-items li{
+.breadcrumb-nav-items li {
 	display: inline-block;
 	white-space: nowrap;
 }
 
-.breadcrumb-nav-items li:after{
+.breadcrumb-nav-items li:after {
 	content: "\203A";
 	font-size: 18px;
 	line-height: 0;
@@ -152,29 +154,29 @@ figure{
 }
 
 .breadcrumb-nav-items li,
-.breadcrumb-nav-items li a{
+.breadcrumb-nav-items li a {
 	color: #000;
 	font-size: 12px;
 	font-weight: 800;
 }
 
-.breadcrumb-nav-items li{
+.breadcrumb-nav-items li {
 	font-weight: 400;
 }
 
 .util-nav-items li:last-child:after,
-.breadcrumb-nav-items li:last-child:after{
+.breadcrumb-nav-items li:last-child:after {
 	content: "";
 	margin: 0;
 }
 
-.primary-nav-items li{
+.primary-nav-items li {
 	line-height: 36px;
 	text-align: center;
 	text-transform: capitalize;
 	white-space: nowrap;
 
-	a{
+	a {
 
 		font-size: .8rem;
 
@@ -182,12 +184,8 @@ figure{
 
 }
 
-/**
-*
-* Button styles
-*
-*/
-.btn{
+// Button styles
+.btn {
 	border: 2px solid inherit;
 	color: $black;
 	font-size: 12px;
@@ -201,14 +199,14 @@ figure{
 	@include border-radius(5px);
 }
 
-.btn-primary{
+.btn-primary {
 	@extend .btn;
 	background-color: $color-BgCheckoutBtn;
 	border: 2px solid $color-BgCheckoutBtn;
 	display: inline-block;
 }
 
-.btn-primary:hover{
+.btn-primary:hover {
 	background-color: white;
 	border: 2px solid $color-BgCheckoutBtn;
 	color: $color-BgCheckoutBtn;
@@ -216,7 +214,7 @@ figure{
 	text-decoration: none;
 }
 
-.btn-secondary{
+.btn-secondary {
 	@extend .btn;
 	background-color: $color-Buttons1;
 	border: 2px solid $color-Buttons1;
@@ -224,14 +222,14 @@ figure{
 	display: inline-block;
 }
 
-.btn-secondary:hover{
+.btn-secondary:hover {
 	background-color: white;
 	border: 2px solid $color-Buttons1;
 	color: $color-Buttons1;
 	text-decoration: none;
 }
 
-.btn-email{
+.btn-email {
 	@extend .btn;
 	background-color: $color-BgCheckoutBtn;
 	border: 2px solid $color-BgCheckoutBtn;
@@ -244,7 +242,7 @@ figure{
 	padding-bottom: 6px;
 }
 
-.btn-email:hover{
+.btn-email:hover {
 	background-color: white;
 	border: 2px solid $color-BgCheckoutBtn;
 	color: $color-BgCheckoutBtn;
@@ -263,7 +261,7 @@ figure{
 	width:  rem(17);
 }
 
-.btn-search:hover{
+.btn-search:hover {
 	background: transparent url($icon-search-image) $icon-search-offset-x $icon-search-offset-y  no-repeat;
 }
 
@@ -293,23 +291,23 @@ div.box {
 	@include animation-iteration-count(infinite);
 }
 
-.logo{
+.logo {
 	font-size: rem(64);
 	font-weight: 100;
 	margin: 0;
 
-	a{
+	a {
 		text-shadow: 0 rem(2) rem(2) $grey2;
 		color: $black;
 		text-decoration: none;
 
-		&:hover{
+		&:hover {
 			color: $brand-blue;
 		}
 
 	}
 
-	img{
+	img {
 		width: rem(220);
 	}
 
