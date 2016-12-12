@@ -387,7 +387,7 @@ footer {
 
 footer {
 
-	[role='contentinfo'] {
+	&[role='contentinfo'] {
 
 		@include media($large-phone-down) {
 			background-color: $white;
