@@ -38,7 +38,20 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-
+		/**
+		 *   @description grunt task validates markup using vnu.jar markup checker (https://validator.github.io/validator/).
+		**/
+		htmllint: {
+			all: {
+				options: {
+					force: true,
+					errorlevels: ['warning','error'],
+					reporter: 'json',
+					reporterOutput: 'reports/validation/html-validation.json'
+				},
+				src: 'release/**/*.html'
+			}
+		},
 		/**
 		 * @description grunt task to generate js documentation ******************
 		**/

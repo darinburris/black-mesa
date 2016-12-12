@@ -19,7 +19,7 @@ legend {
 label {
 	font-size: 12px;
 
-	[for='globaleSearch'] {
+	&[for='globaleSearch'] {
 		display: none;
 	}
 
