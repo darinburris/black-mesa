@@ -6,7 +6,7 @@
 	"base"		: {
 		"appName"			:	"Amp UI",
 		"Instructions"		:	"the base properties are for handling top level key/values pairs related to the architecture",
-		"gitRepo"			: 	"amp-ui-amd",
+		"gitRepo"			: 	"amp-ui",
 		"langCntry"			:	"en-US",
 		"direction"			:	"ltr",
 		"sourceDir"			: 	"source",
@@ -18,8 +18,8 @@
 		"reportsViewsDir" 	: 	"views",
 		"reportsIndex" 		: 	"_base.html",
 		"reportsJs" 		: 	"reports.js",
-		"templateBaseFiles" 	: 	"templateBaseFiles",
-		"rjs"				:	"bower_components/requirejs-bower/require.js"
+		"templateBaseFiles" : 	"templateBaseFiles",
+		"apiServer"		:	"http://172.16.16.117"
 	},
 	"quality" 			: {
 		"Instructions"		:	"the quality properties are for handling key/values pairs related to the code quality",
