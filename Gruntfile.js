@@ -286,6 +286,23 @@ module.exports = function(grunt) {
 					dest: ampConfig.base.releaseDir
 				}]
 			},
+			api: {
+				options: {
+					patterns: [
+						{
+							match: /http:\/\/localhost/g,
+							replacement: ampConfig.base.apiServer
+						}
+					]
+				},
+				files: [{
+					expand: true,
+					cwd: ampConfig.base.releaseDir,
+					flatten: false,
+					src: ['js/actions/**/*'],
+					dest: ampConfig.base.releaseDir
+				}]
+			},
 			toc: {
 				options: {
 					patterns: [{
@@ -395,7 +412,7 @@ module.exports = function(grunt) {
 		'This task used for jenkins builds',
 		function() {
 			grunt.task.run(
-				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','sprite','sasslint','sass:dist','copy:buildJS','clean:postRelease','mochaTest']//'rjsReplace', , 'jscs'
+				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize','replace:api','genTOC','sprite','sasslint','sass:dist','copy:buildJS','clean:postRelease','mochaTest']//'rjsReplace', , 'jscs'
 			);
 		}
 	);
