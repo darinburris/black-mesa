@@ -7,7 +7,7 @@ module.exports = {
 	entry: entry,
 	output: {
 		path: path.resolve(__dirname, './release/js'),
-		publicPath: '/js/',
+		publicPath: 'http://172.16.16.117:9080/js/',
 		filename: '[name].js'
 	},
 	devServer : {
