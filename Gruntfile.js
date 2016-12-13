@@ -387,6 +387,19 @@ module.exports = function(grunt) {
 		}
 	);
 
+	/**
+	 * @description This task omits the ccsmin and uglify tasks for debugging purposes, includes JSDoc
+	 */
+	grunt.registerTask(
+		'jenkins',
+		'This task used for jenkins builds',
+		function() {
+			grunt.task.run(
+				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','sprite','sasslint','sass:dist','copy:buildJS','clean:postRelease','mochaTest']//'rjsReplace', , 'jscs'
+			);
+		}
+	);
+
 	//The following are custom registered tasks
 	/**
 	 * @description Parent task for generating tempalate files based on a pre-defined list of available template types.
