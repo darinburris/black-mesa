@@ -19,7 +19,7 @@
 		"reportsIndex" 		: 	"_base.html",
 		"reportsJs" 		: 	"reports.js",
 		"templateBaseFiles" : 	"templateBaseFiles",
-		"apiServer"		:	"http://172.16.16.117"
+		"apiServer"			:	"http://172.16.16.117"
 	},
 	"quality" 			: {
 		"Instructions"		:	"the quality properties are for handling key/values pairs related to the code quality",
