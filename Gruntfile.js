@@ -404,6 +404,17 @@ module.exports = function(grunt) {
 		}
 	);
 
+	grunt.registerTask(
+		'lint',
+		'This task runs all the linting tools and test scripts for use during the precommit git hook',
+		function() {
+			grunt.config.set('taskName', this.name);
+			grunt.task.run(
+				['sasslint','mochaTest','eslint']
+			);
+		}
+	);
+
 	/**
 	 * @description This task omits the ccsmin and uglify tasks for debugging purposes, includes JSDoc
 	 */
