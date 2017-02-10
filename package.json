@@ -63,6 +63,7 @@
     "grunt-spritesmith": "~6.3.1",
     "grunt-strip": "~0.2.1",
     "grunt-webpack": "^1.0.14",
+    "husky": "^0.13.1",
     "json-server": "^0.8.20",
     "load-grunt-tasks": "~0.6.0",
     "mocha": "^3.1.2",
@@ -99,7 +100,8 @@
   },
   "scripts": {
     "start": "grunt && webpack && webpack-dev-server",
-    "test": "mocha './spec/**/*.spec.js' --compilers js:babel-core/register"
+    "test": "mocha './spec/**/*.spec.js' --compilers js:babel-core/register",
+    "precommit": "grunt lint"
   },
   "author": "Amplifi Presentation Layer Practice",
   "licenses": [
