@@ -22,32 +22,39 @@ module.exports = {
 		}
 	},
 	module: {
-		loaders: [
+		rules: [//wp2
+//		loaders: [//wp1
 			{
 				test: /.jsx?$/,
 				loader: 'babel-loader',
 				exclude: /node_modules/,
 				query: {
-					presets: ['es2015','react','stage-2'],
+					presets: ['es2015','react','stage-2','react-hmre'],
 					plugins: ['transform-decorators-legacy']
 				}
 			},
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
-				loader: 'babel',
+				loader: 'babel-loader',
 				query: {
-					presets: ['es2015','react','stage-2'],
+					presets: ['es2015','react','stage-2','react-hmre'],
 					plugins: ['transform-decorators-legacy']
 				}
 			}		]
 	},
+
+
+
 	resolve: {
-		root: [
-			path.resolve(__dirname, 'node_modules')
+		modules: [
+			path.join(__dirname, 'source'),
+			'node_modules',
+			'source/js/modules/',
+			'source/js/components/'
 		],
-		modulesDirectories: ['node_modules','source/js/modules/','source/js/components/'],
-		extensions: ['', '.js', '.jsx']
+		//modulesDirectories: [path.join(__dirname, 'source'), 'node_modules','source/js/modules/','source/js/components/'],
+		extensions: ['.js', '.jsx']
 	},
 	plugins: [
 		new webpack.HotModuleReplacementPlugin()
