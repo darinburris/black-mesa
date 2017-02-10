@@ -101,7 +101,6 @@
   "scripts": {
     "start": "grunt && webpack && webpack-dev-server",
     "test": "mocha './spec/**/*.spec.js' --compilers js:babel-core/register",
-    "precommit": "grunt lint",
     "prepush": "grunt lint"
   },
   "author": "Amplifi Presentation Layer Practice",
