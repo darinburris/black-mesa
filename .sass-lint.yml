@@ -160,7 +160,7 @@ rules:
     - 1
     - include: true
   space-before-brace:
-    - 1
+    - 2
     - include: true
   space-before-colon: 1
   space-between-parens:
