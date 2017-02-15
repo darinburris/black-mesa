@@ -2,6 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import registerSW from './registerSW';
 
 // import store
 import store from './store';
@@ -15,11 +16,4 @@ ReactDOM.render(
 	document.getElementById('megaNav')
 );
 
-if('serviceWorker' in navigator) {
-	navigator.serviceWorker
-	.register('/js/sw.js').then(
-		function() {
-			console.log('Service Worker Registered');
-		}
-	);
-}
+registerSW();
