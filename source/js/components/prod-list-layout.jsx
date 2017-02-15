@@ -1,18 +1,13 @@
 // import react dependencies
 import React from 'react';
 
-const divStyle = {
-	color: 'blue',
-	backgroundColor: 'red'
-};
-
 export default class Layout extends React.Component{
 
 	render(){
 
 		return (
 
-			<div style={divStyle}>
+			<div>
 
 				<h1>Hello, world! </h1>
 

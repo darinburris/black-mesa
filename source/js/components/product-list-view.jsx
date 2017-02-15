@@ -10,7 +10,7 @@ export default class List extends React.Component{
 
                 <figure>
                     <a href={this.props.href}>
-                        <img itemProp="image" src={this.props.src} alt={this.props.altText} />
+                        <img itemProp="image" src={this.props.src} alt={this.props.alt} />
                         <figcaption>
 
                             <p itemProp="name" className="product-name">{this.props.name}</p>
