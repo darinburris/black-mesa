@@ -193,7 +193,7 @@ module.exports = function(grunt) {
 				files: [{
 					expand: true,
 					cwd: '<%= sourceDir %>',
-					src: ['**/*.html', '!includes/**/*.html', '!js/lib/**/*.html','components/**/*','data/**/*','bower_components/**/*'],
+					src: ['**/*.html', '!includes/**/*.html', '!js/lib/**/*.html','components/**/*','data/**/*','bower_components/**/*','webmanifest.json'],
 					dest: '<%= releaseDir %>'
 				}]
 			},
@@ -282,7 +282,7 @@ module.exports = function(grunt) {
 					expand: true,
 					cwd: ampConfig.base.releaseDir,
 					flatten: false,
-					src: ['**/*.html', '!js', '!css'],
+					src: ['**/*.html', '!js', '!css','webmanifest.json'],
 					dest: ampConfig.base.releaseDir
 				}]
 			},
