@@ -8,3 +8,5 @@ validation_report/**/*
 .DS_Store
 bower_components/**/*
 npm-debug.log
+cert.pem
+key.pem
