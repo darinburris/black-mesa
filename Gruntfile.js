@@ -12,8 +12,8 @@ module.exports = function(grunt) {
 	var chalk = require('chalk'),
 		ampConfig = require('./amp-config.json'),
 		packageJson = grunt.file.readJSON('package.json'),
-	    path = require('path'),
-	    swPrecache = require('sw-precache');
+		path = require('path'),
+		swPrecache = require('sw-precache');
 
 	// Load grunt tasks
 	require('load-grunt-tasks')(grunt);
@@ -137,6 +137,33 @@ module.exports = function(grunt) {
 				}]
 			}
 		},
+		/**
+		 * @description grunt task generates css files of critical css
+		 */
+		 critical: {
+			 test: {
+				 options: {
+					 base: './',
+					 css: [
+						 'release/css/main.css'
+					 ],
+					 width: 1200,
+					 height: 800
+				 },
+				 src: 'release/index.html',
+				 dest: 'release/index.html'
+			 }
+		 },
+		 penthouse: {
+			 extract : {
+				 outfile : '.tmp/out.css',
+				 css : './release/css/main.css',
+				 url : 'http://localhost:3333',
+				 width : 1200,
+				 height : 800,
+				 skipErrors : false // this is the default
+			 },
+		   },
 		/**
 		 * @description grunt task lints scss files
 		 */

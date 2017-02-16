@@ -19,7 +19,8 @@
 		"reportsIndex" 		: 	"_base.html",
 		"reportsJs" 		: 	"reports.js",
 		"templateBaseFiles" : 	"templateBaseFiles",
-		"apiServer"			:	"http://172.16.16.117"
+		"apiServer"			:	"http://172.16.16.117",
+		"wdsPort"			:	"3333"
 	},
 	"content"	: {
 		"homeTitle"			:	"Welcome - AMP UI",
