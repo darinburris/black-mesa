@@ -7,7 +7,7 @@ const   express = require('express'),
 		sslOptions = {
 			key: fs.readFileSync('key.pem'),
 			cert: fs.readFileSync('cert.pem'),
-			passphrase: '0244'
+			passphrase: '1234'
 		},
 		httpport = 3333,
 		httpsport = 8443;
