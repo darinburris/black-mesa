@@ -4,14 +4,23 @@
  * @author Amplifi Commerce Presentation Layer Technology Group
  * [Built using Grunt, The JavaScript Task Runner]{@link http://gruntjs.com/}
  */
+
 module.exports = function(grunt) {
+
 	'use strict';
+
 	var chalk = require('chalk'),
-		ampConfig = require('./amp-config.json');
+		ampConfig = require('./amp-config.json'),
+		packageJson = grunt.file.readJSON('package.json'),
+	    path = require('path'),
+	    swPrecache = require('sw-precache');
+
 	// Load grunt tasks
 	require('load-grunt-tasks')(grunt);
+
 	// Project configuration.
 	grunt.initConfig({
+
 		pkg: grunt.file.readJSON('package.json'),
 		sourceDir: ampConfig.base.sourceDir,
 		releaseDir: ampConfig.base.releaseDir,
@@ -193,7 +202,7 @@ module.exports = function(grunt) {
 				files: [{
 					expand: true,
 					cwd: '<%= sourceDir %>',
-					src: ['**/*.html', '!includes/**/*.html', '!js/lib/**/*.html','components/**/*','data/**/*','bower_components/**/*'],
+					src: ['**/*.html', '!includes/**/*.html', '!js/lib/**/*.html','components/**/*','data/**/*','bower_components/**/*','webmanifest.json','sw.js'],
 					dest: '<%= releaseDir %>'
 				}]
 			},
@@ -282,7 +291,7 @@ module.exports = function(grunt) {
 					expand: true,
 					cwd: ampConfig.base.releaseDir,
 					flatten: false,
-					src: ['**/*.html', '!js', '!css'],
+					src: ['**/*.html', '!js', '!css','webmanifest.json'],
 					dest: ampConfig.base.releaseDir
 				}]
 			},
@@ -387,6 +396,12 @@ module.exports = function(grunt) {
 				},
 				src: ['spec/**/*.js']
 			}
+		},
+		swPrecache: {
+			dev: {
+				handleFetch: false,
+				rootDir: 'release'
+			}
 		}
 	});
 
@@ -400,6 +415,17 @@ module.exports = function(grunt) {
 			grunt.config.set('taskName', this.name);
 			grunt.task.run(
 				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','sprite','sasslint','sass:dist','copy:buildJS','clean:postRelease','mochaTest']//'rjsReplace', , 'jscs'
+			);
+		}
+	);
+
+	grunt.registerTask(
+		'lint',
+		'This task runs all the linting tools and test scripts for use during the precommit git hook',
+		function() {
+			grunt.config.set('taskName', this.name);
+			grunt.task.run(
+				['sasslint','mochaTest','eslint']
 			);
 		}
 	);
@@ -534,6 +560,48 @@ module.exports = function(grunt) {
 		}
 	});
 
+	function writeServiceWorkerFile(rootDir, handleFetch, callback) {
+		var config = {
+			cacheId: packageJson.name,
+			dynamicUrlToDependencies: {},
+			// If handleFetch is false (i.e. because this is called from swPrecache:dev), then
+			// the service worker will precache resources but won't actually serve them.
+			// This allows you to test precaching behavior without worry about the cache preventing your
+			// local changes from being picked up during the development cycle.
+			handleFetch: handleFetch,
+			logger: grunt.log.writeln,
+			staticFileGlobs: [
+				rootDir + '/css/**.css',
+				rootDir + '/**.html',
+				rootDir + '/img/**.*',
+				rootDir + '/js/**.js'
+			],
+			stripPrefix: rootDir + '/',
+			// verbose defaults to false, but for the purposes of this demo, log more.
+			verbose: true
+		};
 
+		swPrecache.write(path.join(rootDir, 'sw.js'), config, callback);
+
+	}
+
+	grunt.registerMultiTask('swPrecache',
+		function() {
+			/* eslint-disable no-invalid-this */
+			var done = this.async();
+			var rootDir = this.data.rootDir;
+			var handleFetch = this.data.handleFetch;
+			/* eslint-enable */
+
+			writeServiceWorkerFile(rootDir, handleFetch,
+				function(error) {
+					if (error) {
+						grunt.fail.warn(error);
+					}
+					done();
+				}
+			);
+		}
+	);
 
 };

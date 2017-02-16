@@ -91,20 +91,33 @@
 	}
 }
 
-// Placeholder text styles
-// sass-lint:disable no-vendor-prefixes
-@mixin placeholder {
-	::-webkit-input-placeholder {@content}
-	:-moz-placeholder		   {@content}
-	::-moz-placeholder		  {@content}
-	:-ms-input-placeholder	  {@content}
-}
-
-@include placeholder {
-	color: $black;
-	font-style: italic;
-	font-weight: 100;
-}
+// // Placeholder text styles
+// // sass-lint:disable no-vendor-prefixes
+// @mixin placeholder {
+//
+// 	::-webkit-input-placeholder {
+// 		@content
+// 	}
+//
+// 	:-moz-placeholder {
+// 		@content
+// 	}
+//
+// 	::-moz-placeholder {
+// 		@content
+// 	}
+//
+// 	:-ms-input-placeholder {
+// 		@content
+// 	}
+//
+// }
+//
+// @include placeholder {
+// 	color: $black;
+// 	font-style: italic;
+// 	font-weight: 100;
+// }
 
 @mixin iso-triangle($dir, $size, $color) {
 	@if $dir == up {

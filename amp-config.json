@@ -19,7 +19,13 @@
 		"reportsIndex" 		: 	"_base.html",
 		"reportsJs" 		: 	"reports.js",
 		"templateBaseFiles" : 	"templateBaseFiles",
-		"apiServer"		:	"http://172.16.16.117"
+		"apiServer"			:	"http://172.16.16.117"
+	},
+	"content"	: {
+		"homeTitle"			:	"Welcome - AMP UI",
+		"cdpTitle"			:	"Category Detail Page - AMP UI",
+		"pdpTitle"			:	"Product Detail Page - AMP UI",
+		"accountTitle"		:	"Account Page - AMP UI"
 	},
 	"quality" 			: {
 		"Instructions"		:	"the quality properties are for handling key/values pairs related to the code quality",
