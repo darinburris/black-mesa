@@ -12,8 +12,7 @@ module.exports = function(grunt) {
 	var chalk = require('chalk'),
 		ampConfig = require('./amp-config.json'),
 		packageJson = grunt.file.readJSON('package.json'),
-	    path = require('path'),
-	    swPrecache = require('sw-precache');
+	    path = require('path');
 
 	// Load grunt tasks
 	require('load-grunt-tasks')(grunt);
