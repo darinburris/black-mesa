@@ -1,6 +1,4 @@
-$visual-grid: false !default;
-$visual-grid-color: #000 !default;
-$visual-grid-opacity: .04 !default;
+$output-bourbon-deprecation-warnings: false;
 
 @import 'bourbon',
 'neat',

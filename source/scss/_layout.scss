@@ -1,3 +1,5 @@
+$output-bourbon-deprecation-warnings: false;
+
 // Layout specific styles
 
 @import
@@ -7,25 +9,37 @@
 'config',
 'utils';
 
-main {
-
-	@include media($large-phone-down) {
-		margin-bottom: rem(40);
-	}
-
-	margin: rem(20) 0;
-	padding: 0;
-
-}
-
 main,
 .util-nav,
 .masthead-banner,
 .primary-nav,
 .breadcrumb-nav,
 footer {
-	@include outer-container;
+	// @include grid-visual;
+	@include grid-container;
+
+	@include grid-media($large-phone) {
+		// @include grid-visual;
+		margin: 0;
+		width: 100%;
+	}
+
+	margin: 0 auto;
+	width: 1080px;
+
 }
+
+main {
+
+	@include grid-media($large-phone) {
+		margin-bottom: rem(40);
+	}
+
+	margin: rem(20) auto;
+	padding: 0;
+
+}
+
 
 .primary-nav {
 	min-height: rem(38);
@@ -34,7 +48,7 @@ footer {
 
 .primary-nav-items {
 
-	@include media($large-phone-down) {
+	@include grid-media($large-phone) {
 		display: block;
 		max-height: rem(36);
 		overflow: hidden;
@@ -110,7 +124,7 @@ footer {
 
 .util-nav {
 
-	@include media($large-phone-down) {
+	@include grid-media($large-phone) {
 
 		display: none;
 
@@ -120,13 +134,13 @@ footer {
 
 .util-nav-items {
 
-	@include media($medium-screen-before-break-size) {
+	@include grid-media($medium-screen) {
 
-		@include span-columns(7);
+		@include grid-column(7);
 
 	}
 
-	@include media($large-phone-down) {
+	@include grid-media($large-phone) {
 
 		display: none;
 
@@ -138,13 +152,13 @@ footer {
 
 .sign-in {
 
-	@include media($medium-screen-before-break-size) {
+	@include grid-media($medium-screen) {
 
-		@include span-columns(2);
+		@include grid-column(2);
 
 	}
 
-	@include media($large-phone-down) {
+	@include grid-media($large-phone) {
 
 		display: none;
 
@@ -152,25 +166,21 @@ footer {
 
 }
 
-@include direction-context(right-to-left) {
+.mini-cart {
 
-	.mini-cart {
+	@include grid-media($medium-screen) {
 
-		@include media($medium-screen-before-break-size) {
-
-			@include span-columns(3);
-
-		}
-
-		@include media($large-phone-down) {
-
-			display: none;
-
-		}
-
-		margin: 0;
+		@include grid-column(3);
 
 	}
+
+	@include grid-media($large-phone) {
+
+		display: none;
+
+	}
+
+	margin: 0;
 
 }
 
@@ -180,11 +190,11 @@ footer {
 
 	.logo {
 
-		@include media($medium-screen-before-break-size) {
-			@include span-columns(8);
+		@include grid-media($medium-screen) {
+			@include grid-column(8);
 		}
 
-		@include media($large-phone-down) {
+		@include grid-media($large-phone) {
 			font-size: rem(38);
 			margin: rem(10) 0 rem(10) rem(10);
 		}
@@ -195,8 +205,8 @@ footer {
 
 	form {
 
-		@include media($medium-screen-before-break-size) {
-			@include span-columns(4);
+		@include grid-media($medium-screen) {
+			@include grid-column(4);
 			margin-top: rem(10);
 		}
 
@@ -208,21 +218,24 @@ footer {
 
 .secondary-nav {
 
-	@include media($medium-screen-before-break-size) {
-		@include span-columns(3);
+	@include grid-media($medium-screen) {
+		@include grid-column(3);
 	}
 
 	+ [role='region'] {
 
-		@include media($medium-screen-before-break-size) {
-			@include span-columns(9);
+		@include grid-media($medium-screen) {
+			@include grid-column(9);
+			// margin-top: rem(20);
 		}
 
-		@include media($large-phone-down) {
+		@include grid-media($large-phone) {
 
-			margin: 0 rem(10);
+			margin: 0;
 
 		}
+
+		margin: 0;
 
 	}
 
@@ -238,8 +251,8 @@ footer {
 .two-column-equal {
 
 	[role='region'] {
-		@include media($medium-screen-before-break-size) {
-			@include span-columns(6);
+		@include grid-media($medium-screen) {
+			@include grid-column(6);
 		}
 	}
 
@@ -253,20 +266,20 @@ footer {
 			list-style-type: none;
 		}
 
-		@include media($medium-screen-before-break-size) {
-			@include span-columns(3);
+		@include grid-media($medium-screen) {
+			@include grid-column(3);
 		}
 
 		+ [role='region'] {
 
-			@include media($medium-screen-before-break-size) {
-				@include span-columns(6);
+			@include grid-media($medium-screen) {
+				@include grid-column(6);
 			}
 
 			+ [role='complementary'] {
 
-				@include media($medium-screen-before-break-size) {
-					@include span-columns(3);
+				@include grid-media($medium-screen) {
+					@include grid-column(3);
 				}
 
 			}
@@ -283,14 +296,14 @@ footer {
 
 		> [role='region'] {
 
-			@include media($medium-screen-before-break-size) {
-				@include span-columns(9);
+			@include grid-media($medium-screen) {
+				@include grid-column(9);
 			}
 
 			+ [role='complementary'] {
 
-				@include media($medium-screen-before-break-size) {
-					@include span-columns(3);
+				@include grid-media($medium-screen) {
+					@include grid-column(3);
 				}
 
 				margin-top: rem(20);
@@ -307,19 +320,19 @@ footer {
 
 	.secondary-nav {
 
-		@include media($medium-screen-before-break-size) {
-			@include span-columns(3);
+		@include grid-media($medium-screen) {
+			@include grid-column(3);
 		}
 
 		+ [role='region'] {
 
-			@include media($medium-screen-before-break-size) {
-				@include span-columns(9);
+			@include grid-media($medium-screen) {
+				@include grid-column(9);
 			}
 
 		}
 
-		@include media($large-phone-down) {
+		@include grid-media($large-phone) {
 
 			display: none;
 
@@ -333,20 +346,20 @@ footer {
 
 	.secondary-nav {
 
-		@include media($medium-screen-before-break-size) {
-			@include span-columns(3);
+		@include grid-media($medium-screen) {
+			@include grid-column(3);
 		}
 
 		+ [role='region'] {
 
-			@include media($medium-screen-before-break-size) {
-				@include span-columns(9);
+			@include grid-media($medium-screen) {
+				@include grid-column(9);
 			}
 
 			> div {
 
-				@include media($medium-screen-before-break-size) {
-					@include span-columns(3);
+				@include grid-media($medium-screen) {
+					@include grid-column(3);
 				}
 
 			}
@@ -361,20 +374,20 @@ footer {
 
 	.secondary-nav {
 
-		@include media($medium-screen-before-break-size) {
-			@include span-columns(3);
+		@include grid-media($medium-screen) {
+			@include grid-column(3);
 		}
 
 		+ [role='region'] {
 
-			@include media($medium-screen-before-break-size) {
-				@include span-columns(9);
+			@include grid-media($medium-screen) {
+				@include grid-column(9);
 			}
 
 			> div {
 
-				@include media($medium-screen-before-break-size) {
-					@include span-columns(4);
+				@include grid-media($medium-screen) {
+					@include grid-column(4);
 				}
 
 			}
@@ -389,7 +402,7 @@ footer {
 
 	&[role='contentinfo'] {
 
-		@include media($large-phone-down) {
+		@include grid-media($large-phone) {
 			background-color: $white;
 			bottom: 0;
 			padding-left: rem(10);
@@ -407,7 +420,7 @@ footer {
 
 .menu-link {
 
-	@include media($large-phone-down) {
+	@include grid-media($large-phone) {
 		display: list-item;
 	}
 

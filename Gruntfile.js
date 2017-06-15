@@ -111,7 +111,7 @@ module.exports = function(grunt) {
 		**/
 		sass: {
 			options : {
-				//includePaths: require('node-bourbon').includePaths,
+				//includePaths: require('bourbon').includePaths,
 				includePaths: require('node-neat').includePaths
 			},
 			dist: {
@@ -136,6 +136,7 @@ module.exports = function(grunt) {
 				}]
 			}
 		},
+
 		/**
 		 * @description grunt task lints scss files
 		 */
@@ -148,6 +149,7 @@ module.exports = function(grunt) {
 				'!source/scss/_normalize.scss',
 				'!source/scss/_tooltips.scss',
 				'!source/scss/_sprites.scss',
+				'!source/scss/_sliders.scss',
 				'!source/scss/_colorbox.scss'
 			]
 		},
@@ -407,7 +409,7 @@ module.exports = function(grunt) {
 		function() {
 			grunt.config.set('taskName', this.name);
 			grunt.task.run(
-				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','sprite','sasslint','sass:dist','copy:buildJS','clean:postRelease','mochaTest']//'rjsReplace', , 'jscs'
+				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','sprite','copy:buildJS','clean:postRelease','mochaTest']//'rjsReplace', , 'jscs','sasslint','sass:dist'
 			);
 		}
 	);
@@ -418,7 +420,7 @@ module.exports = function(grunt) {
 		function() {
 			grunt.config.set('taskName', this.name);
 			grunt.task.run(
-				['sasslint','mochaTest','eslint']
+				['mochaTest','eslint']//'sasslint',
 			);
 		}
 	);
