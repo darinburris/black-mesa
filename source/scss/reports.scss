@@ -1,3 +1,5 @@
+$output-bourbon-deprecation-warnings: false;
+
 @import 'bourbon',
 'neat',
 'grid-settings',
@@ -9,7 +11,7 @@
 
 main {
 
-	@include media($large-phone-down) {
+	@include grid-media($large-phone) {
 		margin-left: rem(20);
 		margin-right: rem(20);
 	}
