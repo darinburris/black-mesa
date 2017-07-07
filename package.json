@@ -86,7 +86,7 @@
     "style-loader": "^0.13.2",
     "underscore": "~1.6.0",
     "walkdir": "~0.0.7",
-    "webpack": "^2.2.0",
+    "webpack": "^3.0.0",
     "webpack-dashboard": "^0.1.2",
     "webpack-dev-server": "^1.16.5"
   },
@@ -115,8 +115,8 @@
     "test": "mocha './spec/**/*.spec.js' --compilers js:babel-core/register",
     "precommit": "grunt lint",
     "prepush": "grunt lint",
-	"build": "grunt && gulp",
-	"install-globals": "npm install -g grunt-cli github:gulpjs/gulp#4.0 webpack webpack-dev-server json-server"
+    "build": "grunt && gulp",
+    "install-globals": "npm install -g grunt-cli github:gulpjs/gulp#4.0 webpack webpack-dev-server json-server"
   },
   "author": "Amplifi Presentation Layer Practice",
   "licenses": [
