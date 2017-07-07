@@ -74,7 +74,7 @@ function ap() {
 function watching() {
 	gulp.watch('./source/scss/**/*.scss', gulp.series(compileCSS));
 	gulp.watch('./source/js/**/*.js', gulp.series(copyJS));
-	gulp.watch('./source/**/*.html', gulp.series(copyHTML));
+	// gulp.watch('./source/**/*.html', gulp.series(copyHTML));
 }
 
 //concatinate js files
@@ -119,7 +119,8 @@ function delCSS() {
 const wa = gulp.series(watching);
 const compileCSS = gulp.series(lintSass, compileSass, ap);
 const optimizeAssets = gulp.parallel(concatjs,concatcss);
-const build = gulp.series(delRelease, copyHTML, copyJS, compileCSS, optimizeAssets);
+//const build = gulp.series(delRelease, copyHTML, copyJS, compileCSS, optimizeAssets);
+const build = gulp.series(compileCSS,wa);
 
 //this is how to assign multiple tasks to a single task
 //gulp.task('default', ['build:css','copyHTML']);

@@ -90,9 +90,11 @@ $mobile-grid: (
 );
 
 $large-phone: (
-	columns: 8,
-	gutter: 5px,
 	media: $large-phone-down
+);
+
+$large-screen: (
+	media: $large-screen-down
 );
 
 $small-phone: (
