@@ -1,6 +1,42 @@
+$output-bourbon-deprecation-warnings: false;
+
 .slider {
 	li {
 		height: 60px;
 		width: 400px;
 	}
+}
+
+.home-hero,
+.home-promo {
+
+	margin-top: -22px;
+
+	button {
+
+		&:before {
+			font-size: 40px;
+			color: #666;
+		}
+
+		&[class*='-prev'] {
+			left: 15px;
+			z-index: 2;
+		}
+
+		&[class*='-next'] {
+			right: 35px;
+			z-index: 2;
+		}
+
+	}
+
+	img {
+		width: 100%;
+	}
+
+}
+
+.home-promo {
+	margin-top: 22px;
 }

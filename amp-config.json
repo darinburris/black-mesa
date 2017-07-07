@@ -1,6 +1,7 @@
 {
 	"wpentry"	: {
 		"app"				: "./source/js/app.js",
+		"home"				: "./source/js/modules/home.js",
 		"cdp"				: "./source/js/modules/cdp.js"
 	},
 	"base"		: {

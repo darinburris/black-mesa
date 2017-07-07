@@ -1,0 +1,11 @@
+$output-bourbon-deprecation-warnings: false;
+
+// basic imports
+@import 'carousel/variables';
+@import 'carousel/mixins/gradients';
+@import 'carousel/mixins/breakpoints';
+@import 'carousel/mixins/animation';
+@import 'carousel/mixins/utils';
+
+// buttons, form inputs, etc...
+@import 'carousel/components/carousel';

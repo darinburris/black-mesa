@@ -1,3 +1,5 @@
+$output-bourbon-deprecation-warnings: false;
+
 // form styles
 form,
 fieldset,
@@ -49,7 +51,7 @@ select {
 
 	form {
 
-		@include media($large-phone-down) {
+		@include grid-media($large-phone) {
 
 			margin-top: rem(10);
 
@@ -59,7 +61,7 @@ select {
 		position: relative;
 
 		input {
-			width: 100%;
+			width: calc(100% - 1em);
 		}
 
 	}
@@ -67,7 +69,7 @@ select {
 }
 
 .element {
-	@include fill-parent;
+	//@include fill-parent;
 }
 
 .globale-search-form {
