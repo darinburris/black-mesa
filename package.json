@@ -115,6 +115,7 @@
     "test": "mocha './spec/**/*.spec.js' --compilers js:babel-core/register",
     "precommit": "grunt lint",
     "prepush": "grunt lint",
+	"build": "grunt && gulp",
 	"install-globals": "npm install -g grunt-cli github:gulpjs/gulp#4.0 webpack webpack-dev-server json-server"
   },
   "author": "Amplifi Presentation Layer Practice",

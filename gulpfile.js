@@ -74,7 +74,7 @@ function ap() {
 function watching() {
 	gulp.watch('./source/scss/**/*.scss', gulp.series(compileCSS));
 	gulp.watch('./source/js/**/*.js', gulp.series(copyJS));
-	gulp.watch('./source/**/*.html', gulp.series(copyHTML));
+	// gulp.watch('./source/**/*.html', gulp.series(copyHTML));
 }
 
 //concatinate js files
