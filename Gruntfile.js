@@ -172,7 +172,7 @@ module.exports = function(grunt) {
 			options: {
 				configFile: '.eslintrc'
 			},
-			target: ['<%= sourceDir %>/js/**/*.js','<%= sourceDir %>/js/**/*.jsx', '!<%= releaseDir %>/js/lib/**/*.js', '!<%= sourceDir %>/js/lib/**/*.js']
+			target: ['<%= sourceDir %>/js/**/*.js', '!<%= releaseDir %>/js/lib/**/*.js', '!<%= sourceDir %>/js/lib/**/*.js']
 		},
 		/**
 		 *  @description grunt task minifies/obfuscates/concatinates js files
@@ -374,7 +374,7 @@ module.exports = function(grunt) {
 				files: [
 					ampConfig.base.sourceDir + '/js/**/*', '!' + ampConfig.base.sourceDir + '/js/lib/**'
 				],
-				tasks: ['eslint','mochaTest'],
+				tasks: ['eslint'],//,'mochaTest'
 				options: {
 					spawn: true
 				}
@@ -409,7 +409,7 @@ module.exports = function(grunt) {
 		function() {
 			grunt.config.set('taskName', this.name);
 			grunt.task.run(
-				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','sprite','copy:buildJS','clean:postRelease','mochaTest']//'rjsReplace', , 'jscs','sasslint','sass:dist'
+				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','sprite','copy:buildJS','clean:postRelease']//'rjsReplace', , 'jscs','sasslint','sass:dist','mochaTest'
 			);
 		}
 	);
@@ -420,7 +420,7 @@ module.exports = function(grunt) {
 		function() {
 			grunt.config.set('taskName', this.name);
 			grunt.task.run(
-				['mochaTest','eslint']//'sasslint',
+				['eslint']//'sasslint','mochaTest',
 			);
 		}
 	);
@@ -433,7 +433,7 @@ module.exports = function(grunt) {
 		'This task used for jenkins builds',
 		function() {
 			grunt.task.run(
-				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize','replace:api','genTOC','sprite','sasslint','sass:dist','copy:buildJS','clean:postRelease','mochaTest']//'rjsReplace', , 'jscs'
+				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize','replace:api','genTOC','sprite','sasslint','sass:dist','copy:buildJS','clean:postRelease']//'rjsReplace', , 'jscs','mochaTest'
 			);
 		}
 	);

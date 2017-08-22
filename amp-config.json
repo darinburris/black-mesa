@@ -1,9 +1,5 @@
 {
-	"wpentry"	: {
-		"app"				: "./source/js/app.js",
-		"home"				: "./source/js/modules/home.js",
-		"cdp"				: "./source/js/modules/cdp.js"
-	},
+	"wpentry"	: {},
 	"base"		: {
 		"appName"			:	"Amp UI",
 		"Instructions"		:	"the base properties are for handling top level key/values pairs related to the architecture",
