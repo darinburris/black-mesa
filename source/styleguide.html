@@ -3,7 +3,12 @@
 	<head>
 
         <title>Styleguide</title>
+<style>
+input::-webkit-inner-spin-button {
+  opacity: 1;
+}
 
+</style>
 <include file="includes/common/meta.html" />
 
 <include file="includes/common/css.html" />
@@ -21,6 +26,16 @@
 			<p>Styleguide content will eventually go here.</p>
 
 			<section class="full-bleed">this is a test</section>
+
+			<picture>
+			  <source srcset="examples/images/extralarge.jpg" media="(min-width: 1000px)">
+			  <source srcset="examples/images/art-large.jpg" media="(min-width: 800px)">
+			  <img srcset="examples/images/art-medium.jpg" alt="…">
+			</picture>
+
+<form action="">
+	<input type="number" min="0" max="100"/>
+</form>
 
 		</main>
 

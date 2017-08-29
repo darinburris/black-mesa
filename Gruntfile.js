@@ -30,6 +30,12 @@ module.exports = function(grunt) {
 		preReleaseCss: ampConfig.base.sourceDir + '/css',
 		preReleaseJs: ampConfig.base.sourceDir + '/js',
 
+		exec: {
+			gulp: {
+				cmd: 'gulp'
+			}
+		},
+
 		/**
 		 * @description grunt include task recursively includes static html files into each other ******************
 		**/
@@ -409,7 +415,7 @@ module.exports = function(grunt) {
 		function() {
 			grunt.config.set('taskName', this.name);
 			grunt.task.run(
-				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','sprite','copy:buildJS','clean:postRelease']//'rjsReplace', , 'jscs','sasslint','sass:dist','mochaTest'
+				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','sprite','copy:buildJS','clean:postRelease','exec:gulp']//'rjsReplace', , 'jscs','sasslint','sass:dist','mochaTest'
 			);
 		}
 	);

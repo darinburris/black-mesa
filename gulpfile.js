@@ -120,7 +120,7 @@ const wa = gulp.series(watching);
 const compileCSS = gulp.series(lintSass, compileSass, ap);
 const optimizeAssets = gulp.parallel(concatjs,concatcss);
 //const build = gulp.series(delRelease, copyHTML, copyJS, compileCSS, optimizeAssets);
-const build = gulp.series(compileCSS,wa);
+const build = gulp.series(compileCSS);//,wa
 
 //this is how to assign multiple tasks to a single task
 //gulp.task('default', ['build:css','copyHTML']);

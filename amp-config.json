@@ -1,5 +1,7 @@
 {
-	"wpentry"	: {},
+	"wpentry"	: {
+		"app"				: "./source/js/app.js"
+	},
 	"base"		: {
 		"appName"			:	"Amp UI",
 		"Instructions"		:	"the base properties are for handling top level key/values pairs related to the architecture",
