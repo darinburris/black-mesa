@@ -13,7 +13,7 @@ footer {
 
 	&.viking {
 
-		@include grid-media($medium-screen-up) {
+		@include grid-media($tablet-screen-up) {
 			height: rem(100);
 		}
 
@@ -26,12 +26,17 @@ footer {
 
 main {
 
-	@include grid-media($medium-screen-up) {
+	@include grid-media($tablet-screen-up) {
 		margin: 0 auto;
-		// max-width: 1200px;
+		max-width: 1200px;
+		width: 100%;
 	}
 
-	max-width: 1200px;
+	@include grid-media($desktop-screen-down) {
+		width: 100%;
+	}
+
+	// max-width: 1200px;
 	width: 100%;
 
 }

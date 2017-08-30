@@ -17,7 +17,7 @@ $output-bourbon-deprecation-warnings: false;
 
 		h1 {
 
-			@include grid-media($medium-screen-up) {
+			@include grid-media($tablet-screen-up) {
 
 			}
 
@@ -44,19 +44,25 @@ $output-bourbon-deprecation-warnings: false;
 
 	.categories {
 
-		@include grid-media($medium-screen-up) {
+		@include grid-media($tablet-screen-up) {
 			margin-left: calc(-100vw / 2 + 1200px / 2);
 			margin-right: calc(-100vw / 2 + 1200px / 2);
 		}
 
-		@include grid-media($medium-screen-down) {
+		@include grid-media($desktop-screen-down) {
 			margin: 0 auto;
 			width: 100%;
 		}
 
 		h2 {
 
-			text-align: center;
+			@include grid-media($tablet-screen-up) {
+				margin: 0 auto;
+				max-width: rem(1200);
+			}
+
+			font-size: rem(14);
+			text-align: left;
 			text-transform: uppercase;
 
 		}
@@ -87,10 +93,20 @@ $output-bourbon-deprecation-warnings: false;
 
 	.gallery {
 
+		@include grid-media($tablet-screen-up) {
+			padding: 0;
+		}
+
 		h2 {
 
-			@include grid-media($medium-screen-up) {
+			&.standard {
+				font-family: $font-stack-open;
+				font-size: rem(40);
+			}
 
+			&.vanity {
+				font-family: $font-stack-arapey;
+				font-size: rem(40);
 			}
 
 			text-align: left;
@@ -106,7 +122,7 @@ $output-bourbon-deprecation-warnings: false;
 
 			figcaption {
 
-				@include grid-media($medium-screen-up) {
+				@include grid-media($tablet-screen-up) {
 					padding-right: 20px;
 					width: calc(50% - 20px);
 				}
@@ -116,11 +132,25 @@ $output-bourbon-deprecation-warnings: false;
 				line-height: 1.75;
 				margin-bottom: rem(20);
 				order: 1;
+
+				.button-alternate {
+
+					@include grid-media($tablet-screen-up) {
+						display: block;
+						height: rem(20);
+						margin-top: rem(20);
+						width: rem(120);
+					}
+
+					display: none;
+
+				}
+
 			}
 
 			.thumbs {
 
-				@include grid-media($medium-screen-up) {
+				@include grid-media($tablet-screen-up) {
 					width: 50%;
 				}
 
@@ -162,8 +192,8 @@ $output-bourbon-deprecation-warnings: false;
 
 			.button-alternate {
 
-				@include grid-media($medium-screen-up) {
-					margin-top: rem(-100);
+				@include grid-media($tablet-screen-up) {
+					display: none;
 				}
 
 				display: inline-block;
@@ -184,23 +214,31 @@ $output-bourbon-deprecation-warnings: false;
 
 	.testimonials {
 
-		@include grid-media($medium-screen-up) {
+		@include grid-media($tablet-screen-up) {
 			margin-left: calc(-100vw / 2 + 1200px / 2);
 			margin-right: calc(-100vw / 2 + 1200px / 2);
 		}
 
-		@include grid-media($medium-screen-down) {
+		@include grid-media($desktop-screen-down) {
 			margin: 0 auto;
 			width: 100%;
 		}
 
 		h2 {
 
+			font-family: $font-stack-arapey, sans-serif;
+			font-size: rem(40);
+			padding: rem(20) 0;
 			text-align: center;
 
 		}
 
 		ul {
+
+			@include grid-media($tablet-screen-up) {
+				margin: 0 auto;
+				max-width: rem(1200);
+			}
 
 			list-style-type: none;
 
@@ -211,10 +249,17 @@ $output-bourbon-deprecation-warnings: false;
 				blockquote {
 
 					q {
+
+						display: inline-block;
 						font-style: italic;
+						font-weight: 800;
+						line-height: 1.8;
+						padding-bottom: rem(10);
 					}
 
 					footer {
+
+						font-size: rem(11);
 						text-transform: uppercase;
 
 						span {
@@ -239,7 +284,9 @@ $output-bourbon-deprecation-warnings: false;
 
 		h2 {
 
-			text-align: center;
+			font-size: rem(14);
+			text-align: left;
+			text-transform: uppercase;
 
 		}
 
