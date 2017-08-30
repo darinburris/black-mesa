@@ -37,13 +37,7 @@ function lintSass() {
 	return gulp.src(
 		[
 			'./source/scss/**/*.scss',
-			'!./source/scss/_mixins.scss',
-			'!./source/scss/carousel/**/*',
-			'!./source/scss/_sprites.scss',
-			'!./source/scss/_sliders.scss',
-			'!./source/scss/_normalize.scss',
-			'!./source/scss/_colorbox.scss',
-			'!./source/scss/_tooltips.scss'
+			'!./source/scss/2-generic/_normalize.scss'
 		]
 	)
 	.pipe(

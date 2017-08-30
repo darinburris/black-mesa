@@ -1,8 +1,5 @@
 $output-bourbon-deprecation-warnings: false;
 
-//Fonts
-$font-stack: 'Helvetica Neue', 'Open Sans', sans-serif;
-
 //Colors
 $purple-pink:       #be5f75;
 $red1:              #a52d2d;
@@ -22,12 +19,14 @@ $light-blue:        #7297a9;
 $lighter-blue:      #dde7e9;
 $green:             #b2a847;
 $black:             #444;
+$black2:            #333;
 $grey1:             #888;
 $grey2:             #ccc;
 $gray3:             #aaa;
 $gray4:             #eee;
 $gray5:             #111;
 $gray6:             #222;
+$gray7:             #f1f1f1;
 $white:             #fff;
 $lightTurquoise:    #8fdce5;
 $mediumTurquoise:   #3dc3d1;
@@ -67,7 +66,3 @@ $color-IconsLighterText:			$grey1;
 $color-StrokesRules:				$grey1;
 $color-Cart5YearFabricProtection:	$lighter-blue;
 $color-BgCheckoutBtn: 				#ffc559;
-
-$primary-nav-height: 36px;
-$primary-nav-width: 1000px;
-$util-nav-items-seperator-color: #8c8c8c;

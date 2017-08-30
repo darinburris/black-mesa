@@ -102,14 +102,14 @@ module.exports = function(grunt) {
 		/**
 		 * @description grunt task to generate a sprite from a collection of .png files ******************
 		**/
-		sprite: {
-			all: {
-				src: 'source/img/sprites/*.png',
-				dest: 'release/img/sprites.png',
-				destCss: 'source/scss/_sprites.scss',
-				imgPath: '../img/sprites.png'
-			}
-		},
+		// sprite: {
+		// 	all: {
+		// 		src: 'source/img/sprites/*.png',
+		// 		dest: 'release/img/sprites.png',
+		// 		destCss: 'source/scss/_sprites.scss',
+		// 		imgPath: '../img/sprites.png'
+		// 	}
+		// },
 		/**
 		* @description  grunt task compiles sass files, copies them into a pre release
 		* folder under /source/ in order to allow for linting prior to
@@ -415,7 +415,7 @@ module.exports = function(grunt) {
 		function() {
 			grunt.config.set('taskName', this.name);
 			grunt.task.run(
-				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','sprite','copy:buildJS','clean:postRelease','exec:gulp']//'rjsReplace', , 'jscs','sasslint','sass:dist','mochaTest'
+				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','copy:buildJS','clean:postRelease','exec:gulp']//'rjsReplace', , 'jscs','sasslint','sass:dist','mochaTest'
 			);
 		}
 	);

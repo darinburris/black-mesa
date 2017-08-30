@@ -1,12 +1,35 @@
 $output-bourbon-deprecation-warnings: false;
 
+/* Bourbon and Neat Imports
+   ========================================================================== */
 @import 'bourbon',
-'neat',
-'grid-settings',
-'config',
-'utils',
-'base',
-'layout',
-'forms',
-'accordian',
-'sliders';
+'neat';
+
+/* Settings Imports
+   ========================================================================== */
+@import '0-settings/settings';
+
+/* Tools Imports
+   ========================================================================== */
+@import '1-tools/mixins';
+
+/* Generic Imports
+   ========================================================================== */
+@import '2-generic/normalize';
+
+/* Elements Imports
+   ========================================================================== */
+@import '3-elements/elements',
+'3-elements/forms';
+
+/* Objects Imports
+   ========================================================================== */
+
+
+/* Components Imports
+   ========================================================================== */
+@import '5-components/layout',
+'5-components/components';
+
+/* Utilities Imports
+   ========================================================================== */

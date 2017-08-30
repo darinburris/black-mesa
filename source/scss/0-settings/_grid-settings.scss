@@ -1,0 +1,17 @@
+@import 'neat';
+
+$medium-screen-big: '(min-width: 737px)';
+$medium-screen-little: '(max-width: 1199px)';
+
+$neat-grid: (
+	columns: 12,
+	gutter: 20px
+);
+
+$medium-screen-up: (
+	media: $medium-screen-big
+);
+
+$medium-screen-down: (
+	media: $medium-screen-little
+);
