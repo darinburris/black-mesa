@@ -1,5 +1,7 @@
-// import react dependencies
-import registerSW from './registerSW';
-// import styleguide from './styleguide';
+// import registerSW from './registerSW';
 
-registerSW();
+import 'carousel';
+
+console.log('app loaded');
+
+// registerSW();

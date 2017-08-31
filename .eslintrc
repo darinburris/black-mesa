@@ -5,6 +5,7 @@
         "browser": true
     },
     "globals": {
+        "$": true
     },
     "parserOptions": {
         "ecmaVersion": 6,

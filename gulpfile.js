@@ -37,7 +37,8 @@ function lintSass() {
 	return gulp.src(
 		[
 			'./source/scss/**/*.scss',
-			'!./source/scss/2-generic/_normalize.scss'
+			'!./source/scss/2-generic/_normalize.scss',
+			'!./source/scss/1-tools/**/*.scss'
 		]
 	)
 	.pipe(

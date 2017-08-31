@@ -28,11 +28,36 @@ $output-bourbon-deprecation-warnings: false;
 		ul {
 
 			list-style-type: none;
+			margin: 0 auto;
+			position: relative;
+			width: 90%;
 
 			li {
 
 				display: inline-block;
+				width: 100%;
 
+			}
+
+		}
+
+		.owl-nav {
+
+			position: absolute;
+			top: 43%;
+			width: 100%;
+
+			.owl-prev,
+			.owl-next {
+				position: absolute;
+			}
+
+			.owl-prev {
+				left: rem(-30);
+			}
+
+			.owl-next {
+				right: rem(-30);
 			}
 
 		}
@@ -69,18 +94,33 @@ $output-bourbon-deprecation-warnings: false;
 
 		ul {
 
+			@include grid-media($tablet-screen-up) {
+				width: 70%;
+			}
+
 			display: flex;
 			flex-direction: row;
 			flex-wrap: nowrap;
 			justify-content: center;
 			list-style-type: none;
+			margin: rem(40) auto 0;
+			width: 90%;
 
 			li {
 
-				width: rem(150);
+				min-width: rem(145);
+				width: rem(145);
+
+				img {
+					width: auto;
+				}
 
 			}
 
+		}
+
+		.owl-item {
+			text-align: -webkit-center;
 		}
 
 		background-color: $gray7;
@@ -296,8 +336,15 @@ $output-bourbon-deprecation-warnings: false;
 			flex-direction: row;
 			flex-wrap: nowrap;
 			list-style-type: none;
+			margin: rem(40) auto 0;
+			width: 90%;
 
 			li {
+
+				max-width: rem(145);
+				min-width: rem(145);
+				text-align: center;
+				width: rem(145);
 
 				img {
 					width: 100%;
@@ -305,6 +352,10 @@ $output-bourbon-deprecation-warnings: false;
 
 			}
 
+		}
+
+		.owl-item {
+			text-align: -webkit-center;
 		}
 
 		margin-bottom: rem(40);
