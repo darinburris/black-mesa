@@ -17,20 +17,25 @@ $(document).ready(
 
 		$('.categories-carousel', '.clp #categories').owlCarousel(
 			{
-				dots: false,
 				loop: false,
 				responsive: {
 					// breakpoint from 0 up
 					0: {
-						items: 3
+						items: 2,
+						dots: true,
+						nav: true
 					},
 					// breakpoint from 480 up
 					480: {
-						items: 4
+						items: 4,
+						dots: true,
+						nav: true
 					},
 					// breakpoint from 768 up
 					768: {
-						items: 6
+						items: 6,
+						dots: false,
+						nav: false
 					}
 				}
 			}
@@ -41,6 +46,8 @@ $(document).ready(
 				autoplay: true,
 				autoplayTimeout: 3000,
 				autoplayHoverPause: true,
+				dots: true,
+				nav: true,
 				items: 1,
 				loop: true
 			}
@@ -55,7 +62,7 @@ $(document).ready(
 						items: 2
 					},
 					// breakpoint from 768 up
-					768: {
+					736: {
 						items: 4
 					},
 					1000: {

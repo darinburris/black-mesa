@@ -6,7 +6,8 @@ $output-bourbon-deprecation-warnings: false;
 @import
 'bourbon',
 'neat',
-'0-settings/grid-settings';
+'0-settings/grid-settings',
+'1-tools/sprites';
 
 /* CLP Specific Styles
    ========================================================================== */
@@ -43,8 +44,12 @@ $output-bourbon-deprecation-warnings: false;
 
 		.owl-nav {
 
+			@include grid-media($tablet-screen-up) {
+				top: 43%;
+			}
+
 			position: absolute;
-			top: 43%;
+			top: 40%;
 			width: 100%;
 
 			.owl-prev,
@@ -53,11 +58,99 @@ $output-bourbon-deprecation-warnings: false;
 			}
 
 			.owl-prev {
-				left: rem(-30);
+
+				@include grid-media($tablet-screen-up) {
+
+					background: url($spritesheet-image) transparent no-repeat $arrow-left-offset-x $arrow-left-offset-y;
+					height: $arrow-left-height;
+					left: rem(-50);
+					margin: 0;
+					padding: 0;
+					text-indent: rem(-10000);
+					width: $arrow-left-width;
+
+				}
+
+				background: url($spritesheet-image) transparent no-repeat $arrow-left-small-offset-x $arrow-left-small-offset-y;
+				height: $arrow-right-small-height;
+				left: rem(-20);
+				margin: 0;
+				padding: 0;
+				text-indent: rem(-10000);
+				width: $arrow-right-small-width;
+
+				&:hover {
+
+					@include grid-media($tablet-screen-up) {
+
+						background: url($spritesheet-image) transparent no-repeat $arrow-left-offset-x $arrow-left-offset-y;
+						height: $arrow-left-height;
+						left: rem(-50);
+						margin: 0;
+						padding: 0;
+						text-indent: rem(-10000);
+						width: $arrow-left-width;
+
+					}
+
+					background: url($spritesheet-image) transparent no-repeat $arrow-left-small-offset-x $arrow-left-small-offset-y;
+					height: $arrow-right-small-height;
+					left: rem(-20);
+					margin: 0;
+					padding: 0;
+					text-indent: rem(-10000);
+					width: $arrow-right-small-width;
+
+				}
+
 			}
 
 			.owl-next {
-				right: rem(-30);
+
+				@include grid-media($tablet-screen-up) {
+
+					background: url($spritesheet-image) transparent no-repeat $arrow-right-offset-x $arrow-right-offset-y;
+					height: $arrow-right-height;
+					margin: 0;
+					padding: 0;
+					right: rem(-50);
+					text-indent: rem(-10000);
+					width: $arrow-right-width;
+
+				}
+
+				background: url($spritesheet-image) transparent no-repeat $arrow-right-small-offset-x $arrow-right-small-offset-y;
+				height: $arrow-right-small-height;
+				margin: 0;
+				padding: 0;
+				right: rem(-20);
+				text-indent: rem(-10000);
+				width: $arrow-right-small-width;
+
+				&:hover {
+
+					@include grid-media($tablet-screen-up) {
+
+						background: url($spritesheet-image) transparent no-repeat $arrow-right-offset-x $arrow-right-offset-y;
+						height: $arrow-right-height;
+						margin: 0;
+						padding: 0;
+						right: rem(-50);
+						text-indent: rem(-10000);
+						width: $arrow-right-width;
+
+					}
+
+					background: url($spritesheet-image) transparent no-repeat $arrow-right-small-offset-x $arrow-right-small-offset-y;
+					height: $arrow-right-small-height;
+					margin: 0;
+					padding: 0;
+					right: rem(-20);
+					text-indent: rem(-10000);
+					width: $arrow-right-small-width;
+
+				}
+
 			}
 
 		}
@@ -69,7 +162,7 @@ $output-bourbon-deprecation-warnings: false;
 
 	.categories {
 
-		@include grid-media($tablet-screen-up) {
+		@include grid-media($desktop-screen-up) {
 			margin-left: calc(-100vw / 2 + 1200px / 2);
 			margin-right: calc(-100vw / 2 + 1200px / 2);
 		}
@@ -87,6 +180,7 @@ $output-bourbon-deprecation-warnings: false;
 			}
 
 			font-size: rem(14);
+			padding-left: rem(20);
 			text-align: left;
 			text-transform: uppercase;
 
@@ -94,8 +188,13 @@ $output-bourbon-deprecation-warnings: false;
 
 		ul {
 
-			@include grid-media($tablet-screen-up) {
-				width: 70%;
+			@include grid-media($desktop-screen-up) {
+				margin: rem(40) auto 0;
+				width: rem(1200);
+			}
+
+			@include grid-media($desktop-screen-down) {
+				width: calc(100% - 40px);
 			}
 
 			display: flex;
@@ -108,11 +207,28 @@ $output-bourbon-deprecation-warnings: false;
 
 			li {
 
-				min-width: rem(145);
+				//min-width: rem(145);
 				width: rem(145);
 
 				img {
 					width: auto;
+				}
+
+				figure {
+
+					text-align: -webkit-center;
+
+					figcaption {
+						margin-top: rem(20);
+					}
+
+					a {
+						color: $grey1;
+						font-size: rem(12);
+						text-decoration: none;
+						text-transform: uppercase;
+					}
+
 				}
 
 			}
@@ -121,6 +237,74 @@ $output-bourbon-deprecation-warnings: false;
 
 		.owl-item {
 			text-align: -webkit-center;
+		}
+
+		.owl-nav,
+		.owl-dots {
+			left: 0;
+			position: absolute;
+			width: 100%;
+		}
+
+		.owl-nav {
+			bottom: 80%;
+		}
+
+		.owl-dots {
+			bottom: -18%;
+		}
+
+		.owl-prev,
+		.owl-next {
+			position: absolute;
+		}
+
+		.owl-prev {
+
+			background: url($spritesheet-image) transparent no-repeat $arrow-left-offset-x $arrow-left-offset-y;
+			height: $arrow-left-height;
+			left: rem(-10);
+			margin: 0;
+			padding: 0;
+			text-indent: rem(-10000);
+			width: $arrow-left-width;
+
+			&:hover {
+
+				background: url($spritesheet-image) transparent no-repeat $arrow-left-offset-x $arrow-left-offset-y;
+				height: $arrow-left-height;
+				left: rem(-10);
+				margin: 0;
+				padding: 0;
+				text-indent: rem(-10000);
+				width: $arrow-left-width;
+
+			}
+
+		}
+
+		.owl-next {
+
+			background: url($spritesheet-image) transparent no-repeat $arrow-right-offset-x $arrow-right-offset-y;
+			height: $arrow-right-height;
+			margin: 0;
+			padding: 0;
+			right: rem(-10);
+			text-indent: rem(-10000);
+			width: $arrow-right-width;
+
+			&:hover {
+
+				background: url($spritesheet-image) transparent no-repeat $arrow-right-offset-x $arrow-right-offset-y;
+				height: $arrow-right-height;
+				margin: 0;
+				padding: 0;
+				right: rem(-10);
+				text-indent: rem(-10000);
+				width: $arrow-right-width;
+
+			}
+
 		}
 
 		background-color: $gray7;
@@ -288,6 +472,8 @@ $output-bourbon-deprecation-warnings: false;
 
 				blockquote {
 
+					color: $grey1;
+
 					q {
 
 						display: inline-block;
@@ -313,6 +499,65 @@ $output-bourbon-deprecation-warnings: false;
 
 		}
 
+		.owl-nav {
+			bottom: 70%;
+			position: absolute;
+			width: 100%;
+		}
+
+		.owl-prev,
+		.owl-next {
+			position: absolute;
+		}
+
+		.owl-prev {
+
+			background: url($spritesheet-image) transparent no-repeat $arrow-left-small-offset-x $arrow-left-small-offset-y;
+			height: $arrow-left-small-height;
+			left: rem(10);
+			margin: 0;
+			padding: 0;
+			text-indent: rem(-10000);
+			width: $arrow-left-small-width;
+
+			&:hover {
+
+				background: url($spritesheet-image) transparent no-repeat $arrow-left-small-offset-x $arrow-left-small-offset-y;
+				height: $arrow-left-small-height;
+				left: rem(10);
+				margin: 0;
+				padding: 0;
+				text-indent: rem(-10000);
+				width: $arrow-left-small-width;
+
+			}
+
+		}
+
+		.owl-next {
+
+			background: url($spritesheet-image) transparent no-repeat $arrow-right-small-offset-x $arrow-right-small-offset-y;
+			height: $arrow-right-small-height;
+			margin: 0;
+			padding: 0;
+			right: rem(10);
+			text-indent: rem(-10000);
+			width: $arrow-right-small-width;
+
+			&:hover {
+
+				background: url($spritesheet-image) transparent no-repeat $arrow-right-small-offset-x $arrow-right-small-offset-y;
+				height: $arrow-right-small-height;
+				margin: 0;
+				padding: 0;
+				right: rem(10);
+				text-indent: rem(-10000);
+				width: $arrow-right-small-width;
+
+			}
+
+		}
+
 		background-color: $gray7;
 		margin-bottom: rem(40);
 		margin-top: rem(40);
@@ -324,7 +569,12 @@ $output-bourbon-deprecation-warnings: false;
 
 		h2 {
 
+			@include grid-media($tablet-screen-up) {
+				margin-left: 0;
+			}
+
 			font-size: rem(14);
+			margin-left: rem(20);
 			text-align: left;
 			text-transform: uppercase;
 
@@ -346,8 +596,31 @@ $output-bourbon-deprecation-warnings: false;
 				text-align: center;
 				width: rem(145);
 
-				img {
-					width: 100%;
+				figure {
+
+					img {
+						height: rem(200);
+						width: 100%;
+					}
+
+					figcaption {
+
+						text-align: left;
+
+						a {
+							display: inline-block;
+							font-size: rem(12);
+							text-align: left;
+							text-decoration: none;
+
+							span {
+								color: $grey1;
+								display: block;
+							}
+						}
+
+					}
+
 				}
 
 			}
@@ -363,4 +636,34 @@ $output-bourbon-deprecation-warnings: false;
 
 	}
 
+}
+
+
+.owl-dots {
+	text-align: center;
+	-webkit-tap-highlight-color: transparent;
+
+	.owl-dot {
+		display: inline-block;
+		zoom: 1;
+		// *display: inline;
+
+		span {
+			width: rem(10);
+			height: rem(10);
+			margin: 0 rem(10);
+			background: $grey1;
+			display: block;
+			-webkit-backface-visibility: visible;
+			transition: opacity 200ms ease;
+			border-radius: 30px;
+		}
+
+		&.active,
+		&:hover {
+			span {
+				background: $black;
+			}
+		}
+	}
 }
