@@ -105,14 +105,15 @@ module.exports = function(grunt) {
 		/**
 		 * @description grunt task to generate a sprite from a collection of .png files ******************
 		**/
-		// sprite: {
-		// 	all: {
-		// 		src: 'source/img/sprites/*.png',
-		// 		dest: 'release/img/sprites.png',
-		// 		destCss: 'source/scss/_sprites.scss',
-		// 		imgPath: '../img/sprites.png'
-		// 	}
-		// },
+		sprite: {
+			all: {
+				src: 'source/img/sprites/*.png',
+				dest: 'release/img/sprites.png',
+				destCss: 'source/scss/1-tools/_sprites.scss',
+				imgPath: '../img/sprites.png',
+				algorithm: 'top-down'
+			}
+		},
 		/**
 		* @description  grunt task compiles sass files, copies them into a pre release
 		* folder under /source/ in order to allow for linting prior to
@@ -418,7 +419,7 @@ module.exports = function(grunt) {
 		function() {
 			grunt.config.set('taskName', this.name);
 			grunt.task.run(
-				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','copy:buildJS','clean:postRelease','exec:gulp','exec:wp']//'rjsReplace', , 'jscs','sasslint','sass:dist','mochaTest'
+				['clean:preRelease', 'sprite', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','copy:buildJS','clean:postRelease','exec:gulp','exec:wp']//'rjsReplace', , 'jscs','sasslint','sass:dist','mochaTest'
 			);
 		}
 	);
@@ -563,49 +564,5 @@ module.exports = function(grunt) {
 			grunt.task.run('replace:toc');
 		}
 	});
-
-	// function writeServiceWorkerFile(rootDir, handleFetch, callback) {
-	// 	var config = {
-	// 		cacheId: packageJson.name,
-	// 		dynamicUrlToDependencies: {},
-	// 		// If handleFetch is false (i.e. because this is called from swPrecache:dev), then
-	// 		// the service worker will precache resources but won't actually serve them.
-	// 		// This allows you to test precaching behavior without worry about the cache preventing your
-	// 		// local changes from being picked up during the development cycle.
-	// 		handleFetch: handleFetch,
-	// 		logger: grunt.log.writeln,
-	// 		staticFileGlobs: [
-	// 			rootDir + '/css/**.css',
-	// 			rootDir + '/**.html',
-	// 			rootDir + '/img/**.*',
-	// 			rootDir + '/js/**.js'
-	// 		],
-	// 		stripPrefix: rootDir + '/',
-	// 		// verbose defaults to false, but for the purposes of this demo, log more.
-	// 		verbose: true
-	// 	};
-	//
-	// 	swPrecache.write(path.join(rootDir, 'sw.js'), config, callback);
-	//
-	// }
-	//
-	// grunt.registerMultiTask('swPrecache',
-	// 	function() {
-	// 		/* eslint-disable no-invalid-this */
-	// 		var done = this.async();
-	// 		var rootDir = this.data.rootDir;
-	// 		var handleFetch = this.data.handleFetch;
-	// 		/* eslint-enable */
-	//
-	// 		writeServiceWorkerFile(rootDir, handleFetch,
-	// 			function(error) {
-	// 				if (error) {
-	// 					grunt.fail.warn(error);
-	// 				}
-	// 				done();
-	// 			}
-	// 		);
-	// 	}
-	// );
 
 };

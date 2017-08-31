@@ -2,6 +2,7 @@
 
 $medium-screen-big: '(min-width: 737px)';
 $medium-screen-little: '(max-width: 1199px)';
+$desktop-up: '(min-width: 1200px)';
 
 $neat-grid: (
 	columns: 12,
@@ -16,4 +17,9 @@ $tablet-screen-up: (
 //For styles in between tablet and desktop
 $desktop-screen-down: (
 	media: $medium-screen-little
+);
+
+//For styles in between tablet and desktop
+$desktop-screen-up: (
+	media: $desktop-up
 );
