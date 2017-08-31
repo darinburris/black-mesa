@@ -33,6 +33,9 @@ module.exports = function(grunt) {
 		exec: {
 			gulp: {
 				cmd: 'gulp'
+			},
+			wp: {
+				cmd: 'webpack'
 			}
 		},
 
@@ -415,7 +418,7 @@ module.exports = function(grunt) {
 		function() {
 			grunt.config.set('taskName', this.name);
 			grunt.task.run(
-				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','copy:buildJS','clean:postRelease','exec:gulp']//'rjsReplace', , 'jscs','sasslint','sass:dist','mochaTest'
+				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','copy:buildJS','clean:postRelease','exec:gulp','exec:wp']//'rjsReplace', , 'jscs','sasslint','sass:dist','mochaTest'
 			);
 		}
 	);
