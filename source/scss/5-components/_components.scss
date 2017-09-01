@@ -179,6 +179,7 @@ $output-bourbon-deprecation-warnings: false;
 				max-width: rem(1200);
 			}
 
+			font-family: $font-stack-open;
 			font-size: rem(14);
 			padding-left: rem(20);
 			text-align: left;
@@ -307,7 +308,7 @@ $output-bourbon-deprecation-warnings: false;
 
 		}
 
-		background-color: $gray7;
+		background-color: $grey3;
 		margin-bottom: rem(40);
 		margin-top: rem(40);
 		padding: 20px 0 50px;
@@ -357,16 +358,20 @@ $output-bourbon-deprecation-warnings: false;
 				margin-bottom: rem(20);
 				order: 1;
 
-				.button-alternate {
+				.button {
 
-					@include grid-media($tablet-screen-up) {
-						display: block;
-						height: rem(20);
-						margin-top: rem(20);
-						width: rem(120);
+					&.alternate {
+
+						@include grid-media($tablet-screen-up) {
+							display: block;
+							// height: rem(20);
+							// margin-top: rem(20);
+							width: rem(120);
+						}
+
+						display: none;
+
 					}
-
-					display: none;
 
 				}
 
@@ -414,17 +419,21 @@ $output-bourbon-deprecation-warnings: false;
 
 			}
 
-			.button-alternate {
+			.button {
 
-				@include grid-media($tablet-screen-up) {
-					display: none;
+				&.alternate {
+
+					@include grid-media($tablet-screen-up) {
+						display: none;
+					}
+
+					display: inline-block;
+					height: rem(20);
+					margin-top: rem(20);
+					order: 3;
+					width: rem(120);
+
 				}
-
-				display: inline-block;
-				height: rem(20);
-				margin-top: rem(20);
-				order: 3;
-				width: rem(120);
 
 			}
 
@@ -558,7 +567,7 @@ $output-bourbon-deprecation-warnings: false;
 
 		}
 
-		background-color: $gray7;
+		background-color: $grey3;
 		margin-bottom: rem(40);
 		margin-top: rem(40);
 		padding: 20px 0 50px;
@@ -573,6 +582,7 @@ $output-bourbon-deprecation-warnings: false;
 				margin-left: 0;
 			}
 
+			font-family: $font-stack-open;
 			font-size: rem(14);
 			margin-left: rem(20);
 			text-align: left;

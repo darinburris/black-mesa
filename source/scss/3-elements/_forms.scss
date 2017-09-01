@@ -10,31 +10,26 @@ $output-bourbon-deprecation-warnings: false;
 
 .button {
 
-	@include border-top-radius(2px);
-	@include border-right-radius(2px);
-	@include border-bottom-radius(2px);
-	@include border-left-radius(2px);
-
-	background: inherit;
-	border-style: solid;
-	border-width: 1px;
-	cursor: pointer;
-	font-size: rem(10);
-	line-height: 2;
-	padding: rem(4);
-	text-align: center;
-	text-decoration: none;
-	text-transform: uppercase;
-	width: rem(150);
+	// background: inherit;
+	// border-style: solid;
+	// border-width: 1px;
+	// cursor: pointer;
+	// font-size: rem(10);
+	// line-height: 2;
+	// padding: rem(4);
+	// text-align: center;
+	// text-decoration: none;
+	// text-transform: uppercase;
+	// width: rem(150);
 
 }
 
-.button-alternate {
-
-	@extend .button;
-
-	border-color: $black2;
-	color: $black2;
-
-
-}
+// .button-alternate {
+//
+// 	@extend .button;
+//
+// 	border-color: $black2;
+// 	color: $black2;
+//
+//
+// }

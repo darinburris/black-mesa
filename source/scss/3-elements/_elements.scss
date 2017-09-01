@@ -4,9 +4,16 @@ html {
 
 	// @include grid-visual;
 	@include grid-container;
-
+	box-sizing: border-box;
+	color: $copy;
 	font-family: $font-stack-open;
 
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
 }
 
 /* Sections
@@ -44,8 +51,8 @@ h2 {
 		font-size: rem(60);
 	}
 
-	// font-family: $font-stack-arapey, $font-stack-open, sans-serif;
-	font-size: rem(40);
+	font-family: $font-stack-arapey, sans-serif;
+	font-size: rem(32);
 	font-weight: normal;
 	line-height: 1;
 	margin: 0;
@@ -55,10 +62,19 @@ h2 {
 
 h3 {
 	font-family: $font-stack-open;
+	font-size: rem(22);
 }
 
-h4 {
+h4,
+h5,
+h6 {
 	font-family: $font-stack-open;
+	font-size: rem(20);
+}
+
+p {
+	font-size: rem(16);
+	line-height: rem(24);
 }
 
 /* Grouping content
@@ -162,24 +178,214 @@ svg {
 /* Forms
    ========================================================================== */
 
+form {
+
+	@include grid-media($tablet-screen-up) {
+		margin: 0;
+		padding: 0;
+	}
+
+	margin: rem(20);
+
+}
+
 button,
 input,
 optgroup,
 select,
-textarea {
+textarea,
+a[class*="button"],
+label[for*="checkbox"] {
+
+	@include grid-media($tablet-screen-up) {
+		width: rem(300);
+	}
+
+	@include border-top-radius(3px);
+	@include border-right-radius(3px);
+	@include border-bottom-radius(3px);
+	@include border-left-radius(3px);
+	border-color: $input-border-color-initial;
+	border-width: rem(2);
+	border-style: solid;
+	color: $input-color-focus;
+	display: inline-block;
+	font-size: rem(12);
+	line-height: 2;
+	width: 100%;
+	padding: rem(4) rem(6)
 
 }
 
-button {
+input,
+textarea {
+
+	&:placeholder-shown {
+		border-color: $input-border-color-initial;
+		color: $input-color-initial;
+	}
+
+	&::placeholder {
+		color: $input-color-initial;
+	}
+
+	&:focus {
+		border-color: $viking-primary-blue;
+		color: $input-color-focus;
+		outline: none;
+	}
+
+	&.success {
+		border-color: $input-border-color-success;
+	}
+
+	&.error {
+		border-color: $input-border-color-error;
+	}
+
+	&.disabled {
+		background-color: $input-background-color-disabled;
+		border-color: $input-border-color-disabled;
+		color: $input-color-disabled;
+	}
+
+}
+
+textarea {
+
+	min-height: rem(100);
+	line-height: 1.5;
+
+}
+
+label[for*="checkbox"] {
+
+	background: inherit;
+	border-color: $viking-primary-blue;
+	color: $viking-primary-blue;
+	cursor: pointer;
+	display: inline-block;
+	line-height: 1;
+	padding: rem(10) rem(10) rem(10) rem(30);
+	text-transform: uppercase;
+	width: fit-content;
+
+}
+
+[type="checkbox"] {
+
+	cursor: pointer;
+	margin: 0 -26px 0 20px;
+	order: 1;
+	width: auto;
+
+	&:checked {
+
+		+ label[for*="checkbox"] {
+
+			background-color: $viking-primary-blue;
+			color: $white;
+
+		}
+
+	}
+
+}
+
+button,
+input[type="submit"],
+a[class*="button"] {
+
+	background: transparent;
+	font-size: rem(12);
+	line-height: 2;
+	padding: rem(4) rem(40);
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	width: auto;
+
+	&.button {
+
+		&.primary {
+
+			background: inherit;
+			border-color: $viking-primary-blue;
+			color: $viking-primary-blue;
+
+
+			&:active {
+
+				background: $viking-primary-blue;
+				border-color: $viking-primary-blue;
+				color: $white;
+
+			}
+
+			&:hover {
+
+				background: $viking-secondary-blue;
+				border-color: $viking-secondary-blue;
+				color: $white;
+
+			}
+
+		}
+
+		&.secondary {
+
+			background: inherit;
+			border-color: $button-secondary-border;
+			color: $button-secondary-color;
+
+			&:active {
+
+				background: $black3;
+				border-color: $black3;
+				color: $white;
+
+			}
+
+			&:hover {
+
+				background: $black2;
+				border-color: $black2;
+				color: $white;
+
+			}
+
+		}
+
+		&.disabled,
+		&:hover {
+
+			background: inherit;
+			border-color: $button-disabled-border;
+			color: $button-disabled-color;
+			cursor: not-allowed;
+
+		}
+
+	}
 
 }
 
 fieldset {
-
+	border: 0;
+	margin: 0;
+	padding: 0;
 }
 
 legend {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
 
+label {
+	display: block;
+	font-size: rem(12);
+	padding: rem(6) 0;
 }
 
 progress {
