@@ -3,16 +3,25 @@
 	<head>
 
         <title>Styleguide</title>
-<style>
-input::-webkit-inner-spin-button {
-  opacity: 1;
-}
 
-</style>
 <include file="includes/common/meta.html" />
 
 <include file="includes/common/css.html" />
-		<link rel="stylesheet" href="/css/styleguide.css" type="text/css" media="screen" />
+
+		<style>
+			button,
+			input[type="submit"],
+			a.button {
+				display: block;
+				margin: 20px 0;
+			}
+
+			fieldset a.button {
+				display: inline-block;
+				margin: 0;
+			}
+
+		</style>
 
 	</head>
 	<body role="document" dir="@@direction">
@@ -21,21 +30,184 @@ input::-webkit-inner-spin-button {
 
 		<main role="main">
 
-			<h2>Styleguide</h2>
+			<h1>Styleguide</h1>
 
-			<p>Styleguide content will eventually go here.</p>
+			<section class="headings">
 
-			<section class="full-bleed">this is a test</section>
+				<h1>H1</h1>
+				<h2>H2</h2>
+				<h3>H3</h3>
+				<h4>H4</h4>
+				<h5>H5</h5>
+				<h6>H6</h6>
 
-			<picture>
-			  <source srcset="examples/images/extralarge.jpg" media="(min-width: 1000px)">
-			  <source srcset="examples/images/art-large.jpg" media="(min-width: 800px)">
-			  <img srcset="examples/images/art-medium.jpg" alt="…">
-			</picture>
+			</section>
 
-<form action="">
-	<input type="number" min="0" max="100"/>
-</form>
+			<hr>
+
+			<section>
+
+				<h2>Copy</h2>
+
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+			</section>
+
+			<hr>
+
+			<form action="" method="">
+
+				<h2>Forms</h2>
+
+				<fieldset>
+
+					<legend>Input Types</legend>
+
+					<fieldset>
+
+						<legend>Text:</legend>
+
+						<label for="text">Text Input:</label>
+						<input type="text" value="" id="text" placeholder="This is a text input" />
+
+					</fieldset>
+
+					<fieldset>
+
+						<legend>Email:</legend>
+
+						<label for="email">Email Input:</label>
+						<input type="email" value="" id="email" placeholder="This is a email input" />
+
+					</fieldset>
+
+					<fieldset>
+
+						<legend>Password:</legend>
+
+						<label for="password">Password Input:</label>
+						<input type="password" value="" id="password" placeholder="This is a password input" />
+
+					</fieldset>
+
+					<fieldset>
+
+						<legend>Number:</legend>
+
+						<label for="number">Number Input:</label>
+						<input type="number" value="" id="number" placeholder="This is a number input" />
+
+					</fieldset>
+
+					<fieldset>
+
+						<legend>Textarea:</legend>
+
+						<label for="textarea">Textarea Input:</label>
+						<textarea value="" id="textarea" /></textarea>
+
+					</fieldset>
+
+				</fieldset>
+
+				<fieldset>
+
+					<legend>Input States</legend>
+
+					<fieldset>
+
+						<legend>Success:</legend>
+
+						<label for="success">Text:</label>
+						<input type="text" value="This is a success!" id="success" placeholder="This is a text input" class="success" />
+
+					</fieldset>
+
+					<fieldset>
+
+						<legend>Failure:</legend>
+
+						<label for="failure">Email Input:</label>
+						<input type="email" value="Ooops, something went wrong" id="failure" placeholder="This is a email input" class="error" />
+
+					</fieldset>
+
+					<fieldset>
+
+						<legend>Disabled:</legend>
+
+						<label for="disabled">Password Input:</label>
+						<input type="text" value="I'm sorry, but you can't do that." id="disabled" placeholder="This is a disabled input" class="disabled" />
+
+					</fieldset>
+
+				</fieldset>
+
+				<fieldset>
+
+					<legend>Controls</legend>
+
+					<fieldset class="checkbox">
+
+						<legend>Checkbox:</legend>
+
+						<input type="checkbox" value="" id="cb1" />
+						<label for="cb1">Checkbox</label>
+
+						<input type="checkbox" value="" id="cb2" />
+						<label for="cb2">Checkbox</label>
+
+						<input type="checkbox" value="" id="cb3" disabled />
+						<label for="cb3">Checkbox</label>
+
+					</fieldset>
+
+					<fieldset class="radio">
+
+						<legend>Radio:</legend>
+
+						<input type="radio" name="radio" value="" id="r1" />
+						<label for="r1" class="radio-label">Radio 1:</label>
+
+						<input type="radio" name="radio" value="" id="r2" />
+						<label for="r2" class="radio-label">Radio 2:</label>
+
+						<input type="radio" name="radio" value="" id="r3" disabled/>
+						<label for="r3" class="radio-label">Radio 3:</label>
+
+					</fieldset>
+
+				<fieldset>
+
+				<fieldset>
+
+					<legend>Button types:</legend>
+
+					<button value="Submit me!" class="button primary">I'm a button</button>
+
+					<button value="Submit me!" class="button secondary">I'm a button</button>
+
+					<button value="Submit me!" class="button disabled">I'm a button</button>
+
+					<input type="submit" value="I'm a submit input type" class="button primary" />
+
+					<input type="submit" value="I'm a submit input type" class="button secondary" />
+
+					<input type="submit" value="I'm a submit input type" class="button disabled" />
+
+					<fieldset style="white-space: pre-line; padding: 0; margin: 0;">
+
+						<a href="#" class="button primary">I'm an anchor styled like a button</a>
+
+						<a href="#" class="button secondary">I'm an anchor styled like a button</a>
+
+						<a href="#" class="button disabled">I'm an anchor styled like a button</a>
+
+					</fieldset>
+
+				</fieldset>
+
+			</form>
 
 		</main>
 
