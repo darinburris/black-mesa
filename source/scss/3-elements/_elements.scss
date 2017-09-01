@@ -205,6 +205,8 @@ label[for*="checkbox"] {
 	@include border-right-radius(3px);
 	@include border-bottom-radius(3px);
 	@include border-left-radius(3px);
+
+	appearance: none;
 	border-color: $input-border-color-initial;
 	border-width: rem(2);
 	border-style: solid;
@@ -213,7 +215,7 @@ label[for*="checkbox"] {
 	font-size: rem(12);
 	line-height: 2;
 	width: 100%;
-	padding: rem(4) rem(6)
+	padding: rem(4) rem(6);
 
 }
 
@@ -303,7 +305,7 @@ a[class*="button"] {
 	text-align: center;
 	text-decoration: none;
 	text-transform: uppercase;
-	width: auto;
+	// width: auto;
 
 	&.button {
 
@@ -378,6 +380,7 @@ fieldset {
 
 legend {
 	border: 0;
+	display: none;
 	margin: 0;
 	padding: 0;
 }
