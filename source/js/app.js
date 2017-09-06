@@ -1,19 +1,7 @@
-// import react dependencies
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import registerSW from './registerSW';
+// import registerSW from './registerSW';
 
-// import store
-import store from './store';
+import 'carousel';
 
-// import views
-import MegaNav from 'mega-nav-list-container';
+console.log('app loaded');
 
-// DOM rendering
-ReactDOM.render(
-	<Provider store={store}><MegaNav /></Provider>,
-	document.getElementById('megaNav')
-);
-
-registerSW();
+// registerSW();

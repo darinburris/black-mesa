@@ -1,0 +1,43 @@
+$output-bourbon-deprecation-warnings: false;
+
+/* Layout Specific Styles
+   ========================================================================== */
+
+@import
+'bourbon',
+'neat',
+'0-settings/grid-settings';
+
+header,
+footer {
+
+	&.viking {
+
+		@include grid-media($tablet-screen-up) {
+			height: rem(100);
+		}
+
+		background-color: $grey3;
+		height: rem(20);
+		text-align: center;
+	}
+
+}
+
+main {
+
+	@include grid-media($tablet-screen-up) {
+		margin: 0 auto;
+		max-width: 1200px;
+		width: 100%;
+	}
+
+	@include grid-media($desktop-screen-down) {
+		width: 100%;
+	}
+
+	// max-width: 1200px;
+	margin: 0;
+	width: 100%;
+
+}

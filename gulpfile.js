@@ -11,7 +11,8 @@ const gulp = require('gulp'),
 	clean = require('gulp-clean'),
 	autoprefixer = require('gulp-autoprefixer'),
 	bourbon = require("bourbon"),
-	neat = require("bourbon-neat");
+	neat = require("bourbon-neat"),
+	cleanCSS = require('gulp-clean-css');
 
 // Compile sass files
 function compileSass() {
@@ -37,13 +38,8 @@ function lintSass() {
 	return gulp.src(
 		[
 			'./source/scss/**/*.scss',
-			'!./source/scss/_mixins.scss',
-			'!./source/scss/carousel/**/*',
-			'!./source/scss/_sprites.scss',
-			'!./source/scss/_sliders.scss',
-			'!./source/scss/_normalize.scss',
-			'!./source/scss/_colorbox.scss',
-			'!./source/scss/_tooltips.scss'
+			'!./source/scss/2-generic/_normalize.scss',
+			'!./source/scss/1-tools/**/*.scss'
 		]
 	)
 	.pipe(
@@ -62,12 +58,31 @@ function ap() {
 	return gulp.src('./release/css/**/*.css')
 		.pipe(
 			autoprefixer({
-				browsers: ['last 2 versions'],
+				browsers: ['last 6 versions'],
 				cascade: false
 			}
 		)
 	)
 	.pipe(gulp.dest('./release/css/'))
+}
+
+// run autoprefixer on compiled css files
+function minifyCSS() {
+
+	return gulp.src(
+		'./release/css/**/*.css'
+	)
+	.pipe(
+		cleanCSS(
+			{
+				compatibility: 'ie8'
+			}
+		)
+	)
+	.pipe(
+		gulp.dest('./release/css/')
+	);
+
 }
 
 //watch task for edited files
@@ -120,11 +135,12 @@ const wa = gulp.series(watching);
 const compileCSS = gulp.series(lintSass, compileSass, ap);
 const optimizeAssets = gulp.parallel(concatjs,concatcss);
 //const build = gulp.series(delRelease, copyHTML, copyJS, compileCSS, optimizeAssets);
-const build = gulp.series(compileCSS,wa);
+const build = gulp.series(compileCSS);//,wa
 
 //this is how to assign multiple tasks to a single task
 //gulp.task('default', ['build:css','copyHTML']);
 gulp.task('watch', wa);
+gulp.task('minifyCSS', minifyCSS);
 gulp.task('compileCSS', compileCSS);
 gulp.task('optimizeAssets', optimizeAssets);
 gulp.task('default', build);

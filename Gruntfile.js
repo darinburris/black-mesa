@@ -30,6 +30,15 @@ module.exports = function(grunt) {
 		preReleaseCss: ampConfig.base.sourceDir + '/css',
 		preReleaseJs: ampConfig.base.sourceDir + '/js',
 
+		exec: {
+			gulp: {
+				cmd: 'gulp'
+			},
+			wp: {
+				cmd: 'webpack'
+			}
+		},
+
 		/**
 		 * @description grunt include task recursively includes static html files into each other ******************
 		**/
@@ -100,8 +109,9 @@ module.exports = function(grunt) {
 			all: {
 				src: 'source/img/sprites/*.png',
 				dest: 'release/img/sprites.png',
-				destCss: 'source/scss/_sprites.scss',
-				imgPath: '../img/sprites.png'
+				destCss: 'source/scss/1-tools/_sprites.scss',
+				imgPath: '../img/sprites.png',
+				algorithm: 'top-down'
 			}
 		},
 		/**
@@ -172,7 +182,7 @@ module.exports = function(grunt) {
 			options: {
 				configFile: '.eslintrc'
 			},
-			target: ['<%= sourceDir %>/js/**/*.js','<%= sourceDir %>/js/**/*.jsx', '!<%= releaseDir %>/js/lib/**/*.js', '!<%= sourceDir %>/js/lib/**/*.js']
+			target: ['<%= sourceDir %>/js/**/*.js', '!<%= releaseDir %>/js/lib/**/*.js', '!<%= sourceDir %>/js/lib/**/*.js']
 		},
 		/**
 		 *  @description grunt task minifies/obfuscates/concatinates js files
@@ -374,7 +384,7 @@ module.exports = function(grunt) {
 				files: [
 					ampConfig.base.sourceDir + '/js/**/*', '!' + ampConfig.base.sourceDir + '/js/lib/**'
 				],
-				tasks: ['eslint','mochaTest'],
+				tasks: ['eslint'],//,'mochaTest'
 				options: {
 					spawn: true
 				}
@@ -409,7 +419,7 @@ module.exports = function(grunt) {
 		function() {
 			grunt.config.set('taskName', this.name);
 			grunt.task.run(
-				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','sprite','copy:buildJS','clean:postRelease','mochaTest']//'rjsReplace', , 'jscs','sasslint','sass:dist'
+				['clean:preRelease', 'sprite', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize', 'genTOC','copy:buildJS','clean:postRelease','exec:gulp','exec:wp']//'rjsReplace', , 'jscs','sasslint','sass:dist','mochaTest'
 			);
 		}
 	);
@@ -420,7 +430,7 @@ module.exports = function(grunt) {
 		function() {
 			grunt.config.set('taskName', this.name);
 			grunt.task.run(
-				['mochaTest','eslint']//'sasslint',
+				['eslint']//'sasslint','mochaTest',
 			);
 		}
 	);
@@ -433,7 +443,7 @@ module.exports = function(grunt) {
 		'This task used for jenkins builds',
 		function() {
 			grunt.task.run(
-				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize','replace:api','genTOC','sprite','sasslint','sass:dist','copy:buildJS','clean:postRelease','mochaTest']//'rjsReplace', , 'jscs'
+				['clean:preRelease', 'copy:buildHTML', 'copy:buildIMG', 'includes', 'replace:localize','replace:api','genTOC','sprite','sasslint','sass:dist','copy:buildJS','clean:postRelease']//'rjsReplace', , 'jscs','mochaTest'
 			);
 		}
 	);
@@ -554,49 +564,5 @@ module.exports = function(grunt) {
 			grunt.task.run('replace:toc');
 		}
 	});
-
-	// function writeServiceWorkerFile(rootDir, handleFetch, callback) {
-	// 	var config = {
-	// 		cacheId: packageJson.name,
-	// 		dynamicUrlToDependencies: {},
-	// 		// If handleFetch is false (i.e. because this is called from swPrecache:dev), then
-	// 		// the service worker will precache resources but won't actually serve them.
-	// 		// This allows you to test precaching behavior without worry about the cache preventing your
-	// 		// local changes from being picked up during the development cycle.
-	// 		handleFetch: handleFetch,
-	// 		logger: grunt.log.writeln,
-	// 		staticFileGlobs: [
-	// 			rootDir + '/css/**.css',
-	// 			rootDir + '/**.html',
-	// 			rootDir + '/img/**.*',
-	// 			rootDir + '/js/**.js'
-	// 		],
-	// 		stripPrefix: rootDir + '/',
-	// 		// verbose defaults to false, but for the purposes of this demo, log more.
-	// 		verbose: true
-	// 	};
-	//
-	// 	swPrecache.write(path.join(rootDir, 'sw.js'), config, callback);
-	//
-	// }
-	//
-	// grunt.registerMultiTask('swPrecache',
-	// 	function() {
-	// 		/* eslint-disable no-invalid-this */
-	// 		var done = this.async();
-	// 		var rootDir = this.data.rootDir;
-	// 		var handleFetch = this.data.handleFetch;
-	// 		/* eslint-enable */
-	//
-	// 		writeServiceWorkerFile(rootDir, handleFetch,
-	// 			function(error) {
-	// 				if (error) {
-	// 					grunt.fail.warn(error);
-	// 				}
-	// 				done();
-	// 			}
-	// 		);
-	// 	}
-	// );
 
 };

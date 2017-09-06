@@ -13,26 +13,17 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /.jsx?$/,
-				loader: 'babel-loader',
-				exclude: /node_modules/,
-				query: {
-					presets: ['es2015','react','stage-2'],
-					plugins: ['transform-decorators-legacy']
-				}
-			},
-			{
 				test: /\.js$/,
 				exclude: /node_modules/,
 				loader: 'babel-loader',
 				query: {
-					presets: ['es2015','react','stage-2'],
+					presets: ['es2015','stage-2'],
 					plugins: ['transform-decorators-legacy']
 				}
 			},
- 			{
+			{
 				test: /\.css$/,
-				loader: 'style-loader!css-loader'
+				use: [ 'style-loader', 'css-loader' ]
 			}
 		]
 	},
@@ -40,24 +31,18 @@ module.exports = {
 		modules: [
 			path.join(__dirname, 'source'),
 			'node_modules',
-			'source/js/modules/',
-			'source/js/components/'
+			'source/js/',
+			'source/js/modules/'
 		],
-		extensions: ['.js', '.jsx']
+		extensions: ['.js']
 	},
 	plugins: [
-		new webpack.HotModuleReplacementPlugin(),
-		new webpack.optimize.CommonsChunkPlugin(
+		new webpack.ProvidePlugin(
 			{
-				name: 'commons',
-				filename: 'commons.js',
-				minChunks: 2,
+				$: "jquery",
+				jQuery: "jquery",
+				"window.jQuery": "jquery"
 			}
-		),
-	],
-	devServer: {
-		contentBase: path.resolve(__dirname, './release'),
-		port: 3000,
-		publicPath: '/js/'
-	},
+		)
+	]
 };

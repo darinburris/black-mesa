@@ -1,10 +1,5 @@
 const path = require('path');
 const Express = require('express');
-const React = require('react');
-const createStore = require('redux');
-const Provider = require('react-redux');
-const counterApp = require('./reducers');
-const App = require('./containers/App');
 
 const app = Express();
 const port = 8080;

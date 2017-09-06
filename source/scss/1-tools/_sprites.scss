@@ -1,0 +1,123 @@
+// SCSS variables are information about icon's compiled state, stored under its original file name
+//
+// .icon-home {
+//   width: $icon-home-width;
+// }
+//
+// The large array-like variables contain all information about a single icon
+// $icon-home: x y offset_x offset_y width height total_width total_height image_path;
+//
+// At the bottom of this section, we provide information about the spritesheet itself
+// $spritesheet: width height image $spritesheet-sprites;
+$arrow-left-small-name: 'arrowLeft-small';
+$arrow-left-small-x: 0px;
+$arrow-left-small-y: 0px;
+$arrow-left-small-offset-x: 0px;
+$arrow-left-small-offset-y: 0px;
+$arrow-left-small-width: 15px;
+$arrow-left-small-height: 28px;
+$arrow-left-small-total-width: 34px;
+$arrow-left-small-total-height: 178px;
+$arrow-left-small-image: '../img/sprites.png';
+$arrow-left-small: (0px, 0px, 0px, 0px, 15px, 28px, 34px, 178px, '../img/sprites.png', 'arrowLeft-small', );
+$arrow-left-name: 'arrowLeft';
+$arrow-left-x: 0px;
+$arrow-left-y: 56px;
+$arrow-left-offset-x: 0px;
+$arrow-left-offset-y: -56px;
+$arrow-left-width: 34px;
+$arrow-left-height: 61px;
+$arrow-left-total-width: 34px;
+$arrow-left-total-height: 178px;
+$arrow-left-image: '../img/sprites.png';
+$arrow-left: (0px, 56px, 0px, -56px, 34px, 61px, 34px, 178px, '../img/sprites.png', 'arrowLeft', );
+$arrow-right-small-name: 'arrowRight-small';
+$arrow-right-small-x: 0px;
+$arrow-right-small-y: 28px;
+$arrow-right-small-offset-x: 0px;
+$arrow-right-small-offset-y: -28px;
+$arrow-right-small-width: 15px;
+$arrow-right-small-height: 28px;
+$arrow-right-small-total-width: 34px;
+$arrow-right-small-total-height: 178px;
+$arrow-right-small-image: '../img/sprites.png';
+$arrow-right-small: (0px, 28px, 0px, -28px, 15px, 28px, 34px, 178px, '../img/sprites.png', 'arrowRight-small', );
+$arrow-right-name: 'arrowRight';
+$arrow-right-x: 0px;
+$arrow-right-y: 117px;
+$arrow-right-offset-x: 0px;
+$arrow-right-offset-y: -117px;
+$arrow-right-width: 34px;
+$arrow-right-height: 61px;
+$arrow-right-total-width: 34px;
+$arrow-right-total-height: 178px;
+$arrow-right-image: '../img/sprites.png';
+$arrow-right: (0px, 117px, 0px, -117px, 34px, 61px, 34px, 178px, '../img/sprites.png', 'arrowRight', );
+$spritesheet-width: 34px;
+$spritesheet-height: 178px;
+$spritesheet-image: '../img/sprites.png';
+$spritesheet-sprites: ($arrow-left-small, $arrow-left, $arrow-right-small, $arrow-right, );
+$spritesheet: (34px, 178px, '../img/sprites.png', $spritesheet-sprites, );
+
+// The provided mixins are intended to be used with the array-like variables
+//
+// .icon-home {
+//   @include sprite-width($icon-home);
+// }
+//
+// .icon-email {
+//   @include sprite($icon-email);
+// }
+//
+// Example usage in HTML:
+//
+// `display: block` sprite:
+// <div class="icon-home"></div>
+//
+// To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+//
+// // CSS
+// .icon {
+//   display: inline-block;
+// }
+//
+// // HTML
+// <i class="icon icon-home"></i>
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+// The `sprites` mixin generates identical output to the CSS template
+//   but can be overridden inside of SCSS
+//
+// @include sprites($spritesheet-sprites);
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}

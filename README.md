@@ -14,12 +14,12 @@ _Implements the following technologies_
 _Supports the following UI automations_   
   + NPM for package management
   + Webpack for modular JavaScript development for higher quality, more maintainable JS code   
-  + Grunt for managing the UI built process   
-  + HTML & Accessibility Validation   
+  + Grunt/Gulp for managing the UI built process   
+#  + HTML & Accessibility Validation   
   + Sass, CSS Pre-processor   
   + CSS/JS minification   
-  + ES Linting   
-  + ESDoc for JavaScript documentation
+#  + ES Linting   
+#  + ESDoc for JavaScript documentation
 
 ## Folder Structure
 
