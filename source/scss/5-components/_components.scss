@@ -237,7 +237,9 @@ $output-bourbon-deprecation-warnings: false;
 		}
 
 		.owl-item {
+
 			text-align: -webkit-center;
+
 		}
 
 		.owl-nav,
@@ -428,7 +430,7 @@ $output-bourbon-deprecation-warnings: false;
 					}
 
 					display: inline-block;
-					height: rem(20);
+					//height: rem(20);
 					margin-top: rem(20);
 					order: 3;
 					width: rem(120);
@@ -638,7 +640,9 @@ $output-bourbon-deprecation-warnings: false;
 		}
 
 		.owl-item {
+
 			text-align: -webkit-center;
+
 		}
 
 		margin-bottom: rem(40);
@@ -650,23 +654,27 @@ $output-bourbon-deprecation-warnings: false;
 
 
 .owl-dots {
+
 	text-align: center;
-	-webkit-tap-highlight-color: transparent;
+	// -webkit-tap-highlight-color: transparent;
 
 	.owl-dot {
+
 		display: inline-block;
 		zoom: 1;
 		// *display: inline;
 
 		span {
-			width: rem(10);
+
+			backface-visibility: visible;
+			background: $grey1;
+			border-radius: 30px;
+			display: block;
+			//-webkit-backface-visibility: visible;
 			height: rem(10);
 			margin: 0 rem(10);
-			background: $grey1;
-			display: block;
-			-webkit-backface-visibility: visible;
 			transition: opacity 200ms ease;
-			border-radius: 30px;
+			width: rem(10);
 		}
 
 		&.active,
